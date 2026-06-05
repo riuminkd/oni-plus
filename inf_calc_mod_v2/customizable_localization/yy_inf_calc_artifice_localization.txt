@@ -1,0 +1,16 @@
+defined_text = {
+	name = GetInfCalcMilitaryInvention31Name
+	random = no
+	text = {
+		trigger = {
+			tag = Y01
+		}
+		localisation_key = inf_calc_military_invention_3_1_korashi
+	}
+	text = {
+		trigger = {
+			always = yes
+		}
+		localisation_key = inf_calc_military_invention_3_1_black_damestear
+	}
+}

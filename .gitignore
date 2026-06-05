@@ -1,0 +1,10 @@
+# Ignore everything by default.
+*
+
+# Keep the Git ignore file itself.
+!.gitignore
+
+# Track only the active submod folder and descriptor.
+!inf_calc_mod_v2/
+!inf_calc_mod_v2/**
+!inf_calc_mod_v2.mod

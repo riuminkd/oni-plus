@@ -1,0 +1,20 @@
+on_monthly_pulse = {
+    events = {
+        inf_calc.1
+    }
+}
+
+on_battle_won_country = {
+    inf_calc_ajgriijarul_bright_claw_battle_won = yes
+}
+
+on_war_ended = {
+    inf_calc_ajgriijarul_ritual_humiliation_war_ended = yes
+}
+
+on_yearly_pulse = {
+    events = {
+        inf_calc.18
+        inf_calc.81
+    }
+}

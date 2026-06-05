@@ -1,0 +1,6 @@
+inf_calc_2_permanent_power_projection = {
+	max = 2
+	min = 2
+	power = 1
+	decay = no
+}

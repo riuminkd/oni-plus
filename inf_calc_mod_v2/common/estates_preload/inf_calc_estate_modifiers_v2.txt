@@ -1,0 +1,45 @@
+estate_inf_calc_special = {
+	trigger = {
+		always = no
+	}
+
+	modifier_definition = {
+		type = privileges #X.XX
+		key = kabiurgarko_influence_gain
+		trigger = {
+			always = yes
+		}
+	}
+
+	modifier_definition = {
+		type = privileges #X.XX
+		key = ajgriijarul_influence_gain
+		trigger = {
+			always = yes
+		}
+	}
+
+	modifier_definition = {
+		type = privileges #X.XX
+		key = shinukhorchi_influence_gain
+		trigger = {
+			always = yes
+		}
+	}
+
+	modifier_definition = {
+		type = privileges #X.XX
+		key = khelorvalshi_influence_gain
+		trigger = {
+			always = yes
+		}
+	}
+
+	modifier_definition = {
+		type = privileges #X.XX
+		key = chumijemoya_influence_gain
+		trigger = {
+			always = yes
+		}
+	}
+}

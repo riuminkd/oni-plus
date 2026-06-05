@@ -1,0 +1,2032 @@
+inf_calc_monthly_update = {
+
+	if = {
+		limit = { tag = Y01 }
+
+    # ------------------------------------------------------------
+    # 1. Export current province development into country variables
+    # ------------------------------------------------------------
+
+    4828 = {
+        ROOT = {
+            export_to_variable = {
+                which = kabiurgarko
+                value = trigger_value:development
+                who = PREV
+            }
+        }
+    }
+
+    4829 = {
+        ROOT = {
+            export_to_variable = {
+                which = ajgriijarul
+                value = trigger_value:development
+                who = PREV
+            }
+        }
+    }
+
+    5430 = {
+        ROOT = {
+            export_to_variable = {
+                which = shinukhorchi
+                value = trigger_value:development
+                who = PREV
+            }
+        }
+    }
+
+    4848 = {
+        ROOT = {
+            export_to_variable = {
+                which = khelorvalshi
+                value = trigger_value:development
+                who = PREV
+            }
+        }
+    }
+
+    4831 = {
+        ROOT = {
+            export_to_variable = {
+                which = chumijemoya
+                value = trigger_value:development
+                who = PREV
+            }
+        }
+    }
+
+
+    # ------------------------------------------------------------
+    # 2. Initialize *_inf values once
+    # ------------------------------------------------------------
+
+    if = {
+        limit = {
+            NOT = { has_country_flag = inf_calc_initialized }
+        }
+
+        set_variable = { which = kabiurgarko_inf value = 30 }
+        set_variable = { which = ajgriijarul_inf value = 30 }
+        set_variable = { which = shinukhorchi_inf value = 30 }
+        set_variable = { which = khelorvalshi_inf value = 15 }
+        set_variable = { which = chumijemoya_inf value = 30 }
+		add_church_power = 10
+        set_country_flag = inf_calc_initialized
+    }
+
+    if = {
+        limit = {
+            NOT = { has_country_flag = khelorvalshi_restored }
+        }
+        set_variable = { which = khelorvalshi_inf value = 15 }
+        remove_country_modifier = inf_calc_boost_khelorvalshi_penalty
+        remove_country_modifier = inf_calc_boost_khelorvalshi_manpower
+        remove_country_modifier = inf_calc_boost_khelorvalshi_other_influence
+        remove_country_modifier = khelorvalshi_small_boost
+        remove_country_modifier = inf_calc_useful_buff_khelorvalshi
+        remove_country_modifier = inf_calc_small_power_khelorvalshi
+        remove_country_modifier = inf_calc_influence_reduction_khelorvalshi
+        remove_country_modifier = inf_calc_khelorvalshi_drain_defenders_1
+        remove_country_modifier = inf_calc_khelorvalshi_drain_defenders_2
+        remove_country_modifier = inf_calc_khelorvalshi_drain_defenders_3
+        remove_country_modifier = inf_calc_khelorvalshi_drain_defenders_cooldown
+        remove_country_modifier = inf_calc_khelorvalshi_drain_populace_1
+        remove_country_modifier = inf_calc_khelorvalshi_drain_populace_2
+        remove_country_modifier = inf_calc_khelorvalshi_drain_populace_3
+        remove_country_modifier = inf_calc_khelorvalshi_blood_ritual_1
+        remove_country_modifier = inf_calc_khelorvalshi_blood_ritual_2
+        remove_country_modifier = inf_calc_khelorvalshi_blood_ritual_3
+        remove_country_modifier = inf_calc_khelorvalshi_lifeblood_active
+        remove_country_modifier = inf_calc_khelorvalshi_unstable_magic_active
+    }
+
+    # ------------------------------------------------------------
+    # 3. Copy old values for simultaneous update
+    # ------------------------------------------------------------
+
+    set_variable = { which = old_kabiurgarko_inf which = kabiurgarko_inf }
+    set_variable = { which = old_ajgriijarul_inf which = ajgriijarul_inf }
+    set_variable = { which = old_shinukhorchi_inf which = shinukhorchi_inf }
+    set_variable = { which = old_khelorvalshi_inf which = khelorvalshi_inf }
+    set_variable = { which = old_chumijemoya_inf which = chumijemoya_inf }
+
+
+    # ------------------------------------------------------------
+    # 4. new_kabiurgarko_inf
+    # ------------------------------------------------------------
+
+    set_variable = { which = new_kabiurgarko_inf which = old_kabiurgarko_inf }
+    multiply_variable = { which = new_kabiurgarko_inf value = 0.97 }
+    set_variable = { which = kabiurgarko_inf_contrib_current which = old_kabiurgarko_inf }
+    multiply_variable = { which = kabiurgarko_inf_contrib_current value = -0.03 }
+
+    set_variable = { which = temp which = kabiurgarko }
+    multiply_variable = { which = temp value = 0.05 }
+    set_variable = { which = kabiurgarko_inf_contrib_dev which = temp }
+    change_variable = { which = new_kabiurgarko_inf which = temp }
+
+    set_variable = { which = mean_other which = old_ajgriijarul_inf }
+    change_variable = { which = mean_other which = old_shinukhorchi_inf }
+    change_variable = { which = mean_other which = old_khelorvalshi_inf }
+    change_variable = { which = mean_other which = old_chumijemoya_inf }
+    divide_variable = { which = mean_other value = 4 }
+
+    set_variable = { which = penalty which = mean_other }
+    multiply_variable = { which = penalty which = mean_other }
+    multiply_variable = { which = penalty value = 0.001 }
+    if = { limit = { has_country_flag = azjakuma_masterful_tamongor } multiply_variable = { which = penalty value = 0.7 } }
+    if = {
+        limit = { NOT = { check_variable = { which = old_kabiurgarko_inf value = 50 } } }
+        set_variable = { which = penalty_scale which = old_kabiurgarko_inf }
+        divide_variable = { which = penalty_scale value = 50 }
+        multiply_variable = { which = penalty which = penalty_scale }
+    }
+    set_variable = { which = kabiurgarko_inf_contrib_other which = penalty }
+    multiply_variable = { which = kabiurgarko_inf_contrib_other value = -1 }
+    subtract_variable = { which = new_kabiurgarko_inf which = penalty }
+
+    set_variable = { which = kabiurgarko_inf_contrib_base value = 0.1 }
+    set_variable = { which = kabiurgarko_inf_contrib_manufactory value = 0 }
+    set_variable = { which = kabiurgarko_inf_contrib_fort value = 0 }
+    set_variable = { which = kabiurgarko_inf_contrib_infrastructure value = 0 }
+    set_variable = { which = kabiurgarko_inf_contrib_buildings value = 0 }
+    set_variable = { which = kabiurgarko_inf_contrib_devastation value = 0 }
+    set_variable = { which = kabiurgarko_inf_contrib_unrest_1 value = 0 }
+    set_variable = { which = kabiurgarko_inf_contrib_unrest_5 value = 0 }
+
+    change_variable = { which = new_kabiurgarko_inf value = 0.1 }
+
+    if = { limit = { 4828 = { has_manufactory_trigger = yes } } set_variable = { which = kabiurgarko_inf_contrib_manufactory value = 0.20 } change_variable = { which = new_kabiurgarko_inf value = 0.20 } }
+    if = { limit = { 4828 = { fort_level = 8 } } set_variable = { which = kabiurgarko_inf_contrib_fort value = 0.40 } change_variable = { which = new_kabiurgarko_inf value = 0.40 } }
+    else_if = { limit = { 4828 = { fort_level = 6 } } set_variable = { which = kabiurgarko_inf_contrib_fort value = 0.30 } change_variable = { which = new_kabiurgarko_inf value = 0.30 } }
+    else_if = { limit = { 4828 = { fort_level = 4 } } set_variable = { which = kabiurgarko_inf_contrib_fort value = 0.20 } change_variable = { which = new_kabiurgarko_inf value = 0.20 } }
+    else_if = { limit = { 4828 = { fort_level = 2 } } set_variable = { which = kabiurgarko_inf_contrib_fort value = 0.10 } change_variable = { which = new_kabiurgarko_inf value = 0.10 } }
+    if = { limit = { 4828 = { num_of_times_expanded_infrastructure = 3 } } set_variable = { which = kabiurgarko_inf_contrib_infrastructure value = 0.40 } change_variable = { which = new_kabiurgarko_inf value = 0.40 } }
+    else_if = { limit = { 4828 = { num_of_times_expanded_infrastructure = 2 } } set_variable = { which = kabiurgarko_inf_contrib_infrastructure value = 0.20 } change_variable = { which = new_kabiurgarko_inf value = 0.20 } }
+    else_if = { limit = { 4828 = { num_of_times_expanded_infrastructure = 1 } } set_variable = { which = kabiurgarko_inf_contrib_infrastructure value = 0.10 } change_variable = { which = new_kabiurgarko_inf value = 0.10 } }
+    if = { limit = { 4828 = { num_of_buildings_in_province = 10 } } set_variable = { which = kabiurgarko_inf_contrib_buildings value = 0.40 } change_variable = { which = new_kabiurgarko_inf value = 0.40 } }
+    else_if = { limit = { 4828 = { num_of_buildings_in_province = 8 } } set_variable = { which = kabiurgarko_inf_contrib_buildings value = 0.30 } change_variable = { which = new_kabiurgarko_inf value = 0.30 } }
+    else_if = { limit = { 4828 = { num_of_buildings_in_province = 6 } } set_variable = { which = kabiurgarko_inf_contrib_buildings value = 0.20 } change_variable = { which = new_kabiurgarko_inf value = 0.20 } }
+    else_if = { limit = { 4828 = { num_of_buildings_in_province = 4 } } set_variable = { which = kabiurgarko_inf_contrib_buildings value = 0.10 } change_variable = { which = new_kabiurgarko_inf value = 0.10 } }
+    if = { limit = { 4828 = { devastation = 10 } } set_variable = { which = kabiurgarko_inf_contrib_devastation value = -0.05 } change_variable = { which = new_kabiurgarko_inf value = -0.05 } }
+    if = { limit = { 4828 = { unrest = 1 } } set_variable = { which = kabiurgarko_inf_contrib_unrest_1 value = -0.05 } change_variable = { which = new_kabiurgarko_inf value = -0.05 } }
+    if = { limit = { 4828 = { unrest = 5 } } set_variable = { which = kabiurgarko_inf_contrib_unrest_5 value = -0.05 } change_variable = { which = new_kabiurgarko_inf value = -0.05 } }
+
+
+    # ------------------------------------------------------------
+    # 5. new_ajgriijarul_inf
+    # ------------------------------------------------------------
+
+    set_variable = { which = new_ajgriijarul_inf which = old_ajgriijarul_inf }
+    multiply_variable = { which = new_ajgriijarul_inf value = 0.97 }
+    set_variable = { which = ajgriijarul_inf_contrib_current which = old_ajgriijarul_inf }
+    multiply_variable = { which = ajgriijarul_inf_contrib_current value = -0.03 }
+
+    set_variable = { which = temp which = ajgriijarul }
+    multiply_variable = { which = temp value = 0.05 }
+    set_variable = { which = ajgriijarul_inf_contrib_dev which = temp }
+    change_variable = { which = new_ajgriijarul_inf which = temp }
+
+    set_variable = { which = mean_other which = old_kabiurgarko_inf }
+    change_variable = { which = mean_other which = old_shinukhorchi_inf }
+    change_variable = { which = mean_other which = old_khelorvalshi_inf }
+    change_variable = { which = mean_other which = old_chumijemoya_inf }
+    divide_variable = { which = mean_other value = 4 }
+
+    set_variable = { which = penalty which = mean_other }
+    multiply_variable = { which = penalty which = mean_other }
+    multiply_variable = { which = penalty value = 0.001 }
+    if = { limit = { has_country_flag = azjakuma_masterful_tamongor } multiply_variable = { which = penalty value = 0.7 } }
+    if = {
+        limit = { NOT = { check_variable = { which = old_ajgriijarul_inf value = 50 } } }
+        set_variable = { which = penalty_scale which = old_ajgriijarul_inf }
+        divide_variable = { which = penalty_scale value = 50 }
+        multiply_variable = { which = penalty which = penalty_scale }
+    }
+    set_variable = { which = ajgriijarul_inf_contrib_other which = penalty }
+    multiply_variable = { which = ajgriijarul_inf_contrib_other value = -1 }
+    subtract_variable = { which = new_ajgriijarul_inf which = penalty }
+
+    set_variable = { which = ajgriijarul_inf_contrib_base value = 0.1 }
+    set_variable = { which = ajgriijarul_inf_contrib_manufactory value = 0 }
+    set_variable = { which = ajgriijarul_inf_contrib_fort value = 0 }
+    set_variable = { which = ajgriijarul_inf_contrib_infrastructure value = 0 }
+    set_variable = { which = ajgriijarul_inf_contrib_buildings value = 0 }
+    set_variable = { which = ajgriijarul_inf_contrib_devastation value = 0 }
+    set_variable = { which = ajgriijarul_inf_contrib_unrest_1 value = 0 }
+    set_variable = { which = ajgriijarul_inf_contrib_unrest_5 value = 0 }
+
+    change_variable = { which = new_ajgriijarul_inf value = 0.1 }
+
+    if = { limit = { 4829 = { has_manufactory_trigger = yes } } set_variable = { which = ajgriijarul_inf_contrib_manufactory value = 0.20 } change_variable = { which = new_ajgriijarul_inf value = 0.20 } }
+    if = { limit = { 4829 = { fort_level = 8 } } set_variable = { which = ajgriijarul_inf_contrib_fort value = 0.40 } change_variable = { which = new_ajgriijarul_inf value = 0.40 } }
+    else_if = { limit = { 4829 = { fort_level = 6 } } set_variable = { which = ajgriijarul_inf_contrib_fort value = 0.30 } change_variable = { which = new_ajgriijarul_inf value = 0.30 } }
+    else_if = { limit = { 4829 = { fort_level = 4 } } set_variable = { which = ajgriijarul_inf_contrib_fort value = 0.20 } change_variable = { which = new_ajgriijarul_inf value = 0.20 } }
+    else_if = { limit = { 4829 = { fort_level = 2 } } set_variable = { which = ajgriijarul_inf_contrib_fort value = 0.10 } change_variable = { which = new_ajgriijarul_inf value = 0.10 } }
+    if = { limit = { 4829 = { num_of_times_expanded_infrastructure = 3 } } set_variable = { which = ajgriijarul_inf_contrib_infrastructure value = 0.40 } change_variable = { which = new_ajgriijarul_inf value = 0.40 } }
+    else_if = { limit = { 4829 = { num_of_times_expanded_infrastructure = 2 } } set_variable = { which = ajgriijarul_inf_contrib_infrastructure value = 0.20 } change_variable = { which = new_ajgriijarul_inf value = 0.20 } }
+    else_if = { limit = { 4829 = { num_of_times_expanded_infrastructure = 1 } } set_variable = { which = ajgriijarul_inf_contrib_infrastructure value = 0.10 } change_variable = { which = new_ajgriijarul_inf value = 0.10 } }
+    if = { limit = { 4829 = { num_of_buildings_in_province = 10 } } set_variable = { which = ajgriijarul_inf_contrib_buildings value = 0.40 } change_variable = { which = new_ajgriijarul_inf value = 0.40 } }
+    else_if = { limit = { 4829 = { num_of_buildings_in_province = 8 } } set_variable = { which = ajgriijarul_inf_contrib_buildings value = 0.30 } change_variable = { which = new_ajgriijarul_inf value = 0.30 } }
+    else_if = { limit = { 4829 = { num_of_buildings_in_province = 6 } } set_variable = { which = ajgriijarul_inf_contrib_buildings value = 0.20 } change_variable = { which = new_ajgriijarul_inf value = 0.20 } }
+    else_if = { limit = { 4829 = { num_of_buildings_in_province = 4 } } set_variable = { which = ajgriijarul_inf_contrib_buildings value = 0.10 } change_variable = { which = new_ajgriijarul_inf value = 0.10 } }
+    if = { limit = { 4829 = { devastation = 10 } } set_variable = { which = ajgriijarul_inf_contrib_devastation value = -0.05 } change_variable = { which = new_ajgriijarul_inf value = -0.05 } }
+    if = { limit = { 4829 = { unrest = 1 } } set_variable = { which = ajgriijarul_inf_contrib_unrest_1 value = -0.05 } change_variable = { which = new_ajgriijarul_inf value = -0.05 } }
+    if = { limit = { 4829 = { unrest = 5 } } set_variable = { which = ajgriijarul_inf_contrib_unrest_5 value = -0.05 } change_variable = { which = new_ajgriijarul_inf value = -0.05 } }
+
+
+    # ------------------------------------------------------------
+    # 6. new_shinukhorchi_inf
+    # ------------------------------------------------------------
+
+    set_variable = { which = new_shinukhorchi_inf which = old_shinukhorchi_inf }
+    multiply_variable = { which = new_shinukhorchi_inf value = 0.97 }
+    set_variable = { which = shinukhorchi_inf_contrib_current which = old_shinukhorchi_inf }
+    multiply_variable = { which = shinukhorchi_inf_contrib_current value = -0.03 }
+
+    set_variable = { which = temp which = shinukhorchi }
+    multiply_variable = { which = temp value = 0.05 }
+    set_variable = { which = shinukhorchi_inf_contrib_dev which = temp }
+    change_variable = { which = new_shinukhorchi_inf which = temp }
+
+    set_variable = { which = mean_other which = old_kabiurgarko_inf }
+    change_variable = { which = mean_other which = old_ajgriijarul_inf }
+    change_variable = { which = mean_other which = old_khelorvalshi_inf }
+    change_variable = { which = mean_other which = old_chumijemoya_inf }
+    divide_variable = { which = mean_other value = 4 }
+
+    set_variable = { which = penalty which = mean_other }
+    multiply_variable = { which = penalty which = mean_other }
+    multiply_variable = { which = penalty value = 0.001 }
+    if = { limit = { has_country_flag = azjakuma_masterful_tamongor } multiply_variable = { which = penalty value = 0.7 } }
+    if = {
+        limit = { NOT = { check_variable = { which = old_shinukhorchi_inf value = 50 } } }
+        set_variable = { which = penalty_scale which = old_shinukhorchi_inf }
+        divide_variable = { which = penalty_scale value = 50 }
+        multiply_variable = { which = penalty which = penalty_scale }
+    }
+    set_variable = { which = shinukhorchi_inf_contrib_other which = penalty }
+    multiply_variable = { which = shinukhorchi_inf_contrib_other value = -1 }
+    subtract_variable = { which = new_shinukhorchi_inf which = penalty }
+
+    set_variable = { which = shinukhorchi_inf_contrib_base value = 0.1 }
+    set_variable = { which = shinukhorchi_inf_contrib_manufactory value = 0 }
+    set_variable = { which = shinukhorchi_inf_contrib_fort value = 0 }
+    set_variable = { which = shinukhorchi_inf_contrib_infrastructure value = 0 }
+    set_variable = { which = shinukhorchi_inf_contrib_buildings value = 0 }
+    set_variable = { which = shinukhorchi_inf_contrib_devastation value = 0 }
+    set_variable = { which = shinukhorchi_inf_contrib_unrest_1 value = 0 }
+    set_variable = { which = shinukhorchi_inf_contrib_unrest_5 value = 0 }
+
+    change_variable = { which = new_shinukhorchi_inf value = 0.1 }
+
+    if = { limit = { 5430 = { has_manufactory_trigger = yes } } set_variable = { which = shinukhorchi_inf_contrib_manufactory value = 0.20 } change_variable = { which = new_shinukhorchi_inf value = 0.20 } }
+    if = { limit = { 5430 = { fort_level = 8 } } set_variable = { which = shinukhorchi_inf_contrib_fort value = 0.40 } change_variable = { which = new_shinukhorchi_inf value = 0.40 } }
+    else_if = { limit = { 5430 = { fort_level = 6 } } set_variable = { which = shinukhorchi_inf_contrib_fort value = 0.30 } change_variable = { which = new_shinukhorchi_inf value = 0.30 } }
+    else_if = { limit = { 5430 = { fort_level = 4 } } set_variable = { which = shinukhorchi_inf_contrib_fort value = 0.20 } change_variable = { which = new_shinukhorchi_inf value = 0.20 } }
+    else_if = { limit = { 5430 = { fort_level = 2 } } set_variable = { which = shinukhorchi_inf_contrib_fort value = 0.10 } change_variable = { which = new_shinukhorchi_inf value = 0.10 } }
+    if = { limit = { 5430 = { num_of_times_expanded_infrastructure = 3 } } set_variable = { which = shinukhorchi_inf_contrib_infrastructure value = 0.40 } change_variable = { which = new_shinukhorchi_inf value = 0.40 } }
+    else_if = { limit = { 5430 = { num_of_times_expanded_infrastructure = 2 } } set_variable = { which = shinukhorchi_inf_contrib_infrastructure value = 0.20 } change_variable = { which = new_shinukhorchi_inf value = 0.20 } }
+    else_if = { limit = { 5430 = { num_of_times_expanded_infrastructure = 1 } } set_variable = { which = shinukhorchi_inf_contrib_infrastructure value = 0.10 } change_variable = { which = new_shinukhorchi_inf value = 0.10 } }
+    if = { limit = { 5430 = { num_of_buildings_in_province = 10 } } set_variable = { which = shinukhorchi_inf_contrib_buildings value = 0.40 } change_variable = { which = new_shinukhorchi_inf value = 0.40 } }
+    else_if = { limit = { 5430 = { num_of_buildings_in_province = 8 } } set_variable = { which = shinukhorchi_inf_contrib_buildings value = 0.30 } change_variable = { which = new_shinukhorchi_inf value = 0.30 } }
+    else_if = { limit = { 5430 = { num_of_buildings_in_province = 6 } } set_variable = { which = shinukhorchi_inf_contrib_buildings value = 0.20 } change_variable = { which = new_shinukhorchi_inf value = 0.20 } }
+    else_if = { limit = { 5430 = { num_of_buildings_in_province = 4 } } set_variable = { which = shinukhorchi_inf_contrib_buildings value = 0.10 } change_variable = { which = new_shinukhorchi_inf value = 0.10 } }
+    if = { limit = { 5430 = { devastation = 10 } } set_variable = { which = shinukhorchi_inf_contrib_devastation value = -0.05 } change_variable = { which = new_shinukhorchi_inf value = -0.05 } }
+    if = { limit = { 5430 = { unrest = 1 } } set_variable = { which = shinukhorchi_inf_contrib_unrest_1 value = -0.05 } change_variable = { which = new_shinukhorchi_inf value = -0.05 } }
+    if = { limit = { 5430 = { unrest = 5 } } set_variable = { which = shinukhorchi_inf_contrib_unrest_5 value = -0.05 } change_variable = { which = new_shinukhorchi_inf value = -0.05 } }
+
+
+    # ------------------------------------------------------------
+    # 7. new_khelorvalshi_inf
+    # ------------------------------------------------------------
+
+    set_variable = { which = new_khelorvalshi_inf which = old_khelorvalshi_inf }
+    multiply_variable = { which = new_khelorvalshi_inf value = 0.97 }
+    set_variable = { which = khelorvalshi_inf_contrib_current which = old_khelorvalshi_inf }
+    multiply_variable = { which = khelorvalshi_inf_contrib_current value = -0.03 }
+
+    set_variable = { which = temp which = khelorvalshi }
+    multiply_variable = { which = temp value = 0.05 }
+    set_variable = { which = khelorvalshi_inf_contrib_dev which = temp }
+    change_variable = { which = new_khelorvalshi_inf which = temp }
+
+    set_variable = { which = mean_other which = old_kabiurgarko_inf }
+    change_variable = { which = mean_other which = old_ajgriijarul_inf }
+    change_variable = { which = mean_other which = old_shinukhorchi_inf }
+    change_variable = { which = mean_other which = old_chumijemoya_inf }
+    divide_variable = { which = mean_other value = 4 }
+
+    set_variable = { which = penalty which = mean_other }
+    multiply_variable = { which = penalty which = mean_other }
+    multiply_variable = { which = penalty value = 0.001 }
+    if = { limit = { has_country_flag = azjakuma_masterful_tamongor } multiply_variable = { which = penalty value = 0.7 } }
+    if = {
+        limit = { NOT = { check_variable = { which = old_khelorvalshi_inf value = 50 } } }
+        set_variable = { which = penalty_scale which = old_khelorvalshi_inf }
+        divide_variable = { which = penalty_scale value = 50 }
+        multiply_variable = { which = penalty which = penalty_scale }
+    }
+    set_variable = { which = khelorvalshi_inf_contrib_other which = penalty }
+    multiply_variable = { which = khelorvalshi_inf_contrib_other value = -1 }
+    subtract_variable = { which = new_khelorvalshi_inf which = penalty }
+
+    set_variable = { which = khelorvalshi_inf_contrib_base value = 0.1 }
+    set_variable = { which = khelorvalshi_inf_contrib_manufactory value = 0 }
+    set_variable = { which = khelorvalshi_inf_contrib_fort value = 0 }
+    set_variable = { which = khelorvalshi_inf_contrib_infrastructure value = 0 }
+    set_variable = { which = khelorvalshi_inf_contrib_buildings value = 0 }
+    set_variable = { which = khelorvalshi_inf_contrib_devastation value = 0 }
+    set_variable = { which = khelorvalshi_inf_contrib_unrest_1 value = 0 }
+    set_variable = { which = khelorvalshi_inf_contrib_unrest_5 value = 0 }
+
+    change_variable = { which = new_khelorvalshi_inf value = 0.1 }
+
+    if = { limit = { 4848 = { has_manufactory_trigger = yes } } set_variable = { which = khelorvalshi_inf_contrib_manufactory value = 0.20 } change_variable = { which = new_khelorvalshi_inf value = 0.20 } }
+    if = { limit = { 4848 = { fort_level = 8 } } set_variable = { which = khelorvalshi_inf_contrib_fort value = 0.40 } change_variable = { which = new_khelorvalshi_inf value = 0.40 } }
+    else_if = { limit = { 4848 = { fort_level = 6 } } set_variable = { which = khelorvalshi_inf_contrib_fort value = 0.30 } change_variable = { which = new_khelorvalshi_inf value = 0.30 } }
+    else_if = { limit = { 4848 = { fort_level = 4 } } set_variable = { which = khelorvalshi_inf_contrib_fort value = 0.20 } change_variable = { which = new_khelorvalshi_inf value = 0.20 } }
+    else_if = { limit = { 4848 = { fort_level = 2 } } set_variable = { which = khelorvalshi_inf_contrib_fort value = 0.10 } change_variable = { which = new_khelorvalshi_inf value = 0.10 } }
+    if = { limit = { 4848 = { num_of_times_expanded_infrastructure = 3 } } set_variable = { which = khelorvalshi_inf_contrib_infrastructure value = 0.40 } change_variable = { which = new_khelorvalshi_inf value = 0.40 } }
+    else_if = { limit = { 4848 = { num_of_times_expanded_infrastructure = 2 } } set_variable = { which = khelorvalshi_inf_contrib_infrastructure value = 0.20 } change_variable = { which = new_khelorvalshi_inf value = 0.20 } }
+    else_if = { limit = { 4848 = { num_of_times_expanded_infrastructure = 1 } } set_variable = { which = khelorvalshi_inf_contrib_infrastructure value = 0.10 } change_variable = { which = new_khelorvalshi_inf value = 0.10 } }
+    if = { limit = { 4848 = { num_of_buildings_in_province = 10 } } set_variable = { which = khelorvalshi_inf_contrib_buildings value = 0.40 } change_variable = { which = new_khelorvalshi_inf value = 0.40 } }
+    else_if = { limit = { 4848 = { num_of_buildings_in_province = 8 } } set_variable = { which = khelorvalshi_inf_contrib_buildings value = 0.30 } change_variable = { which = new_khelorvalshi_inf value = 0.30 } }
+    else_if = { limit = { 4848 = { num_of_buildings_in_province = 6 } } set_variable = { which = khelorvalshi_inf_contrib_buildings value = 0.20 } change_variable = { which = new_khelorvalshi_inf value = 0.20 } }
+    else_if = { limit = { 4848 = { num_of_buildings_in_province = 4 } } set_variable = { which = khelorvalshi_inf_contrib_buildings value = 0.10 } change_variable = { which = new_khelorvalshi_inf value = 0.10 } }
+    if = { limit = { 4848 = { devastation = 10 } } set_variable = { which = khelorvalshi_inf_contrib_devastation value = -0.05 } change_variable = { which = new_khelorvalshi_inf value = -0.05 } }
+    if = { limit = { 4848 = { unrest = 1 } } set_variable = { which = khelorvalshi_inf_contrib_unrest_1 value = -0.05 } change_variable = { which = new_khelorvalshi_inf value = -0.05 } }
+    if = { limit = { 4848 = { unrest = 5 } } set_variable = { which = khelorvalshi_inf_contrib_unrest_5 value = -0.05 } change_variable = { which = new_khelorvalshi_inf value = -0.05 } }
+
+
+    # ------------------------------------------------------------
+    # 8. new_chumijemoya_inf
+    # ------------------------------------------------------------
+
+    set_variable = { which = new_chumijemoya_inf which = old_chumijemoya_inf }
+    multiply_variable = { which = new_chumijemoya_inf value = 0.97 }
+    set_variable = { which = chumijemoya_inf_contrib_current which = old_chumijemoya_inf }
+    multiply_variable = { which = chumijemoya_inf_contrib_current value = -0.03 }
+
+    set_variable = { which = temp which = chumijemoya }
+    multiply_variable = { which = temp value = 0.05 }
+    set_variable = { which = chumijemoya_inf_contrib_dev which = temp }
+    change_variable = { which = new_chumijemoya_inf which = temp }
+
+    set_variable = { which = mean_other which = old_kabiurgarko_inf }
+    change_variable = { which = mean_other which = old_ajgriijarul_inf }
+    change_variable = { which = mean_other which = old_shinukhorchi_inf }
+    change_variable = { which = mean_other which = old_khelorvalshi_inf }
+    divide_variable = { which = mean_other value = 4 }
+
+    set_variable = { which = penalty which = mean_other }
+    multiply_variable = { which = penalty which = mean_other }
+    multiply_variable = { which = penalty value = 0.001 }
+    if = { limit = { has_country_flag = azjakuma_masterful_tamongor } multiply_variable = { which = penalty value = 0.7 } }
+    if = {
+        limit = { NOT = { check_variable = { which = old_chumijemoya_inf value = 50 } } }
+        set_variable = { which = penalty_scale which = old_chumijemoya_inf }
+        divide_variable = { which = penalty_scale value = 50 }
+        multiply_variable = { which = penalty which = penalty_scale }
+    }
+    set_variable = { which = chumijemoya_inf_contrib_other which = penalty }
+    multiply_variable = { which = chumijemoya_inf_contrib_other value = -1 }
+    subtract_variable = { which = new_chumijemoya_inf which = penalty }
+
+    set_variable = { which = chumijemoya_inf_contrib_base value = 0.1 }
+    set_variable = { which = chumijemoya_inf_contrib_manufactory value = 0 }
+    set_variable = { which = chumijemoya_inf_contrib_fort value = 0 }
+    set_variable = { which = chumijemoya_inf_contrib_infrastructure value = 0 }
+    set_variable = { which = chumijemoya_inf_contrib_buildings value = 0 }
+    set_variable = { which = chumijemoya_inf_contrib_devastation value = 0 }
+    set_variable = { which = chumijemoya_inf_contrib_unrest_1 value = 0 }
+    set_variable = { which = chumijemoya_inf_contrib_unrest_5 value = 0 }
+
+    change_variable = { which = new_chumijemoya_inf value = 0.1 }
+
+    if = { limit = { 4831 = { has_manufactory_trigger = yes } } set_variable = { which = chumijemoya_inf_contrib_manufactory value = 0.20 } change_variable = { which = new_chumijemoya_inf value = 0.20 } }
+    if = { limit = { 4831 = { fort_level = 8 } } set_variable = { which = chumijemoya_inf_contrib_fort value = 0.40 } change_variable = { which = new_chumijemoya_inf value = 0.40 } }
+    else_if = { limit = { 4831 = { fort_level = 6 } } set_variable = { which = chumijemoya_inf_contrib_fort value = 0.30 } change_variable = { which = new_chumijemoya_inf value = 0.30 } }
+    else_if = { limit = { 4831 = { fort_level = 4 } } set_variable = { which = chumijemoya_inf_contrib_fort value = 0.20 } change_variable = { which = new_chumijemoya_inf value = 0.20 } }
+    else_if = { limit = { 4831 = { fort_level = 2 } } set_variable = { which = chumijemoya_inf_contrib_fort value = 0.10 } change_variable = { which = new_chumijemoya_inf value = 0.10 } }
+    if = { limit = { 4831 = { num_of_times_expanded_infrastructure = 3 } } set_variable = { which = chumijemoya_inf_contrib_infrastructure value = 0.40 } change_variable = { which = new_chumijemoya_inf value = 0.40 } }
+    else_if = { limit = { 4831 = { num_of_times_expanded_infrastructure = 2 } } set_variable = { which = chumijemoya_inf_contrib_infrastructure value = 0.20 } change_variable = { which = new_chumijemoya_inf value = 0.20 } }
+    else_if = { limit = { 4831 = { num_of_times_expanded_infrastructure = 1 } } set_variable = { which = chumijemoya_inf_contrib_infrastructure value = 0.10 } change_variable = { which = new_chumijemoya_inf value = 0.10 } }
+    if = { limit = { 4831 = { num_of_buildings_in_province = 10 } } set_variable = { which = chumijemoya_inf_contrib_buildings value = 0.40 } change_variable = { which = new_chumijemoya_inf value = 0.40 } }
+    else_if = { limit = { 4831 = { num_of_buildings_in_province = 8 } } set_variable = { which = chumijemoya_inf_contrib_buildings value = 0.30 } change_variable = { which = new_chumijemoya_inf value = 0.30 } }
+    else_if = { limit = { 4831 = { num_of_buildings_in_province = 6 } } set_variable = { which = chumijemoya_inf_contrib_buildings value = 0.20 } change_variable = { which = new_chumijemoya_inf value = 0.20 } }
+    else_if = { limit = { 4831 = { num_of_buildings_in_province = 4 } } set_variable = { which = chumijemoya_inf_contrib_buildings value = 0.10 } change_variable = { which = new_chumijemoya_inf value = 0.10 } }
+    if = { limit = { 4831 = { devastation = 10 } } set_variable = { which = chumijemoya_inf_contrib_devastation value = -0.05 } change_variable = { which = new_chumijemoya_inf value = -0.05 } }
+    if = { limit = { 4831 = { unrest = 1 } } set_variable = { which = chumijemoya_inf_contrib_unrest_1 value = -0.05 } change_variable = { which = new_chumijemoya_inf value = -0.05 } }
+    if = { limit = { 4831 = { unrest = 5 } } set_variable = { which = chumijemoya_inf_contrib_unrest_5 value = -0.05 } change_variable = { which = new_chumijemoya_inf value = -0.05 } }
+
+
+
+	# Apply additional influence gain from custom country modifiers.
+	export_to_variable = {
+		variable_name = kabiurgarko_influence_gain_toadd
+		value = modifier:kabiurgarko_influence_gain
+	}
+	change_variable = { which = new_kabiurgarko_inf which = kabiurgarko_influence_gain_toadd }
+
+	export_to_variable = {
+		variable_name = ajgriijarul_influence_gain_toadd
+		value = modifier:ajgriijarul_influence_gain
+	}
+	change_variable = { which = new_ajgriijarul_inf which = ajgriijarul_influence_gain_toadd }
+
+	export_to_variable = {
+		variable_name = shinukhorchi_influence_gain_toadd
+		value = modifier:shinukhorchi_influence_gain
+	}
+	change_variable = { which = new_shinukhorchi_inf which = shinukhorchi_influence_gain_toadd }
+
+	export_to_variable = {
+		variable_name = khelorvalshi_influence_gain_toadd
+		value = modifier:khelorvalshi_influence_gain
+	}
+	change_variable = { which = new_khelorvalshi_inf which = khelorvalshi_influence_gain_toadd }
+
+	export_to_variable = {
+		variable_name = chumijemoya_influence_gain_toadd
+		value = modifier:chumijemoya_influence_gain
+	}
+	change_variable = { which = new_chumijemoya_inf which = chumijemoya_influence_gain_toadd }
+
+	set_variable = { which = kabiurgarko_wide_power_base_toadd value = 0 }
+	set_variable = { which = ajgriijarul_wide_power_base_toadd value = 0 }
+	set_variable = { which = shinukhorchi_wide_power_base_toadd value = 0 }
+	set_variable = { which = khelorvalshi_wide_power_base_toadd value = 0 }
+	set_variable = { which = chumijemoya_wide_power_base_toadd value = 0 }
+
+	if = {
+		limit = {
+			mission_completed = Y01_temples_of_yanshen
+			NOT = { check_variable = { which = old_kabiurgarko_inf value = 55 } }
+		}
+		set_variable = { which = kabiurgarko_wide_power_base_toadd value = 1 }
+		change_variable = { which = new_kabiurgarko_inf value = 1 }
+	}
+	if = {
+		limit = {
+			mission_completed = Y01_temples_of_yanshen
+			NOT = { check_variable = { which = old_ajgriijarul_inf value = 55 } }
+		}
+		set_variable = { which = ajgriijarul_wide_power_base_toadd value = 1 }
+		change_variable = { which = new_ajgriijarul_inf value = 1 }
+	}
+	if = {
+		limit = {
+			mission_completed = Y01_temples_of_yanshen
+			NOT = { check_variable = { which = old_shinukhorchi_inf value = 55 } }
+		}
+		set_variable = { which = shinukhorchi_wide_power_base_toadd value = 1 }
+		change_variable = { which = new_shinukhorchi_inf value = 1 }
+	}
+	if = {
+		limit = {
+			has_country_flag = khelorvalshi_restored
+			mission_completed = Y01_temples_of_yanshen
+			NOT = { check_variable = { which = old_khelorvalshi_inf value = 55 } }
+		}
+		set_variable = { which = khelorvalshi_wide_power_base_toadd value = 1 }
+		change_variable = { which = new_khelorvalshi_inf value = 1 }
+	}
+	if = {
+		limit = {
+			mission_completed = Y01_temples_of_yanshen
+			NOT = { check_variable = { which = old_chumijemoya_inf value = 55 } }
+		}
+		set_variable = { which = chumijemoya_wide_power_base_toadd value = 1 }
+		change_variable = { which = new_chumijemoya_inf value = 1 }
+	}
+
+
+
+
+
+    # ------------------------------------------------------------
+    # 9. Commit simultaneous update
+    # ------------------------------------------------------------
+
+    set_variable = { which = kabiurgarko_inf which = new_kabiurgarko_inf }
+    set_variable = { which = ajgriijarul_inf which = new_ajgriijarul_inf }
+    set_variable = { which = shinukhorchi_inf which = new_shinukhorchi_inf }
+    set_variable = { which = khelorvalshi_inf which = new_khelorvalshi_inf }
+    set_variable = { which = chumijemoya_inf which = new_chumijemoya_inf }
+
+    if = { limit = { NOT = { check_variable = { which = kabiurgarko_inf value = 0 } } } set_variable = { which = kabiurgarko_inf value = 0 } }
+    if = { limit = { NOT = { check_variable = { which = ajgriijarul_inf value = 0 } } } set_variable = { which = ajgriijarul_inf value = 0 } }
+    if = { limit = { NOT = { check_variable = { which = shinukhorchi_inf value = 0 } } } set_variable = { which = shinukhorchi_inf value = 0 } }
+    if = { limit = { NOT = { check_variable = { which = khelorvalshi_inf value = 0 } } } set_variable = { which = khelorvalshi_inf value = 0 } }
+    if = { limit = { NOT = { check_variable = { which = chumijemoya_inf value = 0 } } } set_variable = { which = chumijemoya_inf value = 0 } }
+
+    if = {
+        limit = {
+            NOT = { has_country_flag = khelorvalshi_restored }
+        }
+        set_variable = { which = khelorvalshi_inf value = 15 }
+        remove_country_modifier = inf_calc_boost_khelorvalshi_penalty
+        remove_country_modifier = inf_calc_boost_khelorvalshi_manpower
+        remove_country_modifier = inf_calc_boost_khelorvalshi_other_influence
+        remove_country_modifier = khelorvalshi_small_boost
+        remove_country_modifier = inf_calc_useful_buff_khelorvalshi
+        remove_country_modifier = inf_calc_small_power_khelorvalshi
+        remove_country_modifier = inf_calc_influence_reduction_khelorvalshi
+        remove_country_modifier = inf_calc_khelorvalshi_drain_defenders_1
+        remove_country_modifier = inf_calc_khelorvalshi_drain_defenders_2
+        remove_country_modifier = inf_calc_khelorvalshi_drain_defenders_3
+        remove_country_modifier = inf_calc_khelorvalshi_drain_defenders_cooldown
+        remove_country_modifier = inf_calc_khelorvalshi_drain_populace_1
+        remove_country_modifier = inf_calc_khelorvalshi_drain_populace_2
+        remove_country_modifier = inf_calc_khelorvalshi_drain_populace_3
+        remove_country_modifier = inf_calc_khelorvalshi_blood_ritual_1
+        remove_country_modifier = inf_calc_khelorvalshi_blood_ritual_2
+        remove_country_modifier = inf_calc_khelorvalshi_blood_ritual_3
+        remove_country_modifier = inf_calc_khelorvalshi_lifeblood_active
+        remove_country_modifier = inf_calc_khelorvalshi_unstable_magic_active
+    }
+
+    inf_calc_khelorvalshi_drain_defenders_monthly = yes
+    inf_calc_khelorvalshi_lifeblood_monthly = yes
+    inf_calc_cleanup_lost_shirgrii_control_modifiers = yes
+    inf_calc_shirgrii_defense_monthly = yes
+    inf_calc_ajgriijarul_ritual_humiliation_monthly = yes
+    inf_calc_shinukhorchi_major_concessions_monthly = yes
+    inf_calc_chumijemoya_major_concessions_monthly = yes
+    inf_calc_ajgriijarul_major_concessions_monthly = yes
+    inf_calc_khelorvalshi_major_concessions_monthly = yes
+    inf_calc_kabiurgarko_major_concessions_monthly = yes
+    inf_calc_update_active_spell_cooldowns = yes
+    inf_calc_monthly_temple_control_assignment = yes
+	
+	# ------------------------------------------------------------
+	# 10. Calculate monthly change / delta
+	# delta = current_inf - previous_inf
+	# ------------------------------------------------------------
+
+	set_variable = { which = kabiurgarko_inf_delta which = kabiurgarko_inf }
+	subtract_variable = { which = kabiurgarko_inf_delta which = old_kabiurgarko_inf }
+
+	set_variable = { which = ajgriijarul_inf_delta which = ajgriijarul_inf }
+	subtract_variable = { which = ajgriijarul_inf_delta which = old_ajgriijarul_inf }
+
+	set_variable = { which = shinukhorchi_inf_delta which = shinukhorchi_inf }
+	subtract_variable = { which = shinukhorchi_inf_delta which = old_shinukhorchi_inf }
+
+	set_variable = { which = khelorvalshi_inf_delta which = khelorvalshi_inf }
+	subtract_variable = { which = khelorvalshi_inf_delta which = old_khelorvalshi_inf }
+
+	set_variable = { which = chumijemoya_inf_delta which = chumijemoya_inf }
+	subtract_variable = { which = chumijemoya_inf_delta which = old_chumijemoya_inf }
+
+	}
+}
+inf_calc_monthly_temple_control_assignment = {
+	if = {
+		limit = {
+			tag = Y01
+			any_owned_province = {
+				OR = {
+					OR = {
+						has_province_modifier = temple_complex
+						has_province_modifier = damaged_temple_complex
+						has_province_modifier = derelict_temple_complex
+					}
+					AND = {
+						ROOT = { has_country_modifier = azjakuma_ritual_modifier }
+						NOT = {
+							OR = {
+								has_province_modifier = temple_complex
+								has_province_modifier = damaged_temple_complex
+								has_province_modifier = derelict_temple_complex
+							}
+						}
+						fort_level = 1
+						has_building = ramparts
+						has_building = mage_tower
+						NOT = {
+							area_for_scope_province = {
+								owned_by = ROOT
+								OR = {
+									has_province_modifier = shinukhorchi_temple_control
+									has_province_modifier = chumijemoya_temple_control
+									has_province_modifier = ajgriijarul_temple_control
+									has_province_modifier = kabiurgarko_temple_control
+									has_province_modifier = khelorvalshi_temple_control
+									has_province_modifier = azjakuma_shirgrii_shinukhorchi
+									has_province_modifier = azjakuma_shirgrii_chumijemoya
+									has_province_modifier = azjakuma_shirgrii_ajgriijarul
+									has_province_modifier = azjakuma_shirgrii_kabiurgarko
+									has_province_modifier = azjakuma_shirgrii_khelorvalshi
+								}
+							}
+						}
+					}
+				}
+				NOT = {
+					OR = {
+						has_province_modifier = shinukhorchi_temple_control
+						has_province_modifier = chumijemoya_temple_control
+						has_province_modifier = ajgriijarul_temple_control
+						has_province_modifier = kabiurgarko_temple_control
+						has_province_modifier = khelorvalshi_temple_control
+					}
+				}
+			}
+		}
+		random_owned_province = {
+			limit = {
+				OR = {
+					OR = {
+						has_province_modifier = temple_complex
+						has_province_modifier = damaged_temple_complex
+						has_province_modifier = derelict_temple_complex
+					}
+					AND = {
+						ROOT = { has_country_modifier = azjakuma_ritual_modifier }
+						NOT = {
+							OR = {
+								has_province_modifier = temple_complex
+								has_province_modifier = damaged_temple_complex
+								has_province_modifier = derelict_temple_complex
+							}
+						}
+						fort_level = 1
+						has_building = ramparts
+						has_building = mage_tower
+						NOT = {
+							area_for_scope_province = {
+								owned_by = ROOT
+								OR = {
+									has_province_modifier = shinukhorchi_temple_control
+									has_province_modifier = chumijemoya_temple_control
+									has_province_modifier = ajgriijarul_temple_control
+									has_province_modifier = kabiurgarko_temple_control
+									has_province_modifier = khelorvalshi_temple_control
+									has_province_modifier = azjakuma_shirgrii_shinukhorchi
+									has_province_modifier = azjakuma_shirgrii_chumijemoya
+									has_province_modifier = azjakuma_shirgrii_ajgriijarul
+									has_province_modifier = azjakuma_shirgrii_kabiurgarko
+									has_province_modifier = azjakuma_shirgrii_khelorvalshi
+								}
+							}
+						}
+					}
+				}
+				NOT = {
+					OR = {
+						has_province_modifier = shinukhorchi_temple_control
+						has_province_modifier = chumijemoya_temple_control
+						has_province_modifier = ajgriijarul_temple_control
+						has_province_modifier = kabiurgarko_temple_control
+						has_province_modifier = khelorvalshi_temple_control
+					}
+				}
+			}
+			if = {
+				limit = {
+					NOT = {
+						OR = {
+							has_province_modifier = temple_complex
+							has_province_modifier = damaged_temple_complex
+							has_province_modifier = derelict_temple_complex
+						}
+					}
+				}
+				set_province_flag = inf_calc_shirgrii_garrison_candidate
+			}
+			province_event = { id = inf_calc.60 }
+		}
+	}
+}
+
+inf_calc_add_shirgrii_garrison_if_needed = {
+	if = {
+		limit = { has_province_flag = inf_calc_shirgrii_garrison_candidate }
+		add_permanent_province_modifier = { name = shirgrii_garrison duration = -1 }
+		clr_province_flag = inf_calc_shirgrii_garrison_candidate
+	}
+}
+
+inf_calc_clear_temple_control = {
+	remove_province_modifier = shinukhorchi_temple_control
+	remove_province_modifier = chumijemoya_temple_control
+	remove_province_modifier = ajgriijarul_temple_control
+	remove_province_modifier = kabiurgarko_temple_control
+	remove_province_modifier = khelorvalshi_temple_control
+}
+
+inf_calc_cleanup_lost_shirgrii_control_modifiers = {
+	every_province = {
+		limit = {
+			NOT = { owner = { tag = Y01 } }
+			OR = {
+				has_province_modifier = shinukhorchi_temple_control
+				has_province_modifier = chumijemoya_temple_control
+				has_province_modifier = ajgriijarul_temple_control
+				has_province_modifier = kabiurgarko_temple_control
+				has_province_modifier = khelorvalshi_temple_control
+				has_province_modifier = shirgrii_garrison
+				has_province_modifier = inf_calc_shinukhorchi_highest_fire
+				has_province_modifier = inf_calc_khelorvalshi_black_jade_maze
+			}
+		}
+		remove_province_modifier = shinukhorchi_temple_control
+		remove_province_modifier = chumijemoya_temple_control
+		remove_province_modifier = ajgriijarul_temple_control
+		remove_province_modifier = kabiurgarko_temple_control
+		remove_province_modifier = khelorvalshi_temple_control
+		remove_province_modifier = shirgrii_garrison
+		remove_province_modifier = inf_calc_shinukhorchi_highest_fire
+		remove_province_modifier = inf_calc_khelorvalshi_black_jade_maze
+	}
+}
+
+inf_calc_apply_shinukhorchi_defense = {
+	save_event_target_as = inf_calc_shirgrii_defense_target
+	add_province_modifier = { name = inf_calc_shinukhorchi_highest_fire duration = 45 }
+	owner = {
+		set_country_flag = inf_calc_defense_popup_shinukhorchi
+		country_event = { id = inf_calc.77 }
+	}
+	ROOT = {
+		every_war_enemy_country = {
+			limit = { event_target:inf_calc_shirgrii_defense_target = { sieged_by = PREV } }
+			country_event = { id = inf_calc.71 }
+		}
+	}
+}
+
+inf_calc_apply_chumijemoya_defense = {
+	save_event_target_as = inf_calc_shirgrii_defense_target
+	owner = {
+		set_country_flag = inf_calc_defense_popup_chumijemoya
+		country_event = { id = inf_calc.77 }
+	}
+	ROOT = {
+		every_war_enemy_country = {
+			limit = { event_target:inf_calc_shirgrii_defense_target = { sieged_by = PREV } }
+			kill_leader = { type = general }
+			country_event = { id = inf_calc.69 }
+		}
+	}
+}
+
+inf_calc_apply_ajgriijarul_defense = {
+	save_event_target_as = inf_calc_shirgrii_defense_target
+	clr_province_flag = inf_calc_ajgriijarul_artillery_destroyed
+	owner = {
+		set_country_flag = inf_calc_defense_popup_ajgriijarul
+		country_event = { id = inf_calc.77 }
+	}
+	ROOT = {
+		if = {
+			limit = { current_age = age_of_discovery }
+			every_war_enemy_country = {
+				limit = { event_target:inf_calc_shirgrii_defense_target = { sieged_by = PREV } }
+				if = {
+					limit = { event_target:inf_calc_shirgrii_defense_target = { num_of_units_in_province = { who = PREV type = artillery amount = 1 } } }
+					event_target:inf_calc_shirgrii_defense_target = {
+						kill_units = { who = PREV type = artillery amount = 1 }
+						set_province_flag = inf_calc_ajgriijarul_artillery_destroyed
+					}
+				}
+				country_event = { id = inf_calc.70 }
+			}
+		}
+		else_if = {
+			limit = { current_age = age_of_reformation }
+			every_war_enemy_country = {
+				limit = { event_target:inf_calc_shirgrii_defense_target = { sieged_by = PREV } }
+				if = {
+					limit = { event_target:inf_calc_shirgrii_defense_target = { num_of_units_in_province = { who = PREV type = artillery amount = 2 } } }
+					event_target:inf_calc_shirgrii_defense_target = {
+						kill_units = { who = PREV type = artillery amount = 2 }
+						set_province_flag = inf_calc_ajgriijarul_artillery_destroyed
+					}
+				}
+				country_event = { id = inf_calc.70 }
+			}
+		}
+		else_if = {
+			limit = { current_age = age_of_absolutism }
+			every_war_enemy_country = {
+				limit = { event_target:inf_calc_shirgrii_defense_target = { sieged_by = PREV } }
+				if = {
+					limit = { event_target:inf_calc_shirgrii_defense_target = { num_of_units_in_province = { who = PREV type = artillery amount = 3 } } }
+					event_target:inf_calc_shirgrii_defense_target = {
+						kill_units = { who = PREV type = artillery amount = 3 }
+						set_province_flag = inf_calc_ajgriijarul_artillery_destroyed
+					}
+				}
+				country_event = { id = inf_calc.70 }
+			}
+		}
+		else = {
+			every_war_enemy_country = {
+				limit = { event_target:inf_calc_shirgrii_defense_target = { sieged_by = PREV } }
+				if = {
+					limit = { event_target:inf_calc_shirgrii_defense_target = { num_of_units_in_province = { who = PREV type = artillery amount = 5 } } }
+					event_target:inf_calc_shirgrii_defense_target = {
+						kill_units = { who = PREV type = artillery amount = 5 }
+						set_province_flag = inf_calc_ajgriijarul_artillery_destroyed
+					}
+				}
+				country_event = { id = inf_calc.70 }
+			}
+		}
+	}
+	if = {
+		limit = { NOT = { has_province_flag = inf_calc_ajgriijarul_artillery_destroyed } }
+		change_siege = -1
+	}
+	clr_province_flag = inf_calc_ajgriijarul_artillery_destroyed
+}
+
+inf_calc_apply_kabiurgarko_defense = {
+	save_event_target_as = inf_calc_shirgrii_defense_target
+	province_event = { id = inf_calc.83 days = 30 }
+	province_event = { id = inf_calc.84 days = 60 }
+	province_event = { id = inf_calc.85 days = 90 }
+	owner = {
+		set_country_flag = inf_calc_defense_popup_kabiurgarko
+		country_event = { id = inf_calc.77 }
+	}
+	ROOT = {
+		every_war_enemy_country = {
+			limit = { event_target:inf_calc_shirgrii_defense_target = { sieged_by = PREV } }
+			country_event = { id = inf_calc.68 }
+		}
+	}
+}
+
+inf_calc_apply_khelorvalshi_defense = {
+	save_event_target_as = inf_calc_shirgrii_defense_target
+	add_province_modifier = { name = inf_calc_khelorvalshi_black_jade_maze duration = 40 }
+	owner = {
+		set_country_flag = inf_calc_defense_popup_khelorvalshi
+		country_event = { id = inf_calc.77 }
+	}
+	ROOT = {
+		every_war_enemy_country = {
+			limit = { event_target:inf_calc_shirgrii_defense_target = { sieged_by = PREV } }
+			country_event = { id = inf_calc.72 }
+		}
+	}
+}
+inf_calc_shirgrii_defense_monthly = {
+	if = {
+		limit = {
+			NOT = { has_country_modifier = inf_calc_shinukhorchi_defense_cooldown }
+			any_owned_province = {
+				has_siege = yes
+				controlled_by = ROOT
+				NOT = {
+					OR = {
+						has_province_modifier = inf_calc_shinukhorchi_highest_fire
+						has_province_modifier = inf_calc_khelorvalshi_black_jade_maze
+					}
+				}
+				OR = {
+					AND = {
+						ROOT = { check_variable = { which = shinukhorchi_inf value = 50 } }
+						OR = {
+							has_province_modifier = shinukhorchi_temple_control
+							has_province_modifier = azjakuma_shirgrii_shinukhorchi
+						}
+					}
+					AND = {
+						ROOT = { check_variable = { which = shinukhorchi_inf value = 30 } }
+						has_province_modifier = azjakuma_shirgrii_shinukhorchi
+					}
+				}
+			}
+		}
+		random_owned_province = {
+			limit = {
+				has_siege = yes
+				controlled_by = ROOT
+				NOT = {
+					OR = {
+						has_province_modifier = inf_calc_shinukhorchi_highest_fire
+						has_province_modifier = inf_calc_khelorvalshi_black_jade_maze
+					}
+				}
+				OR = {
+					AND = {
+						ROOT = { check_variable = { which = shinukhorchi_inf value = 50 } }
+						OR = {
+							has_province_modifier = shinukhorchi_temple_control
+							has_province_modifier = azjakuma_shirgrii_shinukhorchi
+						}
+					}
+					AND = {
+						ROOT = { check_variable = { which = shinukhorchi_inf value = 30 } }
+						has_province_modifier = azjakuma_shirgrii_shinukhorchi
+					}
+				}
+			}
+			inf_calc_apply_shinukhorchi_defense = yes
+		}
+		if = {
+			limit = { check_variable = { which = shinukhorchi_inf value = 90 } }
+			add_country_modifier = { name = inf_calc_shinukhorchi_defense_cooldown duration = 240 }
+		}
+		else_if = {
+			limit = { check_variable = { which = shinukhorchi_inf value = 70 } }
+			add_country_modifier = { name = inf_calc_shinukhorchi_defense_cooldown duration = 300 }
+		}
+		else = {
+			add_country_modifier = { name = inf_calc_shinukhorchi_defense_cooldown duration = 365 }
+		}
+	}
+
+	if = {
+		limit = {
+			NOT = { has_country_modifier = inf_calc_chumijemoya_defense_cooldown }
+			any_owned_province = {
+				has_siege = yes
+				controlled_by = ROOT
+				NOT = {
+					OR = {
+						has_province_modifier = inf_calc_shinukhorchi_highest_fire
+						has_province_modifier = inf_calc_khelorvalshi_black_jade_maze
+					}
+				}
+				OR = {
+					AND = {
+						ROOT = { check_variable = { which = chumijemoya_inf value = 50 } }
+						OR = {
+							has_province_modifier = chumijemoya_temple_control
+							has_province_modifier = azjakuma_shirgrii_chumijemoya
+						}
+					}
+					AND = {
+						ROOT = { check_variable = { which = chumijemoya_inf value = 30 } }
+						has_province_modifier = azjakuma_shirgrii_chumijemoya
+					}
+				}
+			}
+		}
+		random_owned_province = {
+			limit = {
+				has_siege = yes
+				controlled_by = ROOT
+				NOT = {
+					OR = {
+						has_province_modifier = inf_calc_shinukhorchi_highest_fire
+						has_province_modifier = inf_calc_khelorvalshi_black_jade_maze
+					}
+				}
+				OR = {
+					AND = {
+						ROOT = { check_variable = { which = chumijemoya_inf value = 50 } }
+						OR = {
+							has_province_modifier = chumijemoya_temple_control
+							has_province_modifier = azjakuma_shirgrii_chumijemoya
+						}
+					}
+					AND = {
+						ROOT = { check_variable = { which = chumijemoya_inf value = 30 } }
+						has_province_modifier = azjakuma_shirgrii_chumijemoya
+					}
+				}
+			}
+			inf_calc_apply_chumijemoya_defense = yes
+		}
+		if = {
+			limit = { check_variable = { which = chumijemoya_inf value = 90 } }
+			add_country_modifier = { name = inf_calc_chumijemoya_defense_cooldown duration = 240 }
+		}
+		else_if = {
+			limit = { check_variable = { which = chumijemoya_inf value = 70 } }
+			add_country_modifier = { name = inf_calc_chumijemoya_defense_cooldown duration = 300 }
+		}
+		else = {
+			add_country_modifier = { name = inf_calc_chumijemoya_defense_cooldown duration = 365 }
+		}
+	}
+
+	if = {
+		limit = {
+			NOT = { has_country_modifier = inf_calc_ajgriijarul_defense_cooldown }
+			any_owned_province = {
+				has_siege = yes
+				controlled_by = ROOT
+				NOT = {
+					OR = {
+						has_province_modifier = inf_calc_shinukhorchi_highest_fire
+						has_province_modifier = inf_calc_khelorvalshi_black_jade_maze
+					}
+				}
+				OR = {
+					AND = {
+						ROOT = { check_variable = { which = ajgriijarul_inf value = 50 } }
+						OR = {
+							has_province_modifier = ajgriijarul_temple_control
+							has_province_modifier = azjakuma_shirgrii_ajgriijarul
+						}
+					}
+					AND = {
+						ROOT = { check_variable = { which = ajgriijarul_inf value = 30 } }
+						has_province_modifier = azjakuma_shirgrii_ajgriijarul
+					}
+				}
+			}
+		}
+		random_owned_province = {
+			limit = {
+				has_siege = yes
+				controlled_by = ROOT
+				NOT = {
+					OR = {
+						has_province_modifier = inf_calc_shinukhorchi_highest_fire
+						has_province_modifier = inf_calc_khelorvalshi_black_jade_maze
+					}
+				}
+				OR = {
+					AND = {
+						ROOT = { check_variable = { which = ajgriijarul_inf value = 50 } }
+						OR = {
+							has_province_modifier = ajgriijarul_temple_control
+							has_province_modifier = azjakuma_shirgrii_ajgriijarul
+						}
+					}
+					AND = {
+						ROOT = { check_variable = { which = ajgriijarul_inf value = 30 } }
+						has_province_modifier = azjakuma_shirgrii_ajgriijarul
+					}
+				}
+			}
+			inf_calc_apply_ajgriijarul_defense = yes
+		}
+		if = {
+			limit = { check_variable = { which = ajgriijarul_inf value = 90 } }
+			add_country_modifier = { name = inf_calc_ajgriijarul_defense_cooldown duration = 240 }
+		}
+		else_if = {
+			limit = { check_variable = { which = ajgriijarul_inf value = 70 } }
+			add_country_modifier = { name = inf_calc_ajgriijarul_defense_cooldown duration = 300 }
+		}
+		else = {
+			add_country_modifier = { name = inf_calc_ajgriijarul_defense_cooldown duration = 365 }
+		}
+	}
+
+	if = {
+		limit = {
+			NOT = { has_country_modifier = inf_calc_kabiurgarko_defense_cooldown }
+			any_owned_province = {
+				has_siege = yes
+				controlled_by = ROOT
+				NOT = {
+					OR = {
+						has_province_modifier = inf_calc_shinukhorchi_highest_fire
+						has_province_modifier = inf_calc_khelorvalshi_black_jade_maze
+					}
+				}
+				OR = {
+					AND = {
+						ROOT = { check_variable = { which = kabiurgarko_inf value = 50 } }
+						OR = {
+							has_province_modifier = kabiurgarko_temple_control
+							has_province_modifier = azjakuma_shirgrii_kabiurgarko
+						}
+					}
+					AND = {
+						ROOT = { check_variable = { which = kabiurgarko_inf value = 30 } }
+						has_province_modifier = azjakuma_shirgrii_kabiurgarko
+					}
+				}
+			}
+		}
+		random_owned_province = {
+			limit = {
+				has_siege = yes
+				controlled_by = ROOT
+				NOT = {
+					OR = {
+						has_province_modifier = inf_calc_shinukhorchi_highest_fire
+						has_province_modifier = inf_calc_khelorvalshi_black_jade_maze
+					}
+				}
+				OR = {
+					AND = {
+						ROOT = { check_variable = { which = kabiurgarko_inf value = 50 } }
+						OR = {
+							has_province_modifier = kabiurgarko_temple_control
+							has_province_modifier = azjakuma_shirgrii_kabiurgarko
+						}
+					}
+					AND = {
+						ROOT = { check_variable = { which = kabiurgarko_inf value = 30 } }
+						has_province_modifier = azjakuma_shirgrii_kabiurgarko
+					}
+				}
+			}
+			inf_calc_apply_kabiurgarko_defense = yes
+		}
+		if = {
+			limit = { check_variable = { which = kabiurgarko_inf value = 90 } }
+			add_country_modifier = { name = inf_calc_kabiurgarko_defense_cooldown duration = 240 }
+		}
+		else_if = {
+			limit = { check_variable = { which = kabiurgarko_inf value = 70 } }
+			add_country_modifier = { name = inf_calc_kabiurgarko_defense_cooldown duration = 300 }
+		}
+		else = {
+			add_country_modifier = { name = inf_calc_kabiurgarko_defense_cooldown duration = 365 }
+		}
+	}
+
+	if = {
+		limit = {
+			has_country_flag = khelorvalshi_restored
+			NOT = { has_country_modifier = inf_calc_khelorvalshi_defense_cooldown }
+			any_owned_province = {
+				has_siege = yes
+				controlled_by = ROOT
+				NOT = {
+					OR = {
+						has_province_modifier = inf_calc_shinukhorchi_highest_fire
+						has_province_modifier = inf_calc_khelorvalshi_black_jade_maze
+					}
+				}
+				OR = {
+					AND = {
+						ROOT = { check_variable = { which = khelorvalshi_inf value = 50 } }
+						OR = {
+							has_province_modifier = khelorvalshi_temple_control
+							has_province_modifier = azjakuma_shirgrii_khelorvalshi
+						}
+					}
+					AND = {
+						ROOT = { check_variable = { which = khelorvalshi_inf value = 30 } }
+						has_province_modifier = azjakuma_shirgrii_khelorvalshi
+					}
+				}
+			}
+		}
+		random_owned_province = {
+			limit = {
+				has_siege = yes
+				controlled_by = ROOT
+				NOT = {
+					OR = {
+						has_province_modifier = inf_calc_shinukhorchi_highest_fire
+						has_province_modifier = inf_calc_khelorvalshi_black_jade_maze
+					}
+				}
+				OR = {
+					AND = {
+						ROOT = { check_variable = { which = khelorvalshi_inf value = 50 } }
+						OR = {
+							has_province_modifier = khelorvalshi_temple_control
+							has_province_modifier = azjakuma_shirgrii_khelorvalshi
+						}
+					}
+					AND = {
+						ROOT = { check_variable = { which = khelorvalshi_inf value = 30 } }
+						has_province_modifier = azjakuma_shirgrii_khelorvalshi
+					}
+				}
+			}
+			inf_calc_apply_khelorvalshi_defense = yes
+		}
+		if = {
+			limit = { check_variable = { which = khelorvalshi_inf value = 90 } }
+			add_country_modifier = { name = inf_calc_khelorvalshi_defense_cooldown duration = 240 }
+		}
+		else_if = {
+			limit = { check_variable = { which = khelorvalshi_inf value = 70 } }
+			add_country_modifier = { name = inf_calc_khelorvalshi_defense_cooldown duration = 300 }
+		}
+		else = {
+			add_country_modifier = { name = inf_calc_khelorvalshi_defense_cooldown duration = 365 }
+		}
+	}
+}
+
+inf_calc_update_active_spell_cooldowns = {
+	set_variable = { which = inf_calc_active_spell_cooldowns value = 0 }
+
+	if = {
+		limit = { has_country_modifier = shinukhorchi_small_boost }
+		change_variable = { which = inf_calc_active_spell_cooldowns value = 1 }
+	}
+	if = {
+		limit = { has_country_modifier = chumijemoya_small_boost }
+		change_variable = { which = inf_calc_active_spell_cooldowns value = 1 }
+	}
+	if = {
+		limit = { has_country_modifier = ajgriijarul_small_boost }
+		change_variable = { which = inf_calc_active_spell_cooldowns value = 1 }
+	}
+	if = {
+		limit = { has_country_modifier = kabiurgarko_small_boost }
+		change_variable = { which = inf_calc_active_spell_cooldowns value = 1 }
+	}
+	if = {
+		limit = { has_country_modifier = khelorvalshi_small_boost }
+		change_variable = { which = inf_calc_active_spell_cooldowns value = 1 }
+	}
+
+	if = {
+		limit = { has_country_modifier = inf_calc_influence_reduction_shinukhorchi }
+		change_variable = { which = inf_calc_active_spell_cooldowns value = 2 }
+	}
+	if = {
+		limit = { has_country_modifier = inf_calc_influence_reduction_chumijemoya }
+		change_variable = { which = inf_calc_active_spell_cooldowns value = 2 }
+	}
+	if = {
+		limit = { has_country_modifier = inf_calc_influence_reduction_ajgriijarul }
+		change_variable = { which = inf_calc_active_spell_cooldowns value = 2 }
+	}
+	if = {
+		limit = { has_country_modifier = inf_calc_influence_reduction_kabiurgarko }
+		change_variable = { which = inf_calc_active_spell_cooldowns value = 2 }
+	}
+	if = {
+		limit = { has_country_modifier = inf_calc_influence_reduction_khelorvalshi }
+		change_variable = { which = inf_calc_active_spell_cooldowns value = 2 }
+	}
+}
+
+inf_calc_shinukhorchi_major_concessions_monthly = {
+	if = {
+		limit = {
+			has_country_flag = inf_calc_shinukhorchi_elaborate_rituals_refresh
+			NOT = { has_country_modifier = inf_calc_shinukhorchi_elaborate_rituals }
+			NOT = { has_country_modifier = inf_calc_shinukhorchi_elaborate_rituals_forced_stop }
+		}
+		add_country_modifier = { name = inf_calc_shinukhorchi_elaborate_rituals duration = 3650 }
+	}
+	if = {
+		limit = {
+			has_country_flag = inf_calc_shinukhorchi_thorough_inquisition_refresh
+			NOT = { has_country_modifier = inf_calc_shinukhorchi_thorough_inquisition }
+			NOT = { has_country_modifier = inf_calc_shinukhorchi_thorough_inquisition_forced_stop }
+		}
+		add_country_modifier = { name = inf_calc_shinukhorchi_thorough_inquisition duration = 3650 }
+	}
+}
+
+inf_calc_chumijemoya_major_concessions_monthly = {
+	if = {
+		limit = {
+			has_country_flag = inf_calc_chumijemoya_suffocating_secrecy_refresh
+			NOT = { has_country_modifier = inf_calc_chumijemoya_suffocating_secrecy }
+			NOT = { has_country_modifier = inf_calc_chumijemoya_suffocating_secrecy_forced_stop }
+		}
+		add_country_modifier = { name = inf_calc_chumijemoya_suffocating_secrecy duration = 3650 }
+	}
+	if = {
+		limit = {
+			has_country_flag = inf_calc_chumijemoya_shadow_overseers_refresh
+			NOT = { has_country_modifier = inf_calc_chumijemoya_shadow_overseers }
+			NOT = { has_country_modifier = inf_calc_chumijemoya_shadow_overseers_forced_stop }
+		}
+		add_country_modifier = { name = inf_calc_chumijemoya_shadow_overseers duration = 3650 }
+	}
+}
+
+inf_calc_ajgriijarul_major_concessions_monthly = {
+	if = {
+		limit = {
+			has_country_flag = inf_calc_ajgriijarul_gruesome_displays_refresh
+			NOT = { has_country_modifier = inf_calc_ajgriijarul_gruesome_displays }
+			NOT = { has_country_modifier = inf_calc_ajgriijarul_gruesome_displays_forced_stop }
+		}
+		add_country_modifier = { name = inf_calc_ajgriijarul_gruesome_displays duration = 3650 }
+	}
+	if = {
+		limit = {
+			has_country_flag = inf_calc_ajgriijarul_lethal_duels_refresh
+			NOT = { has_country_modifier = inf_calc_ajgriijarul_lethal_duels }
+			NOT = { has_country_modifier = inf_calc_ajgriijarul_lethal_duels_forced_stop }
+		}
+		add_country_modifier = { name = inf_calc_ajgriijarul_lethal_duels duration = 3650 }
+	}
+}
+
+inf_calc_khelorvalshi_major_concessions_monthly = {
+	if = {
+		limit = {
+			has_country_flag = khelorvalshi_restored
+			has_country_flag = inf_calc_khelorvalshi_soultithe_refresh
+			NOT = { has_country_modifier = inf_calc_khelorvalshi_soultithe }
+			NOT = { has_country_modifier = inf_calc_khelorvalshi_soultithe_forced_stop }
+		}
+		add_country_modifier = { name = inf_calc_khelorvalshi_soultithe duration = 3650 }
+	}
+	if = {
+		limit = {
+			has_country_flag = khelorvalshi_restored
+			has_country_flag = inf_calc_khelorvalshi_temple_expedition_focus_refresh
+			NOT = { has_country_modifier = inf_calc_khelorvalshi_temple_expedition_focus }
+			NOT = { has_country_modifier = inf_calc_khelorvalshi_temple_expedition_focus_forced_stop }
+		}
+		add_country_modifier = { name = inf_calc_khelorvalshi_temple_expedition_focus duration = 3650 }
+	}
+}
+
+inf_calc_kabiurgarko_major_concessions_monthly = {
+	if = {
+		limit = {
+			has_country_flag = inf_calc_kabiurgarko_harsh_quotas_refresh
+			NOT = { has_country_modifier = inf_calc_kabiurgarko_harsh_quotas }
+			NOT = { has_country_modifier = inf_calc_kabiurgarko_harsh_quotas_forced_stop }
+		}
+		add_country_modifier = { name = inf_calc_kabiurgarko_harsh_quotas duration = 3650 }
+	}
+	if = {
+		limit = {
+			has_country_flag = inf_calc_kabiurgarko_foreigner_access_refresh
+			NOT = { has_country_modifier = inf_calc_kabiurgarko_foreigner_access }
+			NOT = { has_country_modifier = inf_calc_kabiurgarko_foreigner_access_forced_stop }
+		}
+		add_country_modifier = { name = inf_calc_kabiurgarko_foreigner_access duration = 3650 }
+	}
+}
+
+inf_calc_kabiurgarko_impossible_architecture_effect = {
+	every_owned_province = {
+		limit = { has_terrain = glacier }
+		add_province_modifier = { name = inf_calc_kabiurgarko_impossible_architecture_glacier duration = 365 }
+	}
+	every_owned_province = {
+		limit = { has_terrain = forest }
+		add_province_modifier = { name = inf_calc_kabiurgarko_impossible_architecture_forest duration = 365 }
+	}
+	every_owned_province = {
+		limit = { has_terrain = bloodgroves }
+		add_province_modifier = { name = inf_calc_kabiurgarko_impossible_architecture_bloodgroves duration = 365 }
+	}
+	every_owned_province = {
+		limit = { has_terrain = gladeway }
+		add_province_modifier = { name = inf_calc_kabiurgarko_impossible_architecture_gladeway duration = 365 }
+	}
+	every_owned_province = {
+		limit = { has_terrain = fey_gladeway }
+		add_province_modifier = { name = inf_calc_kabiurgarko_impossible_architecture_fey_gladeway duration = 365 }
+	}
+	every_owned_province = {
+		limit = { has_terrain = ancient_forest }
+		add_province_modifier = { name = inf_calc_kabiurgarko_impossible_architecture_ancient_forest duration = 365 }
+	}
+	every_owned_province = {
+		limit = { has_terrain = hills }
+		add_province_modifier = { name = inf_calc_kabiurgarko_impossible_architecture_hills duration = 365 }
+	}
+	every_owned_province = {
+		limit = { has_terrain = woods }
+		add_province_modifier = { name = inf_calc_kabiurgarko_impossible_architecture_woods duration = 365 }
+	}
+	every_owned_province = {
+		limit = { has_terrain = mountain }
+		add_province_modifier = { name = inf_calc_kabiurgarko_impossible_architecture_mountain duration = 365 }
+	}
+	every_owned_province = {
+		limit = { has_terrain = jungle }
+		add_province_modifier = { name = inf_calc_kabiurgarko_impossible_architecture_jungle duration = 365 }
+	}
+	every_owned_province = {
+		limit = { has_terrain = marsh }
+		add_province_modifier = { name = inf_calc_kabiurgarko_impossible_architecture_marsh duration = 365 }
+	}
+	every_owned_province = {
+		limit = { has_terrain = desert }
+		add_province_modifier = { name = inf_calc_kabiurgarko_impossible_architecture_desert duration = 365 }
+	}
+	every_owned_province = {
+		limit = { has_terrain = coastal_desert }
+		add_province_modifier = { name = inf_calc_kabiurgarko_impossible_architecture_coastal_desert duration = 365 }
+	}
+	every_owned_province = {
+		limit = { has_terrain = coastline }
+		add_province_modifier = { name = inf_calc_kabiurgarko_impossible_architecture_coastline duration = 365 }
+	}
+	every_owned_province = {
+		limit = { has_terrain = drylands }
+		add_province_modifier = { name = inf_calc_kabiurgarko_impossible_architecture_drylands duration = 365 }
+	}
+	every_owned_province = {
+		limit = { has_terrain = highlands }
+		add_province_modifier = { name = inf_calc_kabiurgarko_impossible_architecture_highlands duration = 365 }
+	}
+	every_owned_province = {
+		limit = { has_terrain = savannah }
+		add_province_modifier = { name = inf_calc_kabiurgarko_impossible_architecture_savannah duration = 365 }
+	}
+	every_owned_province = {
+		limit = { has_terrain = steppe }
+		add_province_modifier = { name = inf_calc_kabiurgarko_impossible_architecture_steppe duration = 365 }
+	}
+	every_owned_province = {
+		limit = { has_terrain = dwarven_road }
+		add_province_modifier = { name = inf_calc_kabiurgarko_impossible_architecture_dwarven_road duration = 365 }
+	}
+	every_owned_province = {
+		limit = { has_terrain = cavern }
+		add_province_modifier = { name = inf_calc_kabiurgarko_impossible_architecture_cavern duration = 365 }
+	}
+	every_owned_province = {
+		limit = { has_terrain = mushroom_forest_terrain }
+		add_province_modifier = { name = inf_calc_kabiurgarko_impossible_architecture_mushroom_forest_terrain duration = 365 }
+	}
+	every_owned_province = {
+		limit = { has_terrain = shadow_swamp_terrain }
+		add_province_modifier = { name = inf_calc_kabiurgarko_impossible_architecture_shadow_swamp_terrain duration = 365 }
+	}
+	every_owned_province = {
+		limit = { has_terrain = titanoflora_forest_terrain }
+		add_province_modifier = { name = inf_calc_kabiurgarko_impossible_architecture_titanoflora_forest_terrain duration = 365 }
+	}
+	every_owned_province = {
+		limit = { has_terrain = titanoflora_jungle_terrain }
+		add_province_modifier = { name = inf_calc_kabiurgarko_impossible_architecture_titanoflora_jungle_terrain duration = 365 }
+	}
+	every_owned_province = {
+		limit = { has_terrain = titanoflora_wetland_terrain }
+		add_province_modifier = { name = inf_calc_kabiurgarko_impossible_architecture_titanoflora_wetland_terrain duration = 365 }
+	}
+	every_owned_province = {
+		limit = { has_terrain = titanoflora_grassland_terrain }
+		add_province_modifier = { name = inf_calc_kabiurgarko_impossible_architecture_titanoflora_grassland_terrain duration = 365 }
+	}
+}
+
+
+	# ------------------------------------------------------------
+	# 20. Khelorvalshi khelorvalshi_drain
+
+	# ------------------------------------------------------------
+
+inf_calc_khelorvalshi_drain_defenders_1_effect = {
+	random_province = {
+		limit = {
+			fort_level = 1
+			sieged_by = ROOT
+			num_of_units_in_province = {
+				who = ROOT
+				amount = 1
+			}
+		}
+		save_event_target_as = inf_calc_khelorvalshi_drain_target
+		change_siege = 2
+		add_garrison = -1000
+		ROOT = { set_country_flag = inf_calc_khelorvalshi_drain_popup }
+	}
+	if = {
+		limit = { has_country_flag = inf_calc_khelorvalshi_drain_popup }
+		clr_country_flag = inf_calc_khelorvalshi_drain_popup
+		country_event = { id = inf_calc.16 days = 1 }
+	}
+}
+
+inf_calc_khelorvalshi_lifeblood_monthly = {
+	every_province = {
+		limit = {
+			OR = {
+				has_province_modifier = inf_calc_khelorvalshi_lifeblood_1
+				has_province_modifier = inf_calc_khelorvalshi_lifeblood_2
+				has_province_modifier = inf_calc_khelorvalshi_lifeblood_3
+			}
+			OR = {
+				NOT = {
+					owner = {
+						tag = Y01
+						has_country_modifier = inf_calc_khelorvalshi_lifeblood_active
+					}
+				}
+				NOT = { controlled_by = ROOT }
+				NOT = { trade_goods = damestear }
+			}
+		}
+		remove_province_modifier = inf_calc_khelorvalshi_lifeblood_1
+		remove_province_modifier = inf_calc_khelorvalshi_lifeblood_2
+		remove_province_modifier = inf_calc_khelorvalshi_lifeblood_3
+	}
+
+	if = {
+		limit = { has_country_modifier = inf_calc_khelorvalshi_lifeblood_active }
+		every_owned_province = {
+			limit = {
+				trade_goods = damestear
+				controlled_by = ROOT
+			}
+			remove_province_modifier = inf_calc_khelorvalshi_lifeblood_1
+			remove_province_modifier = inf_calc_khelorvalshi_lifeblood_2
+			remove_province_modifier = inf_calc_khelorvalshi_lifeblood_3
+			if = {
+				limit = {
+					has_building = mage_tower
+					has_province_modifier = damestear_rich_deposit
+				}
+				add_province_modifier = { name = inf_calc_khelorvalshi_lifeblood_3 duration = 35 }
+			}
+			else_if = {
+				limit = {
+					OR = {
+						has_building = mage_tower
+						has_province_modifier = damestear_rich_deposit
+					}
+				}
+				add_province_modifier = { name = inf_calc_khelorvalshi_lifeblood_2 duration = 35 }
+			}
+			else = {
+				add_province_modifier = { name = inf_calc_khelorvalshi_lifeblood_1 duration = 35 }
+			}
+		}
+	}
+}
+
+inf_calc_khelorvalshi_drain_defenders_2_effect = {
+	random_province = {
+		limit = {
+			fort_level = 1
+			sieged_by = ROOT
+			num_of_units_in_province = {
+				who = ROOT
+				amount = 1
+			}
+		}
+		save_event_target_as = inf_calc_khelorvalshi_drain_target
+		change_siege = 2
+		add_garrison = -2000
+		ROOT = { set_country_flag = inf_calc_khelorvalshi_drain_popup }
+	}
+	if = {
+		limit = { has_country_flag = inf_calc_khelorvalshi_drain_popup }
+		clr_country_flag = inf_calc_khelorvalshi_drain_popup
+		country_event = { id = inf_calc.16 days = 1 }
+	}
+}
+
+inf_calc_khelorvalshi_drain_defenders_3_effect = {
+	random_province = {
+		limit = {
+			fort_level = 1
+			sieged_by = ROOT
+			num_of_units_in_province = {
+				who = ROOT
+				amount = 1
+			}
+		}
+		save_event_target_as = inf_calc_khelorvalshi_drain_target
+		change_siege = 2
+		add_garrison = -3000
+		ROOT = { set_country_flag = inf_calc_khelorvalshi_drain_popup }
+	}
+	if = {
+		limit = { has_country_flag = inf_calc_khelorvalshi_drain_popup }
+		clr_country_flag = inf_calc_khelorvalshi_drain_popup
+		country_event = { id = inf_calc.16 days = 1 }
+	}
+}
+
+inf_calc_khelorvalshi_drain_defenders_monthly = {
+	if = {
+		limit = {
+			NOT = { has_country_modifier = khelorvalshi_small_boost }
+		}
+		remove_country_modifier = inf_calc_khelorvalshi_drain_defenders_1
+		remove_country_modifier = inf_calc_khelorvalshi_drain_defenders_2
+		remove_country_modifier = inf_calc_khelorvalshi_drain_defenders_3
+		remove_country_modifier = inf_calc_khelorvalshi_drain_defenders_cooldown
+	}
+
+	if = {
+		limit = {
+			has_country_modifier = khelorvalshi_small_boost
+			NOT = { has_country_modifier = inf_calc_khelorvalshi_drain_defenders_cooldown }
+			any_army = {
+				location = {
+					fort_level = 1
+					sieged_by = ROOT
+					num_of_units_in_province = {
+						who = ROOT
+						amount = 1
+					}
+				}
+			}
+		}
+		if = {
+			limit = { has_country_modifier = inf_calc_khelorvalshi_drain_defenders_3 }
+			inf_calc_khelorvalshi_drain_defenders_3_effect = yes
+			add_country_modifier = { name = inf_calc_khelorvalshi_drain_defenders_cooldown duration = 240 }
+		}
+		else_if = {
+			limit = { has_country_modifier = inf_calc_khelorvalshi_drain_defenders_2 }
+			inf_calc_khelorvalshi_drain_defenders_2_effect = yes
+			add_country_modifier = { name = inf_calc_khelorvalshi_drain_defenders_cooldown duration = 300 }
+		}
+		else_if = {
+			limit = { has_country_modifier = inf_calc_khelorvalshi_drain_defenders_1 }
+			inf_calc_khelorvalshi_drain_defenders_1_effect = yes
+			add_country_modifier = { name = inf_calc_khelorvalshi_drain_defenders_cooldown duration = 360 }
+		}
+	}
+}
+
+inf_calc_ajgriijarul_bright_claw_battle_won = {
+	if = {
+		limit = {
+			tag = Y01
+			has_country_modifier = inf_calc_ajgriijarul_bright_tooth_claw_active
+		}
+		set_variable = {
+			which = inf_calc_bright_claw_reward
+			which = land_units_killed
+		}
+		change_variable = {
+			which = inf_calc_bright_claw_reward
+			which = land_units_lost
+		}
+		export_to_variable = {
+			which = inf_calc_bright_claw_divisor
+			value = trigger_value:land_forcelimit
+		}
+		if = {
+			limit = {
+				NOT = {
+					check_variable = {
+						which = inf_calc_bright_claw_divisor
+						value = 1
+					}
+				}
+			}
+			set_variable = {
+				which = inf_calc_bright_claw_divisor
+				value = 1
+			}
+		}
+		if = {
+			limit = {
+				has_country_modifier = inf_calc_dangerous_foe
+			}
+			multiply_variable = {
+				which = inf_calc_bright_claw_divisor
+				value = 20
+			}
+		}
+		else = {
+			multiply_variable = {
+				which = inf_calc_bright_claw_divisor
+				value = 40
+			}
+		}
+		divide_variable = {
+			which = inf_calc_bright_claw_reward
+			which = inf_calc_bright_claw_divisor
+		}
+		change_mana = {
+			var_amount = inf_calc_bright_claw_reward
+		}
+		set_variable = {
+			which = inf_calc_bright_claw_power_reward
+			which = inf_calc_bright_claw_reward
+		}
+		while = {
+			limit = {
+				check_variable = {
+					which = inf_calc_bright_claw_power_reward
+					value = 1
+				}
+			}
+			add_adm_power = 1
+			add_dip_power = 1
+			add_mil_power = 1
+			subtract_variable = {
+				which = inf_calc_bright_claw_power_reward
+				value = 1
+			}
+		}
+	}
+}
+
+inf_calc_ajgriijarul_ritual_humiliation_war_ended = {
+	if = {
+		limit = {
+			tag = Y01
+			has_country_modifier = inf_calc_ajgriijarul_ritual_humiliation_active
+			FROM = {
+				OR = {
+					has_country_flag = inf_calc_ritual_humiliation_warscore_50
+					has_country_flag = inf_calc_ritual_humiliation_warscore_80
+				}
+			}
+		}
+		FROM = {
+			inf_calc_ajgriijarul_ritual_humiliation_score_and_apply = yes
+		}
+	}
+	FROM = {
+		clr_country_flag = inf_calc_ritual_humiliation_warscore_50
+		clr_country_flag = inf_calc_ritual_humiliation_warscore_80
+	}
+}
+
+inf_calc_ajgriijarul_ritual_humiliation_monthly = {
+	if = {
+		limit = {
+			has_country_modifier = inf_calc_ajgriijarul_ritual_humiliation_active
+		}
+		every_known_country = {
+			limit = {
+				OR = {
+					has_country_flag = inf_calc_ritual_humiliation_warscore_50
+					has_country_flag = inf_calc_ritual_humiliation_warscore_80
+				}
+			}
+			clr_country_flag = inf_calc_ritual_humiliation_warscore_50
+			clr_country_flag = inf_calc_ritual_humiliation_warscore_80
+		}
+		every_war_enemy_country = {
+			limit = { war_leader = yes }
+			if = {
+				limit = {
+					ROOT = {
+						war_score_against = {
+							who = PREV
+							value = 50
+						}
+					}
+				}
+				set_country_flag = inf_calc_ritual_humiliation_warscore_50
+			}
+			if = {
+				limit = {
+					ROOT = {
+						war_score_against = {
+							who = PREV
+							value = 80
+						}
+					}
+				}
+				set_country_flag = inf_calc_ritual_humiliation_warscore_50
+				set_country_flag = inf_calc_ritual_humiliation_warscore_80
+			}
+		}
+	}
+	else = {
+		every_known_country = {
+			limit = {
+				OR = {
+					has_country_flag = inf_calc_ritual_humiliation_warscore_50
+					has_country_flag = inf_calc_ritual_humiliation_warscore_80
+				}
+			}
+			clr_country_flag = inf_calc_ritual_humiliation_warscore_50
+			clr_country_flag = inf_calc_ritual_humiliation_warscore_80
+		}
+	}
+}
+
+inf_calc_ajgriijarul_ritual_humiliation_score_and_apply = {
+	set_variable = { which = inf_calc_ritual_humiliation_score value = 0 }
+
+	export_to_variable = {
+		which = inf_calc_ritual_humiliation_temp
+		value = trigger_value:revanchism
+	}
+	multiply_variable = {
+		which = inf_calc_ritual_humiliation_temp
+		value = 0.1
+	}
+	change_variable = {
+		which = inf_calc_ritual_humiliation_score
+		which = inf_calc_ritual_humiliation_temp
+	}
+
+	if = {
+		limit = { is_great_power = yes }
+		change_variable = { which = inf_calc_ritual_humiliation_score value = 20 }
+	}
+	if = {
+		limit = { government_rank = 3 }
+		change_variable = { which = inf_calc_ritual_humiliation_score value = 10 }
+	}
+	if = {
+		limit = { is_rival = ROOT }
+		change_variable = { which = inf_calc_ritual_humiliation_score value = 10 }
+	}
+	if = {
+		limit = { ruler_has_personality = mythical_conqueror_personality }
+		change_variable = { which = inf_calc_ritual_humiliation_score value = 40 }
+	}
+	else_if = {
+		limit = { ruler_has_personality = great_conqueror_personality }
+		change_variable = { which = inf_calc_ritual_humiliation_score value = 20 }
+	}
+	if = {
+		limit = {
+			NOT = { government_rank = 2 }
+		}
+		change_variable = { which = inf_calc_ritual_humiliation_score value = -10 }
+	}
+
+	export_to_variable = {
+		which = inf_calc_ritual_humiliation_loser_fl
+		value = trigger_value:land_forcelimit
+	}
+	set_variable = {
+		which = inf_calc_ritual_humiliation_temp
+		which = inf_calc_ritual_humiliation_loser_fl
+	}
+	multiply_variable = {
+		which = inf_calc_ritual_humiliation_temp
+		value = 0.05
+	}
+	change_variable = {
+		which = inf_calc_ritual_humiliation_score
+		which = inf_calc_ritual_humiliation_temp
+	}
+
+	export_to_variable = {
+		which = inf_calc_ritual_humiliation_root_fl
+		value = trigger_value:land_forcelimit
+		who = ROOT
+	}
+	set_variable = {
+		which = inf_calc_ritual_humiliation_temp
+		which = inf_calc_ritual_humiliation_loser_fl
+	}
+	subtract_variable = {
+		which = inf_calc_ritual_humiliation_temp
+		which = inf_calc_ritual_humiliation_root_fl
+	}
+	if = {
+		limit = {
+			check_variable = {
+				which = inf_calc_ritual_humiliation_temp
+				value = 0
+			}
+		}
+		multiply_variable = {
+			which = inf_calc_ritual_humiliation_temp
+			value = 0.1
+		}
+		change_variable = {
+			which = inf_calc_ritual_humiliation_score
+			which = inf_calc_ritual_humiliation_temp
+		}
+	}
+
+	export_to_variable = {
+		which = inf_calc_ritual_humiliation_loser_prestige
+		value = trigger_value:prestige
+	}
+	export_to_variable = {
+		which = inf_calc_ritual_humiliation_root_prestige
+		value = trigger_value:prestige
+		who = ROOT
+	}
+	set_variable = {
+		which = inf_calc_ritual_humiliation_temp
+		which = inf_calc_ritual_humiliation_loser_prestige
+	}
+	subtract_variable = {
+		which = inf_calc_ritual_humiliation_temp
+		which = inf_calc_ritual_humiliation_root_prestige
+	}
+	if = {
+		limit = {
+			NOT = {
+				check_variable = {
+					which = inf_calc_ritual_humiliation_temp
+					value = 0
+				}
+			}
+		}
+		set_variable = { which = inf_calc_ritual_humiliation_temp value = 0 }
+	}
+	if = {
+		limit = {
+			OR = {
+				AND = { NOT = { government_rank = 2 } ROOT = { NOT = { government_rank = 2 } } }
+				AND = { government_rank = 2 ROOT = { government_rank = 2 NOT = { government_rank = 3 } } }
+				AND = { government_rank = 3 ROOT = { government_rank = 3 } }
+			}
+		}
+		multiply_variable = {
+			which = inf_calc_ritual_humiliation_temp
+			value = 0.2
+		}
+		change_variable = {
+			which = inf_calc_ritual_humiliation_score
+			which = inf_calc_ritual_humiliation_temp
+		}
+	}
+	else_if = {
+		limit = {
+			OR = {
+				AND = { government_rank = 2 ROOT = { NOT = { government_rank = 2 } } }
+				AND = { government_rank = 3 ROOT = { NOT = { government_rank = 2 } } }
+				AND = { government_rank = 3 ROOT = { government_rank = 2 NOT = { government_rank = 3 } } }
+			}
+		}
+		multiply_variable = {
+			which = inf_calc_ritual_humiliation_temp
+			value = 0.4
+		}
+		change_variable = {
+			which = inf_calc_ritual_humiliation_score
+			which = inf_calc_ritual_humiliation_temp
+		}
+	}
+
+	remove_country_modifier = inf_calc_ritual_humiliation_worthy_effort
+	remove_country_modifier = inf_calc_ritual_humiliation_expected_defeat
+	remove_country_modifier = inf_calc_ritual_humiliation_upstart
+	remove_country_modifier = inf_calc_ritual_humiliation_oni
+	remove_country_modifier = inf_calc_ritual_humiliation_forbidden
+
+	if = {
+		limit = {
+			has_country_flag = inf_calc_ritual_humiliation_warscore_80
+			check_variable = {
+				which = inf_calc_ritual_humiliation_score
+				value = 50
+			}
+		}
+		add_country_modifier = { name = inf_calc_ritual_humiliation_forbidden duration = 5475 }
+		add_stability = -3
+		kill_leader = { type = general }
+		kill_leader = { type = general }
+		kill_leader = { type = general }
+		kill_leader = { type = general }
+		kill_leader = { type = general }
+		kill_leader = { type = general }
+		kill_leader = { type = general }
+		kill_leader = { type = general }
+		kill_leader = { type = general }
+		kill_leader = { type = general }
+		kill_leader = { type = general }
+		kill_leader = { type = general }
+		kill_leader = { type = general }
+		kill_leader = { type = general }
+		kill_leader = { type = general }
+		kill_leader = { type = general }
+		kill_leader = { type = general }
+		kill_leader = { type = general }
+		kill_leader = { type = general }
+		kill_leader = { type = general }
+		decrease_ruler_adm_effect = yes
+		decrease_ruler_dip_effect = yes
+		decrease_ruler_mil_effect = yes
+		kill_ruler = yes
+		ROOT = {
+			add_power_projection = {
+				type = inf_calc_2_permanent_power_projection
+				amount = 2
+			}
+		}
+	}
+	else_if = {
+		limit = {
+			has_country_flag = inf_calc_ritual_humiliation_warscore_50
+			check_variable = {
+				which = inf_calc_ritual_humiliation_score
+				value = 30
+			}
+		}
+		add_country_modifier = { name = inf_calc_ritual_humiliation_oni duration = 4562 }
+		add_stability = -2
+		kill_leader = { type = general }
+		kill_leader = { type = general }
+		kill_leader = { type = general }
+		decrease_ruler_adm_effect = yes
+		decrease_ruler_dip_effect = yes
+		decrease_ruler_mil_effect = yes
+	}
+	else_if = {
+		limit = {
+			check_variable = {
+				which = inf_calc_ritual_humiliation_score
+				value = 20
+			}
+		}
+		add_country_modifier = { name = inf_calc_ritual_humiliation_upstart duration = 3650 }
+		add_stability = -1
+		decrease_ruler_adm_effect = yes
+		decrease_ruler_dip_effect = yes
+		decrease_ruler_mil_effect = yes
+	}
+	else_if = {
+		limit = {
+			check_variable = {
+				which = inf_calc_ritual_humiliation_score
+				value = 10
+			}
+		}
+		add_country_modifier = { name = inf_calc_ritual_humiliation_expected_defeat duration = 3650 }
+	}
+	else = {
+		add_country_modifier = { name = inf_calc_ritual_humiliation_worthy_effort duration = 3650 }
+	}
+}

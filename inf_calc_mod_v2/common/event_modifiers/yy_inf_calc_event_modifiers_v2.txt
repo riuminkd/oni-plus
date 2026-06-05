@@ -1,0 +1,990 @@
+inf_calc_shirgrii_autonomy_crushed = {
+	picture = "shinukhorchi_shirgrii"
+	kabiurgarko_influence_gain = -1
+	ajgriijarul_influence_gain = -1
+	shinukhorchi_influence_gain = -1
+	khelorvalshi_influence_gain = -1
+	chumijemoya_influence_gain = -1
+}
+
+inf_calc_useful_buff_kabiurgarko = {
+	production_efficiency = 0.10
+}
+
+inf_calc_useful_buff_ajgriijarul = {
+	production_efficiency = 0.10
+}
+
+inf_calc_useful_buff_shinukhorchi = {
+	production_efficiency = 0.10
+}
+
+inf_calc_useful_buff_khelorvalshi = {
+	production_efficiency = 0.10
+}
+
+inf_calc_useful_buff_chumijemoya = {
+	production_efficiency = 0.10
+}
+
+kabiurgarko_small_boost = {
+	hidden = yes
+}
+
+ajgriijarul_small_boost = {
+	hidden = yes
+}
+
+shinukhorchi_small_boost = {
+	hidden = yes
+}
+
+khelorvalshi_small_boost = {
+	hidden = yes
+}
+
+chumijemoya_small_boost = {
+	hidden = yes
+}
+
+inf_calc_small_power_kabiurgarko = {
+	country_admin_power = 2
+	country_diplomatic_power = 2
+	country_military_power = 2
+}
+
+inf_calc_small_power_ajgriijarul = {
+	country_admin_power = 2
+	country_diplomatic_power = 2
+	country_military_power = 2
+}
+
+inf_calc_small_power_shinukhorchi = {
+	country_admin_power = 2
+	country_diplomatic_power = 2
+	country_military_power = 2
+}
+
+inf_calc_small_power_khelorvalshi = {
+	country_admin_power = 2
+	country_diplomatic_power = 2
+	country_military_power = 2
+}
+
+inf_calc_small_power_chumijemoya = {
+	country_admin_power = 2
+	country_diplomatic_power = 2
+	country_military_power = 2
+}
+
+inf_calc_shinukhorchi_blazing_souls_1_mod = {
+	global_unrest = -1
+	shinukhorchi_influence_gain = -0.5
+}
+
+inf_calc_shinukhorchi_blazing_souls_2_mod = {
+	global_unrest = -2
+	shinukhorchi_influence_gain = -1
+}
+
+inf_calc_shinukhorchi_blazing_souls_3_mod = {
+	global_unrest = -3
+	shinukhorchi_influence_gain = -1.5
+}
+
+inf_calc_shinukhorchi_korashi_talisman_1_mod = {
+	shock_damage_received = -0.10
+}
+
+inf_calc_shinukhorchi_korashi_talisman_2_mod = {
+	shock_damage_received = -0.15
+	shinukhorchi_influence_gain = -0.5
+}
+
+inf_calc_shinukhorchi_korashi_talisman_3_mod = {
+	shock_damage_received = -0.20
+	shinukhorchi_influence_gain = -1
+}
+
+inf_calc_shinukhorchi_korashi_talismans_prod_1_mod = {
+	local_production_efficiency = -0.20
+}
+
+inf_calc_shinukhorchi_korashi_talismans_prod_2_mod = {
+	local_production_efficiency = -0.30
+}
+
+inf_calc_shinukhorchi_korashi_talismans_prod_3_mod = {
+	local_production_efficiency = -0.40
+}
+
+inf_calc_chumijemoya_minor_influence_penalty_1 = {
+	hidden = yes
+	chumijemoya_influence_gain = -0.5
+}
+
+inf_calc_chumijemoya_minor_influence_penalty_2 = {
+	hidden = yes
+	chumijemoya_influence_gain = -1
+}
+
+inf_calc_chumijemoya_minor_influence_penalty_3 = {
+	hidden = yes
+	chumijemoya_influence_gain = -1.5
+}
+
+inf_calc_ajgriijarul_minor_influence_penalty_1 = {
+	hidden = yes
+	ajgriijarul_influence_gain = -0.5
+}
+
+inf_calc_ajgriijarul_minor_influence_penalty_2 = {
+	hidden = yes
+	ajgriijarul_influence_gain = -1
+}
+
+inf_calc_ajgriijarul_minor_influence_penalty_3 = {
+	hidden = yes
+	ajgriijarul_influence_gain = -1.5
+}
+
+inf_calc_shinukhorchi_warriors_mist_penalty_2 = {
+	hidden = yes
+	shinukhorchi_influence_gain = -0.5
+}
+
+inf_calc_shinukhorchi_warriors_mist_penalty_3 = {
+	hidden = yes
+	shinukhorchi_influence_gain = -1
+}
+
+inf_calc_kabiurgarko_minor_influence_penalty_1 = {
+	hidden = yes
+	kabiurgarko_influence_gain = -0.5
+}
+
+inf_calc_kabiurgarko_minor_influence_penalty_2 = {
+	hidden = yes
+	kabiurgarko_influence_gain = -1
+}
+
+inf_calc_kabiurgarko_minor_influence_penalty_3 = {
+	hidden = yes
+	kabiurgarko_influence_gain = -1.5
+}
+
+inf_calc_khelorvalshi_drain_defenders_1 = {
+	hidden = yes
+	khelorvalshi_influence_gain = -0.5
+}
+
+inf_calc_khelorvalshi_drain_defenders_2 = {
+	hidden = yes
+	khelorvalshi_influence_gain = -1
+}
+
+inf_calc_khelorvalshi_drain_defenders_3 = {
+	hidden = yes
+	khelorvalshi_influence_gain = -1.5
+}
+
+inf_calc_khelorvalshi_drain_defenders_cooldown = {
+}
+
+inf_calc_khelorvalshi_drain_populace_1 = {
+	hidden = yes
+	khelorvalshi_influence_gain = -0.5
+}
+
+inf_calc_khelorvalshi_drain_populace_2 = {
+	hidden = yes
+	khelorvalshi_influence_gain = -1
+}
+
+inf_calc_khelorvalshi_drain_populace_3 = {
+	hidden = yes
+	khelorvalshi_influence_gain = -1.5
+}
+
+inf_calc_khelorvalshi_blood_ritual_1 = {
+	hidden = yes
+	khelorvalshi_influence_gain = -0.5
+}
+
+inf_calc_khelorvalshi_blood_ritual_2 = {
+	hidden = yes
+	khelorvalshi_influence_gain = -1
+}
+
+inf_calc_khelorvalshi_blood_ritual_3 = {
+	hidden = yes
+	khelorvalshi_influence_gain = -1.5
+}
+
+estate_kabiurgarko_production_lvl1_mod = {
+	local_production_efficiency = 0.15
+	supply_limit = 10
+}
+
+estate_kabiurgarko_production_lvl2_mod = {
+	local_production_efficiency = 0.30
+	supply_limit = 20
+}
+
+estate_kabiurgarko_production_lvl3_mod = {
+	local_production_efficiency = 0.45
+	supply_limit = 30
+}
+
+inf_calc_kabiurgarko_earth_dev_cost_1 = {
+	local_development_cost_modifier = -0.025
+}
+
+inf_calc_kabiurgarko_earth_dev_cost_2 = {
+	local_development_cost_modifier = -0.05
+}
+
+inf_calc_kabiurgarko_earth_dev_cost_3 = {
+	local_development_cost_modifier = -0.1
+}
+
+shinukhorchi_temple_control = {
+	trade_goods_size = 0.02
+	local_missionary_strength = 0.01
+	local_tax_modifier = 0.20
+	shinukhorchi_influence_gain = 0.2
+	picture = "shinukhorchi_shirgrii"
+}
+
+chumijemoya_temple_control = {
+	trade_goods_size = 0.02
+	local_unrest = -4
+	local_hostile_attrition = 2
+	max_attrition = 2
+	chumijemoya_influence_gain = 0.2
+	picture = "chumijemoya_shirgrii"
+}
+
+ajgriijarul_temple_control = {
+	trade_goods_size = 0.02
+	local_garrison_size = 0.25
+	local_garrison_damage = 0.25
+	ajgriijarul_influence_gain = 0.2
+	picture = "ajgriijarul_shirgrii"
+}
+
+kabiurgarko_temple_control = {
+	local_production_efficiency = 0.10
+	local_trade_power = 0.10
+	trade_goods_size = 0.02
+	kabiurgarko_influence_gain = 0.2
+	picture = "kabiurgarko_shirgrii"
+}
+
+khelorvalshi_temple_control = {
+	trade_goods_size = 0.02
+	local_unrest = 2
+	mages_mana_regen = 0.1
+	khelorvalshi_influence_gain = 0.2
+	picture = "khelorvalshi_shirgrii"
+}
+
+shirgrii_garrison = {
+	trade_goods_size = 0.02
+	local_defensiveness = 0.25
+	picture = "bom_fort_awakened"
+}
+
+inf_calc_shinukhorchi_highest_fire = {
+	local_hostile_attrition = 20
+	max_hostile_attrition = 20
+	picture = "shinukhorchi_shirgrii"
+}
+
+inf_calc_khelorvalshi_black_jade_maze = {
+	local_defensiveness = 10
+	local_hostile_movement_speed = -20
+	picture = "khelorvalshi_shirgrii"
+}
+
+inf_calc_shinukhorchi_defense_cooldown = {
+	hidden = yes
+}
+
+inf_calc_chumijemoya_defense_cooldown = {
+	hidden = yes
+}
+
+inf_calc_ajgriijarul_defense_cooldown = {
+	hidden = yes
+}
+
+inf_calc_kabiurgarko_defense_cooldown = {
+	hidden = yes
+}
+
+inf_calc_khelorvalshi_defense_cooldown = {
+	hidden = yes
+}
+
+estate_kabiurgarko_construction_lvl1_mod = {
+	build_cost = -0.15
+	build_time = -0.15
+}
+
+estate_kabiurgarko_construction_lvl2_mod = {
+	build_cost = -0.30
+	build_time = -0.30
+}
+
+estate_kabiurgarko_construction_lvl3_mod = {
+	build_cost = -0.45
+	build_time = -0.45
+}
+
+estate_kabiurgarko_metal_bending_lvl1_mod = {
+	infantry_cost = -0.10
+	infantry_power = 0.025
+}
+
+estate_kabiurgarko_metal_bending_lvl2_mod = {
+	infantry_cost = -0.15
+	infantry_power = 0.05
+}
+
+estate_kabiurgarko_metal_bending_lvl3_mod = {
+	infantry_cost = -0.25
+	infantry_power = 0.075
+}
+
+estate_ajgriijarul_defend_demon_hills_lvl1_mod = {
+	local_defensiveness = 0.22
+}
+
+estate_ajgriijarul_defend_demon_hills_lvl2_mod = {
+	local_defensiveness = 0.44
+}
+
+estate_ajgriijarul_defend_demon_hills_lvl3_mod = {
+	local_defensiveness = 0.66
+}
+
+estate_ajgriijarul_soul_ignition_lvl1_mod = {
+	siege_ability = 0.15
+	manpower_recovery_speed = -0.05
+}
+
+estate_ajgriijarul_soul_ignition_lvl2_mod = {
+	siege_ability = 0.20
+	manpower_recovery_speed = -0.075
+	ajgriijarul_influence_gain = -0.5
+}
+
+estate_ajgriijarul_soul_ignition_lvl3_mod = {
+	siege_ability = 0.30
+	manpower_recovery_speed = -0.10
+	ajgriijarul_influence_gain = -1
+}
+
+estate_ajgriijarul_trance_induced_rage_lvl1_mod = {
+	shock_damage = 0.15
+	shock_damage_received = 0.05
+	ajgriijarul_influence_gain = -0.5
+}
+
+estate_ajgriijarul_trance_induced_rage_lvl2_mod = {
+	shock_damage = 0.20
+	shock_damage_received = 0.075
+	ajgriijarul_influence_gain = -1
+}
+
+estate_ajgriijarul_trance_induced_rage_lvl3_mod = {
+	shock_damage = 0.25
+	shock_damage_received = 0.10
+	ajgriijarul_influence_gain = -1.5
+}
+
+estate_chumijemoya_magic_lost_in_mist_lvl1_mod = {
+	local_hostile_movement_speed = -0.25
+}
+
+estate_chumijemoya_magic_lost_in_mist_lvl2_mod = {
+	local_hostile_movement_speed = -0.50
+}
+
+estate_chumijemoya_magic_lost_in_mist_lvl3_mod = {
+	local_hostile_movement_speed = -0.75
+}
+
+estate_chumijemoya_spymasters_lvl1_mod = {
+	spy_offence = 0.22
+	diplomatic_reputation = -1
+	chumijemoya_influence_gain = -0.5
+}
+
+estate_chumijemoya_spymasters_lvl2_mod = {
+	spy_offence = 0.44
+	diplomatic_reputation = -1
+	chumijemoya_influence_gain = -1
+}
+
+estate_chumijemoya_spymasters_lvl3_mod = {
+	spy_offence = 0.66
+	diplomatic_reputation = -1
+	chumijemoya_influence_gain = -1.5
+}
+
+inf_calc_boost_kabiurgarko_penalty = {
+	global_tax_modifier = -0.20
+	kabiurgarko_influence_gain = 0.5
+}
+
+inf_calc_boost_ajgriijarul_penalty = {
+	global_tax_modifier = -0.20
+	ajgriijarul_influence_gain = 0.5
+}
+
+inf_calc_boost_shinukhorchi_penalty = {
+	global_tax_modifier = -0.20
+	shinukhorchi_influence_gain = 0.5
+}
+
+inf_calc_boost_khelorvalshi_penalty = {
+	global_tax_modifier = -0.20
+	khelorvalshi_influence_gain = 0.5
+}
+
+inf_calc_boost_chumijemoya_penalty = {
+	global_tax_modifier = -0.20
+	chumijemoya_influence_gain = 0.5
+}
+
+inf_calc_boost_kabiurgarko_manpower = {
+	manpower_recovery_speed = -0.20
+	kabiurgarko_influence_gain = 0.5
+}
+
+inf_calc_boost_ajgriijarul_manpower = {
+	manpower_recovery_speed = -0.20
+	ajgriijarul_influence_gain = 0.5
+}
+
+inf_calc_boost_shinukhorchi_manpower = {
+	manpower_recovery_speed = -0.20
+	shinukhorchi_influence_gain = 0.5
+}
+
+inf_calc_boost_khelorvalshi_manpower = {
+	manpower_recovery_speed = -0.20
+	khelorvalshi_influence_gain = 0.5
+}
+
+inf_calc_boost_chumijemoya_manpower = {
+	manpower_recovery_speed = -0.20
+	chumijemoya_influence_gain = 0.5
+}
+
+inf_calc_boost_kabiurgarko_other_influence = {
+	hidden = yes
+	kabiurgarko_influence_gain = 0.5
+	ajgriijarul_influence_gain = -0.2
+	shinukhorchi_influence_gain = -0.2
+	khelorvalshi_influence_gain = -0.2
+	chumijemoya_influence_gain = -0.2
+}
+
+inf_calc_boost_ajgriijarul_other_influence = {
+	hidden = yes
+	ajgriijarul_influence_gain = 0.5
+	kabiurgarko_influence_gain = -0.2
+	shinukhorchi_influence_gain = -0.2
+	khelorvalshi_influence_gain = -0.2
+	chumijemoya_influence_gain = -0.2
+}
+
+inf_calc_boost_shinukhorchi_other_influence = {
+	hidden = yes
+	shinukhorchi_influence_gain = 0.5
+	kabiurgarko_influence_gain = -0.2
+	ajgriijarul_influence_gain = -0.2
+	khelorvalshi_influence_gain = -0.2
+	chumijemoya_influence_gain = -0.2
+}
+
+inf_calc_boost_khelorvalshi_other_influence = {
+	hidden = yes
+	khelorvalshi_influence_gain = 0.5
+	kabiurgarko_influence_gain = -0.2
+	ajgriijarul_influence_gain = -0.2
+	shinukhorchi_influence_gain = -0.2
+	chumijemoya_influence_gain = -0.2
+}
+
+inf_calc_boost_chumijemoya_other_influence = {
+	hidden = yes
+	chumijemoya_influence_gain = 0.5
+	kabiurgarko_influence_gain = -0.2
+	ajgriijarul_influence_gain = -0.2
+	shinukhorchi_influence_gain = -0.2
+	khelorvalshi_influence_gain = -0.2
+}
+
+inf_calc_shinukhorchi_elaborate_rituals = {
+	shinukhorchi_influence_gain = 1
+	global_tax_modifier = -0.20
+	stability_cost_modifier = 0.10
+	church_power_modifier = 0.05
+}
+
+inf_calc_shinukhorchi_thorough_inquisition = {
+	shinukhorchi_influence_gain = 1
+	tolerance_heretic = -2
+	church_influence_modifier = 0.10
+	global_missionary_strength = 0.01
+}
+
+inf_calc_shinukhorchi_elaborate_rituals_forced_stop = {
+	hidden = yes
+	shinukhorchi_influence_gain = -0.5
+}
+
+inf_calc_shinukhorchi_thorough_inquisition_forced_stop = {
+	hidden = yes
+	shinukhorchi_influence_gain = -0.5
+}
+
+inf_calc_chumijemoya_suffocating_secrecy = {
+	chumijemoya_influence_gain = 1
+	global_tax_modifier = -0.20
+	spy_offence = -0.20
+	global_spy_defence = 0.20
+}
+
+inf_calc_chumijemoya_shadow_overseers = {
+	chumijemoya_influence_gain = 1
+	improve_relation_modifier = -0.20
+	diplomats = -1
+	liberty_desire_from_subject_development = -0.20
+}
+
+inf_calc_chumijemoya_suffocating_secrecy_forced_stop = {
+	hidden = yes
+	chumijemoya_influence_gain = -0.5
+}
+
+inf_calc_chumijemoya_shadow_overseers_forced_stop = {
+	hidden = yes
+	chumijemoya_influence_gain = -0.5
+}
+
+inf_calc_ajgriijarul_gruesome_displays = {
+	ajgriijarul_influence_gain = 1
+	ae_impact = 0.10
+	diplomatic_reputation = -1
+	morale_damage = 0.10
+}
+
+inf_calc_ajgriijarul_lethal_duels = {
+	ajgriijarul_influence_gain = 1
+	manpower_recovery_speed = -0.10
+	drill_gain_modifier = -0.20
+	army_tradition = 0.5
+}
+
+inf_calc_ajgriijarul_gruesome_displays_forced_stop = {
+	hidden = yes
+	ajgriijarul_influence_gain = -0.5
+}
+
+inf_calc_ajgriijarul_lethal_duels_forced_stop = {
+	hidden = yes
+	ajgriijarul_influence_gain = -0.5
+}
+
+inf_calc_khelorvalshi_soultithe = {
+	khelorvalshi_influence_gain = 1
+	global_unrest = 2
+	development_cost = 0.10
+	mages_mana_regen = 0.3
+}
+
+inf_calc_khelorvalshi_temple_expedition_focus = {
+	khelorvalshi_influence_gain = 1
+	land_forcelimit_modifier = -0.10
+	siege_ability = -0.05
+	technology_cost = -0.05
+}
+
+inf_calc_khelorvalshi_soultithe_forced_stop = {
+	hidden = yes
+	khelorvalshi_influence_gain = -0.5
+}
+
+inf_calc_khelorvalshi_temple_expedition_focus_forced_stop = {
+	hidden = yes
+	khelorvalshi_influence_gain = -0.5
+}
+
+inf_calc_kabiurgarko_harsh_quotas = {
+	kabiurgarko_influence_gain = 1
+	years_of_nationalism = 4
+	global_unrest = 2
+	production_efficiency = 0.10
+}
+
+inf_calc_kabiurgarko_foreigner_access = {
+	kabiurgarko_influence_gain = 1
+	global_spy_defence = -0.30
+	tolerance_own = -1
+	global_foreign_trade_power = 0.10
+}
+
+inf_calc_kabiurgarko_harsh_quotas_forced_stop = {
+	hidden = yes
+	kabiurgarko_influence_gain = -0.5
+}
+
+inf_calc_kabiurgarko_foreigner_access_forced_stop = {
+	hidden = yes
+	kabiurgarko_influence_gain = -0.5
+}
+
+inf_calc_teimarji_mines_shinukhorchi_gain = {
+	hidden = yes
+	shinukhorchi_influence_gain = 0.10
+}
+
+inf_calc_kongren_chumijemoya_gain = {
+	hidden = yes
+	chumijemoya_influence_gain = 0.10
+}
+
+inf_calc_influence_reduction_kabiurgarko = {
+	hidden = yes
+	kabiurgarko_influence_gain = -2
+}
+
+inf_calc_influence_reduction_ajgriijarul = {
+	hidden = yes
+	ajgriijarul_influence_gain = -2
+}
+
+inf_calc_influence_reduction_shinukhorchi = {
+	hidden = yes
+	shinukhorchi_influence_gain = -2
+}
+
+inf_calc_influence_reduction_khelorvalshi = {
+	hidden = yes
+	khelorvalshi_influence_gain = -2
+}
+
+inf_calc_influence_reduction_chumijemoya = {
+	hidden = yes
+	chumijemoya_influence_gain = -2
+}
+
+inf_calc_kabiurgarko_impossible_architecture = {
+	global_allowed_num_of_buildings = 1
+}
+
+inf_calc_kabiurgarko_energy_bending = {
+	all_power_cost = -0.05
+}
+
+inf_calc_kabiurgarko_impossible_architecture_glacier = { local_development_cost = -0.5 }
+inf_calc_kabiurgarko_impossible_architecture_forest = { local_development_cost = -0.2 }
+inf_calc_kabiurgarko_impossible_architecture_bloodgroves = { local_development_cost = -0.2 }
+inf_calc_kabiurgarko_impossible_architecture_gladeway = { local_development_cost = -1 }
+inf_calc_kabiurgarko_impossible_architecture_fey_gladeway = { local_development_cost = -1 }
+inf_calc_kabiurgarko_impossible_architecture_ancient_forest = { local_development_cost = -0.25 }
+inf_calc_kabiurgarko_impossible_architecture_hills = { local_development_cost = -0.25 }
+inf_calc_kabiurgarko_impossible_architecture_woods = { local_development_cost = -0.15 }
+inf_calc_kabiurgarko_impossible_architecture_mountain = { local_development_cost = -0.35 }
+inf_calc_kabiurgarko_impossible_architecture_jungle = { local_development_cost = -0.35 }
+inf_calc_kabiurgarko_impossible_architecture_marsh = { local_development_cost = -0.25 }
+inf_calc_kabiurgarko_impossible_architecture_desert = { local_development_cost = -0.5 }
+inf_calc_kabiurgarko_impossible_architecture_coastal_desert = { local_development_cost = -0.35 }
+inf_calc_kabiurgarko_impossible_architecture_coastline = { local_development_cost = -0.25 }
+inf_calc_kabiurgarko_impossible_architecture_drylands = { local_development_cost = -0.05 }
+inf_calc_kabiurgarko_impossible_architecture_highlands = { local_development_cost = -0.2 }
+inf_calc_kabiurgarko_impossible_architecture_savannah = { local_development_cost = -0.15 }
+inf_calc_kabiurgarko_impossible_architecture_steppe = { local_development_cost = -0.2 }
+inf_calc_kabiurgarko_impossible_architecture_dwarven_road = { local_development_cost = -0.3 }
+inf_calc_kabiurgarko_impossible_architecture_cavern = { local_development_cost = -0.8 }
+inf_calc_kabiurgarko_impossible_architecture_mushroom_forest_terrain = { local_development_cost = -0.25 }
+inf_calc_kabiurgarko_impossible_architecture_shadow_swamp_terrain = { local_development_cost = -0.8 }
+inf_calc_kabiurgarko_impossible_architecture_titanoflora_forest_terrain = { local_development_cost = -0.3 }
+inf_calc_kabiurgarko_impossible_architecture_titanoflora_jungle_terrain = { local_development_cost = -0.5 }
+inf_calc_kabiurgarko_impossible_architecture_titanoflora_wetland_terrain = { local_development_cost = -0.4 }
+inf_calc_kabiurgarko_impossible_architecture_titanoflora_grassland_terrain = { local_development_cost = -0.2 }
+
+inf_calc_chumijemoya_concealed_paths = {
+	can_bypass_forts = yes
+	force_march_free = yes
+}
+
+inf_calc_ajgriijarul_bright_tooth_claw_active = {
+	hidden = yes
+}
+
+inf_calc_ajgriijarul_ritual_humiliation_active = {
+	hidden = yes
+}
+
+inf_calc_ritual_humiliation_worthy_effort = {
+	army_tradition = 1
+	land_morale = 0.10
+	global_monthly_devastation = -0.1
+	manpower_recovery_speed = -0.15
+}
+
+inf_calc_ritual_humiliation_expected_defeat = {
+	army_tradition = 1
+	land_morale = -0.10
+	manpower_recovery_speed = -0.15
+}
+
+inf_calc_ritual_humiliation_upstart = {
+	prestige = -1
+	legitimacy = -1
+	devotion = -1
+	horde_unity = -1
+	republican_tradition = -0.5
+	global_unrest = 2
+	land_morale = -0.10
+	manpower_recovery_speed = -0.15
+}
+
+inf_calc_ritual_humiliation_oni = {
+	prestige = -2
+	legitimacy = -2
+	devotion = -2
+	horde_unity = -2
+	republican_tradition = -1
+	global_unrest = 5
+	interest = 2
+	land_morale = -0.15
+	manpower_recovery_speed = -0.20
+	stability_cost_modifier = 0.40
+}
+
+inf_calc_ritual_humiliation_forbidden = {
+	prestige = -4
+	legitimacy = -4
+	devotion = -4
+	horde_unity = -4
+	republican_tradition = -2
+	diplomatic_reputation = -2
+	global_unrest = 15
+	interest = 5
+	land_morale = -0.20
+	manpower_recovery_speed = -0.25
+	stability_cost_modifier = 0.80
+}
+
+inf_calc_khelorvalshi_lifeblood_active = {
+	hidden = yes
+}
+
+inf_calc_khelorvalshi_unstable_magic_active = {
+	hidden = yes
+}
+
+inf_calc_khelorvalshi_lifeblood_1 = {
+	mages_mana_regen = 0.05
+}
+
+inf_calc_khelorvalshi_lifeblood_2 = {
+	mages_mana_regen = 0.1
+}
+
+inf_calc_khelorvalshi_lifeblood_3 = {
+	mages_mana_regen = 0.15
+}
+
+inf_calc_chumijemoya_choking_mist_enemy_1 = {
+	global_supply_limit_modifier = -1
+}
+
+inf_calc_chumijemoya_choking_mist_enemy_2 = {
+	global_supply_limit_modifier = -1.5
+}
+
+inf_calc_chumijemoya_choking_mist_enemy_3 = {
+	global_supply_limit_modifier = -2
+}
+
+inf_calc_shinukhorchi_mind_control = {
+	diplomatic_reputation = 10
+	accept_vassalization_reasons = 50
+}
+
+inf_calc_shinukhorchi_mind_control_subjects = {
+	reduced_liberty_desire = 30
+}
+
+inf_calc_shinukhorchi_mind_control_comp_diplomatic_ideas = {
+	hidden = yes
+	diplomatic_reputation = 2
+}
+
+inf_calc_shinukhorchi_mind_control_comp_influence_ideas = {
+	hidden = yes
+	diplomatic_reputation = 2
+}
+
+inf_calc_shinukhorchi_mind_control_comp_aristocratic_court = {
+	hidden = yes
+	diplomatic_reputation = 1
+}
+
+inf_calc_shinukhorchi_mind_control_comp_diplomatic_cooperation_act = {
+	hidden = yes
+	diplomatic_reputation = 1
+}
+
+inf_calc_shinukhorchi_mind_control_comp_commercial_embassies = {
+	hidden = yes
+	diplomatic_reputation = 1
+}
+
+inf_calc_shinukhorchi_mind_control_comp_professional_diplomatic_corps = {
+	hidden = yes
+	diplomatic_reputation = 1
+}
+
+inf_calc_shinukhorchi_mind_control_comp_the_foreign_aid_act = {
+	hidden = yes
+	diplomatic_reputation = 1
+}
+
+inf_calc_shinukhorchi_mind_control_comp_faith_advisors_policy = {
+	hidden = yes
+	diplomatic_reputation = 1
+}
+
+inf_calc_shinukhorchi_mind_control_comp_appeal_to_old_powers_policy = {
+	hidden = yes
+	diplomatic_reputation = 1
+}
+
+inf_calc_shinukhorchi_mind_control_comp_the_smooth_integration_act = {
+	hidden = yes
+	diplomatic_reputation = 1
+}
+
+inf_calc_shinukhorchi_mind_control_comp_pen_rely_on_sword_act = {
+	hidden = yes
+	diplomatic_reputation = 1
+}
+
+inf_calc_shinukhorchi_mind_control_comp_underhanded_diplomacy_act = {
+	hidden = yes
+	diplomatic_reputation = 1
+}
+
+inf_calc_shinukhorchi_mind_control_floor_05 = {
+	hidden = yes
+	diplomatic_reputation = 0.5
+}
+
+inf_calc_shinukhorchi_mind_control_floor_10 = {
+	hidden = yes
+	diplomatic_reputation = 1
+}
+
+inf_calc_shinukhorchi_mind_control_floor_15 = {
+	hidden = yes
+	diplomatic_reputation = 1.5
+}
+
+inf_calc_shinukhorchi_mind_control_floor_20 = {
+	hidden = yes
+	diplomatic_reputation = 2
+}
+
+inf_calc_shinukhorchi_mind_control_floor_25 = {
+	hidden = yes
+	diplomatic_reputation = 2.5
+}
+
+inf_calc_shinukhorchi_mind_control_floor_30 = {
+	hidden = yes
+	diplomatic_reputation = 3
+}
+
+inf_calc_shinukhorchi_mind_control_floor_35 = {
+	hidden = yes
+	diplomatic_reputation = 3.5
+}
+
+inf_calc_shinukhorchi_mind_control_floor_40 = {
+	hidden = yes
+	diplomatic_reputation = 4
+}
+
+inf_calc_shinukhorchi_mind_control_floor_45 = {
+	hidden = yes
+	diplomatic_reputation = 4.5
+}
+
+inf_calc_shinukhorchi_mind_control_floor_50 = {
+	hidden = yes
+	diplomatic_reputation = 5
+}
+
+inf_calc_shinukhorchi_mind_control_floor_55 = {
+	hidden = yes
+	diplomatic_reputation = 5.5
+}
+
+inf_calc_shinukhorchi_mind_control_floor_60 = {
+	hidden = yes
+	diplomatic_reputation = 6
+}
+
+inf_calc_shinukhorchi_mind_control_floor_65 = {
+	hidden = yes
+	diplomatic_reputation = 6.5
+}
+
+inf_calc_shinukhorchi_mind_control_floor_70 = {
+	hidden = yes
+	diplomatic_reputation = 7
+}
+
+inf_calc_shinukhorchi_mind_control_floor_75 = {
+	hidden = yes
+	diplomatic_reputation = 7.5
+}
+
+inf_calc_shinukhorchi_mind_control_floor_80 = {
+	hidden = yes
+	diplomatic_reputation = 8
+}
+
+inf_calc_shinukhorchi_mind_control_floor_85 = {
+	hidden = yes
+	diplomatic_reputation = 8.5
+}
+
+inf_calc_shinukhorchi_mind_control_floor_90 = {
+	hidden = yes
+	diplomatic_reputation = 9
+}
+
+inf_calc_shinukhorchi_mind_control_floor_95 = {
+	hidden = yes
+	diplomatic_reputation = 9.5
+}
+
+inf_calc_shinukhorchi_mind_control_floor_100 = {
+	hidden = yes
+	diplomatic_reputation = 10
+}
+
+inf_calc_shinukhorchi_mind_control_floor_200 = {
+	hidden = yes
+	diplomatic_reputation = 20
+}

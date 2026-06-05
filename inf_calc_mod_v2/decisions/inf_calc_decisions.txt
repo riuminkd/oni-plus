@@ -1,0 +1,631 @@
+country_decisions = {
+
+    show_inf_calc_values = {
+        major = no
+
+        potential = {
+            ai = no
+            tag = Y01
+        }
+
+        allow = {
+            always = yes
+        }
+
+        effect = {
+            set_country_flag = inf_calc_interface_open
+        }
+
+        ai_will_do = {
+            factor = 0
+        }
+    }
+
+    inf_calc_show_submod_overview = {
+        major = no
+
+        potential = {
+            ai = no
+            tag = Y01
+        }
+
+        allow = {
+            always = yes
+        }
+
+        effect = {
+            country_event = { id = inf_calc.80 }
+        }
+
+        ai_will_do = {
+            factor = 0
+        }
+    }
+
+    inf_calc_enable_debug_decisions = {
+        major = no
+
+        potential = {
+            ai = no
+            NOT = { has_country_flag = inf_calc_debug_decisions_enabled }
+        }
+
+        allow = {
+            always = yes
+        }
+
+        effect = {
+            set_country_flag = inf_calc_debug_decisions_enabled
+        }
+
+        ai_will_do = {
+            factor = 0
+        }
+    }
+
+    inf_calc_disable_debug_decisions = {
+        major = no
+
+        potential = {
+            ai = no
+            has_country_flag = inf_calc_debug_decisions_enabled
+        }
+
+        allow = {
+            always = yes
+        }
+
+        effect = {
+            clr_country_flag = inf_calc_debug_decisions_enabled
+        }
+
+        ai_will_do = {
+            factor = 0
+        }
+    }
+
+    inf_calc_testing_gene_pillars_level_up_check_old = {
+        major = no
+
+        potential = {
+            ai = no
+            has_country_flag = inf_calc_debug_decisions_enabled
+            owns = 3329
+        }
+
+        allow = {
+            owns = 3329
+        }
+
+        effect = {
+            3329 = {
+                set_aPUI_var = { name = gene_pillar_xp which = owner }
+                set_aPUI_cap = { name = gene_pillar_xp which = owner }
+                gene_pillars_level_up_check = yes
+                update_aPUI_var_bar = { name = gene_pillar_xp }
+            }
+            aPUI_gene_pillar_update_all_gene_pillar_progress_bars = yes
+        }
+
+        ai_will_do = {
+            factor = 0
+        }
+    }
+
+    inf_calc_testing_gene_pillars_level_up_check_fixed = {
+        major = no
+
+        potential = {
+            ai = no
+            has_country_flag = inf_calc_debug_decisions_enabled
+            any_owned_province = {
+                province_group = gene_pillars
+            }
+        }
+
+        allow = {
+            any_owned_province = {
+                province_group = gene_pillars
+            }
+        }
+
+        effect = {
+            random_owned_province = {
+                limit = {
+                    province_group = gene_pillars
+                }
+                set_aPUI_var = { name = gene_pillar_xp which = owner }
+                set_aPUI_cap = { name = gene_pillar_xp which = owner }
+                inf_calc_gene_pillars_level_up_check_fixed = yes
+                update_aPUI_var_bar = { name = gene_pillar_xp }
+            }
+            aPUI_gene_pillar_update_all_gene_pillar_progress_bars = yes
+        }
+
+        ai_will_do = {
+            factor = 0
+        }
+    }
+
+    inf_calc_testing_gene_pillars_level_2_to_3_fixed = {
+        major = no
+
+        potential = {
+            ai = no
+            has_country_flag = inf_calc_debug_decisions_enabled
+            any_owned_province = {
+                province_group = gene_pillars
+            }
+        }
+
+        allow = {
+            any_owned_province = {
+                province_group = gene_pillars
+            }
+        }
+
+        effect = {
+            set_aPUI_var = { name = gene_pillars_party_level value = 2 }
+            set_aPUI_cap = { name = gene_pillar_xp amount = 100 }
+            random_owned_province = {
+                limit = {
+                    province_group = gene_pillars
+                }
+                set_aPUI_var = { name = gene_pillar_xp which = owner }
+                set_aPUI_cap = { name = gene_pillar_xp which = owner }
+                inf_calc_gene_pillars_level_up_check_fixed = yes
+                update_aPUI_var_bar = { name = gene_pillar_xp }
+            }
+            aPUI_gene_pillar_update_all_gene_pillar_progress_bars = yes
+        }
+
+        ai_will_do = {
+            factor = 0
+        }
+    }
+
+    inf_calc_testing_gene_pillars_level_3_to_4_fixed = {
+        major = no
+
+        potential = {
+            ai = no
+            has_country_flag = inf_calc_debug_decisions_enabled
+            any_owned_province = {
+                province_group = gene_pillars
+            }
+        }
+
+        allow = {
+            check_variable = { which = aPUI_gene_pillar_xp_var value = 100 }
+            is_variable_equal = { which = aPUI_gene_pillars_party_level_var value = 3 }
+            any_owned_province = {
+                province_group = gene_pillars
+            }
+        }
+
+        effect = {
+            set_aPUI_var = { name = gene_pillars_party_level value = 3 }
+            set_aPUI_cap = { name = gene_pillar_xp amount = 100 }
+            random_owned_province = {
+                limit = {
+                    province_group = gene_pillars
+                }
+                set_aPUI_var = { name = gene_pillar_xp which = owner }
+                set_aPUI_cap = { name = gene_pillar_xp which = owner }
+                inf_calc_gene_pillars_level_up_check_fixed = yes
+                update_aPUI_var_bar = { name = gene_pillar_xp }
+            }
+            aPUI_gene_pillar_update_all_gene_pillar_progress_bars = yes
+        }
+
+        ai_will_do = {
+            factor = 0
+        }
+    }
+
+    inf_calc_testing_gene_pillars_level_4_to_5_fixed = {
+        major = no
+
+        potential = {
+            ai = no
+            has_country_flag = inf_calc_debug_decisions_enabled
+            any_owned_province = {
+                province_group = gene_pillars
+            }
+        }
+
+        allow = {
+            check_variable = { which = aPUI_gene_pillar_xp_var value = 200 }
+            is_variable_equal = { which = aPUI_gene_pillars_party_level_var value = 4 }
+            any_owned_province = {
+                province_group = gene_pillars
+            }
+        }
+
+        effect = {
+            set_aPUI_var = { name = gene_pillars_party_level value = 4 }
+            set_aPUI_cap = { name = gene_pillar_xp amount = 200 }
+            random_owned_province = {
+                limit = {
+                    province_group = gene_pillars
+                }
+                set_aPUI_var = { name = gene_pillar_xp which = owner }
+                set_aPUI_cap = { name = gene_pillar_xp which = owner }
+                inf_calc_gene_pillars_level_up_check_fixed = yes
+                update_aPUI_var_bar = { name = gene_pillar_xp }
+            }
+            aPUI_gene_pillar_update_all_gene_pillar_progress_bars = yes
+        }
+
+        ai_will_do = {
+            factor = 0
+        }
+    }
+
+    inf_calc_testing_gene_pillars_heal_party = {
+        major = no
+
+        potential = {
+            ai = no
+            has_country_flag = inf_calc_debug_decisions_enabled
+        }
+
+        allow = {
+            always = yes
+        }
+
+        effect = {
+            clr_country_flag = gene_pillars_injured_rogue_A
+            clr_country_flag = gene_pillars_injured_rogue_B
+            clr_country_flag = gene_pillars_injured_rogue_C
+            clr_country_flag = gene_pillars_injured_rogue_D
+            clr_country_flag = gene_pillars_injured_rogue_E
+            clr_country_flag = gene_pillars_injured_ranger_A
+            clr_country_flag = gene_pillars_injured_ranger_B
+            clr_country_flag = gene_pillars_injured_ranger_C
+            clr_country_flag = gene_pillars_injured_ranger_D
+            clr_country_flag = gene_pillars_injured_ranger_E
+            clr_country_flag = gene_pillars_injured_fighter_A
+            clr_country_flag = gene_pillars_injured_fighter_B
+            clr_country_flag = gene_pillars_injured_fighter_C
+            clr_country_flag = gene_pillars_injured_fighter_D
+            clr_country_flag = gene_pillars_injured_fighter_E
+            clr_country_flag = gene_pillars_injured_cleric_A
+            clr_country_flag = gene_pillars_injured_cleric_B
+            clr_country_flag = gene_pillars_injured_cleric_C
+            clr_country_flag = gene_pillars_injured_cleric_D
+            clr_country_flag = gene_pillars_injured_cleric_E
+            clr_country_flag = gene_pillars_injured_mage_A
+            clr_country_flag = gene_pillars_injured_mage_B
+            clr_country_flag = gene_pillars_injured_mage_C
+            clr_country_flag = gene_pillars_injured_mage_D
+            clr_country_flag = gene_pillars_injured_mage_E
+            clr_country_flag = gene_pillars_injured_artificer_A
+            clr_country_flag = gene_pillars_injured_artificer_B
+            clr_country_flag = gene_pillars_injured_artificer_C
+            clr_country_flag = gene_pillars_injured_artificer_D
+            clr_country_flag = gene_pillars_injured_artificer_E
+        }
+
+        ai_will_do = {
+            factor = 0
+        }
+    }
+
+    inf_calc_testing_gene_pillars_heal_exploration = {
+        major = no
+
+        potential = {
+            ai = no
+            has_country_flag = inf_calc_debug_decisions_enabled
+            is_exploring_any_gene_pillar = yes
+        }
+
+        allow = {
+            is_exploring_any_gene_pillar = yes
+        }
+
+        effect = {
+            gene_pillars_add_hp_effect = { amount = 3 }
+        }
+
+        ai_will_do = {
+            factor = 0
+        }
+    }
+
+    inf_calc_testing_gene_pillars_finish_spirit_6950 = {
+        major = no
+
+        potential = {
+            ai = no
+            tag = Y01
+            has_country_flag = inf_calc_debug_decisions_enabled
+            has_country_flag = aPUI_gene_pillar_is_exploring_6950
+            has_country_flag = gene_pillar_is_exploring_level_3_pillar
+        }
+
+        allow = {
+            owns = 6950
+            6950 = {
+                owned_by = ROOT
+                controlled_by = ROOT
+            }
+        }
+
+        effect = {
+            inf_calc_gene_pillars_finish_spirit_6950_level_3 = yes
+        }
+
+        ai_will_do = {
+            factor = 0
+        }
+    }
+
+    inf_calc_testing_set_influences = {
+        major = no
+
+        potential = {
+            ai = no
+            tag = Y01
+            has_country_flag = inf_calc_debug_decisions_enabled
+        }
+
+        allow = {
+            always = yes
+        }
+
+        effect = {
+            country_event = { id = inf_calc.15 }
+        }
+
+        ai_will_do = {
+            factor = 0
+        }
+    }
+
+    inf_calc_testing_apply_temple_control_4830 = {
+        major = no
+
+        potential = {
+            always = no #inf_calc_change disabled passive defence testing decision
+            ai = no
+            tag = Y01
+            has_country_flag = inf_calc_debug_decisions_enabled
+        }
+
+        allow = {
+            always = yes
+        }
+
+        effect = {
+            4830 = {
+                province_event = { id = inf_calc.76 }
+            }
+        }
+
+        ai_will_do = {
+            factor = 0
+        }
+    }
+
+    inf_calc_testing_prepare_siege_4830 = {
+        major = no
+
+        potential = {
+            always = no #inf_calc_change disabled passive defence testing decision
+            ai = no
+            tag = Y01
+            has_country_flag = inf_calc_debug_decisions_enabled
+        }
+
+        allow = {
+            always = yes
+        }
+
+        effect = {
+            4830 = {
+                remove_building = fort_15th
+                remove_building = fort_16th
+                remove_building = fort_17th
+                remove_building = fort_18th
+                add_building = fort_18th
+                add_garrison = 8000
+                province_event = { id = inf_calc.73 days = 30 }
+            }
+        }
+
+        ai_will_do = {
+            factor = 0
+        }
+    }
+
+    inf_calc_testing_clear_rebels_4830 = {
+        major = no
+
+        potential = {
+            always = no #inf_calc_change disabled passive defence testing decision
+            ai = no
+            tag = Y01
+            has_country_flag = inf_calc_debug_decisions_enabled
+        }
+
+        allow = {
+            always = yes
+        }
+
+        effect = {
+            4830 = {
+                kill_units = { who = REB }
+            }
+        }
+
+        ai_will_do = {
+            factor = 0
+        }
+    }
+
+    inf_calc_testing_clear_defense_cooldowns = {
+        major = no
+
+        potential = {
+            always = no #inf_calc_change disabled passive defence testing decision
+            ai = no
+            tag = Y01
+            has_country_flag = inf_calc_debug_decisions_enabled
+        }
+
+        allow = {
+            always = yes
+        }
+
+        effect = {
+            remove_country_modifier = inf_calc_shinukhorchi_defense_cooldown
+            remove_country_modifier = inf_calc_chumijemoya_defense_cooldown
+            remove_country_modifier = inf_calc_ajgriijarul_defense_cooldown
+            remove_country_modifier = inf_calc_kabiurgarko_defense_cooldown
+            remove_country_modifier = inf_calc_khelorvalshi_defense_cooldown
+        }
+
+        ai_will_do = {
+            factor = 0
+        }
+    }
+
+    inf_calc_testing_run_defense_check = {
+        major = no
+
+        potential = {
+            always = no #inf_calc_change disabled passive defence testing decision
+            ai = no
+            tag = Y01
+            has_country_flag = inf_calc_debug_decisions_enabled
+        }
+
+        allow = {
+            always = yes
+        }
+
+        effect = {
+            inf_calc_shirgrii_defense_monthly = yes
+            country_event = { id = inf_calc.74 }
+        }
+
+        ai_will_do = {
+            factor = 0
+        }
+    }
+
+    inf_calc_testing_force_defense_4830 = {
+        major = no
+
+        potential = {
+            always = no #inf_calc_change disabled passive defence testing decision
+            ai = no
+            tag = Y01
+            has_country_flag = inf_calc_debug_decisions_enabled
+        }
+
+        allow = {
+            always = yes
+        }
+
+        effect = {
+            if = {
+                limit = {
+                    4830 = {
+                        OR = {
+                            has_province_modifier = shinukhorchi_temple_control
+                            has_province_modifier = azjakuma_shirgrii_shinukhorchi
+                        }
+                    }
+                }
+                4830 = {
+                    inf_calc_apply_shinukhorchi_defense = yes
+                }
+            }
+            else_if = {
+                limit = {
+                    4830 = {
+                        OR = {
+                            has_province_modifier = chumijemoya_temple_control
+                            has_province_modifier = azjakuma_shirgrii_chumijemoya
+                        }
+                    }
+                }
+                4830 = {
+                    inf_calc_apply_chumijemoya_defense = yes
+                }
+            }
+            else_if = {
+                limit = {
+                    4830 = {
+                        OR = {
+                            has_province_modifier = ajgriijarul_temple_control
+                            has_province_modifier = azjakuma_shirgrii_ajgriijarul
+                        }
+                    }
+                }
+                4830 = {
+                    inf_calc_apply_ajgriijarul_defense = yes
+                }
+            }
+            else_if = {
+                limit = {
+                    4830 = {
+                        OR = {
+                            has_province_modifier = kabiurgarko_temple_control
+                            has_province_modifier = azjakuma_shirgrii_kabiurgarko
+                        }
+                    }
+                }
+                4830 = {
+                    inf_calc_apply_kabiurgarko_defense = yes
+                }
+            }
+            else_if = {
+                limit = {
+                    4830 = {
+                        OR = {
+                            has_province_modifier = khelorvalshi_temple_control
+                            has_province_modifier = azjakuma_shirgrii_khelorvalshi
+                        }
+                    }
+                }
+                4830 = {
+                    inf_calc_apply_khelorvalshi_defense = yes
+                }
+            }
+            else = {
+                country_event = { id = inf_calc.75 }
+            }
+        }
+
+        ai_will_do = {
+            factor = 0
+        }
+    }
+
+    inf_calc_testing_azjakuma_event_overrides = {
+        major = no
+
+        potential = {
+            ai = no
+            tag = Y01
+            has_country_flag = inf_calc_debug_decisions_enabled
+        }
+
+        allow = {
+            always = yes
+        }
+
+        effect = {
+            country_event = { id = inf_calc.78 }
+        }
+
+        ai_will_do = {
+            factor = 0
+        }
+    }
+
+}

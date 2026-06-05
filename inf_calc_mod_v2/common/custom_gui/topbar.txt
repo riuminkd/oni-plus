@@ -1,0 +1,329 @@
+custom_window = {
+	name = inf_calc_influence_window
+	potential = {
+		tag = Y01
+		has_country_flag = inf_calc_interface_open
+	}
+}
+
+custom_button = {
+	name = inf_calc_close_button
+	effect = {
+		clr_country_flag = inf_calc_interface_open
+	}
+	tooltip = inf_calc_close_button_tt
+}
+
+custom_button = {
+	name = inf_calc_boost_kabiurgarko_button
+	potential = { tag = Y01 }
+	effect = {
+		country_event = { id = inf_calc.20 }
+	}
+	tooltip = inf_calc_boost_kabiurgarko_tt
+}
+
+custom_button = {
+	name = inf_calc_boost_ajgriijarul_button
+	potential = { tag = Y01 }
+	effect = {
+		country_event = { id = inf_calc.21 }
+	}
+	tooltip = inf_calc_boost_ajgriijarul_tt
+}
+
+custom_button = {
+	name = inf_calc_boost_shinukhorchi_button
+	potential = { tag = Y01 }
+	effect = {
+		country_event = { id = inf_calc.22 }
+	}
+	tooltip = inf_calc_boost_shinukhorchi_tt
+}
+
+custom_button = {
+	name = inf_calc_boost_khelorvalshi_button
+	potential = { tag = Y01 has_country_flag = khelorvalshi_restored }
+	effect = {
+		country_event = { id = inf_calc.23 }
+	}
+	tooltip = inf_calc_boost_khelorvalshi_tt
+}
+
+custom_button = {
+	name = inf_calc_boost_chumijemoya_button
+	potential = { tag = Y01 }
+	effect = {
+		country_event = { id = inf_calc.24 }
+	}
+	tooltip = inf_calc_boost_chumijemoya_tt
+}
+
+custom_button = {
+	name = inf_calc_active_kabiurgarko_button
+	trigger = {
+		tag = Y01
+		check_variable = { which = kabiurgarko_inf value = 30 }
+		NOT = { has_country_modifier = kabiurgarko_small_boost }
+	}
+	effect = {
+		country_event = { id = inf_calc.30 }
+	}
+	tooltip = inf_calc_active_kabiurgarko_tt
+}
+
+custom_button = {
+	name = inf_calc_active_ajgriijarul_button
+	trigger = {
+		tag = Y01
+		check_variable = { which = ajgriijarul_inf value = 30 }
+		NOT = { has_country_modifier = ajgriijarul_small_boost }
+	}
+	effect = {
+		country_event = { id = inf_calc.31 }
+	}
+	tooltip = inf_calc_active_ajgriijarul_tt
+}
+
+custom_button = {
+	name = inf_calc_active_shinukhorchi_button
+	trigger = {
+		tag = Y01
+		check_variable = { which = shinukhorchi_inf value = 30 }
+		NOT = { has_country_modifier = shinukhorchi_small_boost }
+	}
+	effect = {
+		country_event = { id = inf_calc.32 }
+	}
+	tooltip = inf_calc_active_shinukhorchi_tt
+}
+
+custom_button = {
+	name = inf_calc_active_khelorvalshi_button
+	potential = {
+		tag = Y01
+		has_country_flag = khelorvalshi_restored
+	}
+	trigger = {
+		tag = Y01
+		has_country_flag = khelorvalshi_restored
+		check_variable = { which = khelorvalshi_inf value = 30 }
+		NOT = { has_country_modifier = khelorvalshi_small_boost }
+	}
+	effect = {
+		country_event = { id = inf_calc.33 }
+	}
+	tooltip = inf_calc_active_khelorvalshi_tt
+}
+
+custom_button = {
+	name = inf_calc_active_chumijemoya_button
+	trigger = {
+		tag = Y01
+		check_variable = { which = chumijemoya_inf value = 30 }
+		NOT = { has_country_modifier = chumijemoya_small_boost }
+	}
+	effect = {
+		country_event = { id = inf_calc.34 }
+	}
+	tooltip = inf_calc_active_chumijemoya_tt
+}
+
+custom_button = {
+	name = inf_calc_major_concession_shinukhorchi_button
+	potential = { tag = Y01 }
+	effect = {
+		country_event = { id = inf_calc.40 }
+	}
+	tooltip = inf_calc_major_concession_shinukhorchi_tt
+}
+
+custom_button = {
+	name = inf_calc_major_concession_chumijemoya_button
+	potential = { tag = Y01 }
+	effect = {
+		country_event = { id = inf_calc.43 }
+	}
+	tooltip = inf_calc_major_concession_chumijemoya_tt
+}
+
+custom_button = {
+	name = inf_calc_major_concession_ajgriijarul_button
+	potential = { tag = Y01 }
+	effect = {
+		country_event = { id = inf_calc.46 }
+	}
+	tooltip = inf_calc_major_concession_ajgriijarul_tt
+}
+
+custom_button = {
+	name = inf_calc_major_concession_khelorvalshi_button
+	potential = {
+		tag = Y01
+		has_country_flag = khelorvalshi_restored
+	}
+	effect = {
+		country_event = { id = inf_calc.49 }
+	}
+	tooltip = inf_calc_major_concession_khelorvalshi_tt
+}
+
+custom_button = {
+	name = inf_calc_major_concession_kabiurgarko_button
+	potential = { tag = Y01 }
+	effect = {
+		country_event = { id = inf_calc.52 }
+	}
+	tooltip = inf_calc_major_concession_kabiurgarko_tt
+}
+
+custom_button = {
+	name = inf_calc_major_kabiurgarko_button
+	trigger = {
+		tag = Y01
+		check_variable = { which = kabiurgarko_inf value = 70 }
+		NOT = { has_country_modifier = inf_calc_influence_reduction_kabiurgarko }
+	}
+	effect = {
+		country_event = { id = inf_calc.10 }
+	}
+	tooltip = inf_calc_major_kabiurgarko_tt
+}
+
+custom_button = {
+	name = inf_calc_major_ajgriijarul_button
+	trigger = {
+		tag = Y01
+		check_variable = { which = ajgriijarul_inf value = 70 }
+		NOT = { has_country_modifier = inf_calc_influence_reduction_ajgriijarul }
+	}
+	effect = {
+		country_event = { id = inf_calc.11 }
+	}
+	tooltip = inf_calc_major_ajgriijarul_tt
+}
+
+custom_button = {
+	name = inf_calc_major_shinukhorchi_button
+	trigger = {
+		tag = Y01
+		check_variable = { which = shinukhorchi_inf value = 70 }
+		NOT = { has_country_modifier = inf_calc_influence_reduction_shinukhorchi }
+	}
+	effect = {
+		country_event = { id = inf_calc.12 }
+	}
+	tooltip = inf_calc_major_shinukhorchi_tt
+}
+
+custom_button = {
+	name = inf_calc_major_khelorvalshi_button
+	potential = {
+		tag = Y01
+		has_country_flag = khelorvalshi_restored
+	}
+	trigger = {
+		tag = Y01
+		has_country_flag = khelorvalshi_restored
+		check_variable = { which = khelorvalshi_inf value = 70 }
+		NOT = { has_country_modifier = inf_calc_influence_reduction_khelorvalshi }
+	}
+	effect = {
+		country_event = { id = inf_calc.13 }
+	}
+	tooltip = inf_calc_major_khelorvalshi_tt
+}
+
+custom_button = {
+	name = inf_calc_major_chumijemoya_button
+	trigger = {
+		tag = Y01
+		check_variable = { which = chumijemoya_inf value = 70 }
+		NOT = { has_country_modifier = inf_calc_influence_reduction_chumijemoya }
+	}
+	effect = {
+		country_event = { id = inf_calc.14 }
+	}
+	tooltip = inf_calc_major_chumijemoya_tt
+}
+
+custom_button = { name = inf_calc_khelorvalshi_10_box potential = { tag = Y01 has_country_flag = khelorvalshi_restored } }
+custom_button = { name = inf_calc_khelorvalshi_30_box potential = { tag = Y01 has_country_flag = khelorvalshi_restored } }
+custom_button = { name = inf_calc_khelorvalshi_50_box potential = { tag = Y01 has_country_flag = khelorvalshi_restored } }
+custom_button = { name = inf_calc_khelorvalshi_70_box potential = { tag = Y01 has_country_flag = khelorvalshi_restored } }
+custom_button = { name = inf_calc_khelorvalshi_90_box potential = { tag = Y01 has_country_flag = khelorvalshi_restored } }
+custom_button = { name = inf_calc_khelorvalshi_counter_box potential = { tag = Y01 has_country_flag = khelorvalshi_restored } }
+
+custom_text_box = { name = inf_calc_title_text }
+custom_text_box = { name = inf_calc_header_counter }
+
+custom_text_box = { name = inf_calc_kabiurgarko_name }
+custom_text_box = { name = inf_calc_kabiurgarko_counter tooltip = inf_calc_kabiurgarko_influence_gain_tt potential = { check_variable = { which = kabiurgarko_inf_delta value = 0 } } }
+custom_text_box = { name = inf_calc_kabiurgarko_counter_negative tooltip = inf_calc_kabiurgarko_influence_gain_tt potential = { NOT = { check_variable = { which = kabiurgarko_inf_delta value = 0 } } } }
+custom_text_box = { name = inf_calc_ajgriijarul_name }
+custom_text_box = { name = inf_calc_ajgriijarul_counter tooltip = inf_calc_ajgriijarul_influence_gain_tt potential = { check_variable = { which = ajgriijarul_inf_delta value = 0 } } }
+custom_text_box = { name = inf_calc_ajgriijarul_counter_negative tooltip = inf_calc_ajgriijarul_influence_gain_tt potential = { NOT = { check_variable = { which = ajgriijarul_inf_delta value = 0 } } } }
+custom_text_box = { name = inf_calc_shinukhorchi_name }
+custom_text_box = { name = inf_calc_shinukhorchi_counter tooltip = inf_calc_shinukhorchi_influence_gain_tt potential = { check_variable = { which = shinukhorchi_inf_delta value = 0 } } }
+custom_text_box = { name = inf_calc_shinukhorchi_counter_negative tooltip = inf_calc_shinukhorchi_influence_gain_tt potential = { NOT = { check_variable = { which = shinukhorchi_inf_delta value = 0 } } } }
+custom_text_box = { name = inf_calc_khelorvalshi_name potential = { has_country_flag = khelorvalshi_restored } }
+custom_text_box = { name = inf_calc_khelorvalshi_counter tooltip = inf_calc_khelorvalshi_influence_gain_tt potential = { has_country_flag = khelorvalshi_restored check_variable = { which = khelorvalshi_inf_delta value = 0 } } }
+custom_text_box = { name = inf_calc_khelorvalshi_counter_negative tooltip = inf_calc_khelorvalshi_influence_gain_tt potential = { has_country_flag = khelorvalshi_restored NOT = { check_variable = { which = khelorvalshi_inf_delta value = 0 } } } }
+custom_text_box = { name = inf_calc_chumijemoya_name }
+custom_text_box = { name = inf_calc_chumijemoya_counter tooltip = inf_calc_chumijemoya_influence_gain_tt potential = { check_variable = { which = chumijemoya_inf_delta value = 0 } } }
+custom_text_box = { name = inf_calc_chumijemoya_counter_negative tooltip = inf_calc_chumijemoya_influence_gain_tt potential = { NOT = { check_variable = { which = chumijemoya_inf_delta value = 0 } } } }
+
+custom_text_box = { name = inf_calc_kabiurgarko_10_active tooltip = inf_calc_kabiurgarko_10_tt potential = { NOT = { check_variable = { which = kabiurgarko_inf value = 10 } } } }
+custom_text_box = { name = inf_calc_kabiurgarko_10_inactive tooltip = inf_calc_kabiurgarko_10_tt potential = { check_variable = { which = kabiurgarko_inf value = 10 } } }
+custom_text_box = { name = inf_calc_kabiurgarko_30_active tooltip = inf_calc_kabiurgarko_30_tt potential = { check_variable = { which = kabiurgarko_inf value = 30 } } }
+custom_text_box = { name = inf_calc_kabiurgarko_30_inactive tooltip = inf_calc_kabiurgarko_30_tt potential = { NOT = { check_variable = { which = kabiurgarko_inf value = 30 } } } }
+custom_text_box = { name = inf_calc_kabiurgarko_50_active tooltip = inf_calc_kabiurgarko_50_tt potential = { check_variable = { which = kabiurgarko_inf value = 50 } } }
+custom_text_box = { name = inf_calc_kabiurgarko_50_inactive tooltip = inf_calc_kabiurgarko_50_tt potential = { NOT = { check_variable = { which = kabiurgarko_inf value = 50 } } } }
+custom_text_box = { name = inf_calc_kabiurgarko_70_active tooltip = inf_calc_kabiurgarko_70_tt potential = { check_variable = { which = kabiurgarko_inf value = 70 } } }
+custom_text_box = { name = inf_calc_kabiurgarko_70_inactive tooltip = inf_calc_kabiurgarko_70_tt potential = { NOT = { check_variable = { which = kabiurgarko_inf value = 70 } } } }
+custom_text_box = { name = inf_calc_kabiurgarko_90_active tooltip = inf_calc_kabiurgarko_90_tt potential = { check_variable = { which = kabiurgarko_inf value = 90 } } }
+custom_text_box = { name = inf_calc_kabiurgarko_90_inactive tooltip = inf_calc_kabiurgarko_90_tt potential = { NOT = { check_variable = { which = kabiurgarko_inf value = 90 } } } }
+
+custom_text_box = { name = inf_calc_ajgriijarul_10_active tooltip = inf_calc_ajgriijarul_10_tt potential = { NOT = { check_variable = { which = ajgriijarul_inf value = 10 } } } }
+custom_text_box = { name = inf_calc_ajgriijarul_10_inactive tooltip = inf_calc_ajgriijarul_10_tt potential = { check_variable = { which = ajgriijarul_inf value = 10 } } }
+custom_text_box = { name = inf_calc_ajgriijarul_30_active tooltip = inf_calc_ajgriijarul_30_tt potential = { check_variable = { which = ajgriijarul_inf value = 30 } } }
+custom_text_box = { name = inf_calc_ajgriijarul_30_inactive tooltip = inf_calc_ajgriijarul_30_tt potential = { NOT = { check_variable = { which = ajgriijarul_inf value = 30 } } } }
+custom_text_box = { name = inf_calc_ajgriijarul_50_active tooltip = inf_calc_ajgriijarul_50_tt potential = { check_variable = { which = ajgriijarul_inf value = 50 } } }
+custom_text_box = { name = inf_calc_ajgriijarul_50_inactive tooltip = inf_calc_ajgriijarul_50_tt potential = { NOT = { check_variable = { which = ajgriijarul_inf value = 50 } } } }
+custom_text_box = { name = inf_calc_ajgriijarul_70_active tooltip = inf_calc_ajgriijarul_70_tt potential = { check_variable = { which = ajgriijarul_inf value = 70 } } }
+custom_text_box = { name = inf_calc_ajgriijarul_70_inactive tooltip = inf_calc_ajgriijarul_70_tt potential = { NOT = { check_variable = { which = ajgriijarul_inf value = 70 } } } }
+custom_text_box = { name = inf_calc_ajgriijarul_90_active tooltip = inf_calc_ajgriijarul_90_tt potential = { check_variable = { which = ajgriijarul_inf value = 90 } } }
+custom_text_box = { name = inf_calc_ajgriijarul_90_inactive tooltip = inf_calc_ajgriijarul_90_tt potential = { NOT = { check_variable = { which = ajgriijarul_inf value = 90 } } } }
+
+custom_text_box = { name = inf_calc_shinukhorchi_10_active tooltip = inf_calc_shinukhorchi_10_tt potential = { NOT = { check_variable = { which = shinukhorchi_inf value = 10 } } } }
+custom_text_box = { name = inf_calc_shinukhorchi_10_inactive tooltip = inf_calc_shinukhorchi_10_tt potential = { check_variable = { which = shinukhorchi_inf value = 10 } } }
+custom_text_box = { name = inf_calc_shinukhorchi_30_active tooltip = inf_calc_shinukhorchi_30_tt potential = { check_variable = { which = shinukhorchi_inf value = 30 } } }
+custom_text_box = { name = inf_calc_shinukhorchi_30_inactive tooltip = inf_calc_shinukhorchi_30_tt potential = { NOT = { check_variable = { which = shinukhorchi_inf value = 30 } } } }
+custom_text_box = { name = inf_calc_shinukhorchi_50_active tooltip = inf_calc_shinukhorchi_50_tt potential = { check_variable = { which = shinukhorchi_inf value = 50 } } }
+custom_text_box = { name = inf_calc_shinukhorchi_50_inactive tooltip = inf_calc_shinukhorchi_50_tt potential = { NOT = { check_variable = { which = shinukhorchi_inf value = 50 } } } }
+custom_text_box = { name = inf_calc_shinukhorchi_70_active tooltip = inf_calc_shinukhorchi_70_tt potential = { check_variable = { which = shinukhorchi_inf value = 70 } } }
+custom_text_box = { name = inf_calc_shinukhorchi_70_inactive tooltip = inf_calc_shinukhorchi_70_tt potential = { NOT = { check_variable = { which = shinukhorchi_inf value = 70 } } } }
+custom_text_box = { name = inf_calc_shinukhorchi_90_active tooltip = inf_calc_shinukhorchi_90_tt potential = { check_variable = { which = shinukhorchi_inf value = 90 } } }
+custom_text_box = { name = inf_calc_shinukhorchi_90_inactive tooltip = inf_calc_shinukhorchi_90_tt potential = { NOT = { check_variable = { which = shinukhorchi_inf value = 90 } } } }
+
+custom_text_box = { name = inf_calc_khelorvalshi_10_active tooltip = inf_calc_khelorvalshi_10_tt potential = { has_country_flag = khelorvalshi_restored NOT = { check_variable = { which = khelorvalshi_inf value = 10 } } } }
+custom_text_box = { name = inf_calc_khelorvalshi_10_inactive tooltip = inf_calc_khelorvalshi_10_tt potential = { has_country_flag = khelorvalshi_restored check_variable = { which = khelorvalshi_inf value = 10 } } }
+custom_text_box = { name = inf_calc_khelorvalshi_30_active tooltip = inf_calc_khelorvalshi_30_tt potential = { has_country_flag = khelorvalshi_restored check_variable = { which = khelorvalshi_inf value = 30 } } }
+custom_text_box = { name = inf_calc_khelorvalshi_30_inactive tooltip = inf_calc_khelorvalshi_30_tt potential = { has_country_flag = khelorvalshi_restored NOT = { check_variable = { which = khelorvalshi_inf value = 30 } } } }
+custom_text_box = { name = inf_calc_khelorvalshi_50_active tooltip = inf_calc_khelorvalshi_50_tt potential = { has_country_flag = khelorvalshi_restored check_variable = { which = khelorvalshi_inf value = 50 } } }
+custom_text_box = { name = inf_calc_khelorvalshi_50_inactive tooltip = inf_calc_khelorvalshi_50_tt potential = { has_country_flag = khelorvalshi_restored NOT = { check_variable = { which = khelorvalshi_inf value = 50 } } } }
+custom_text_box = { name = inf_calc_khelorvalshi_70_active tooltip = inf_calc_khelorvalshi_70_tt potential = { has_country_flag = khelorvalshi_restored check_variable = { which = khelorvalshi_inf value = 70 } } }
+custom_text_box = { name = inf_calc_khelorvalshi_70_inactive tooltip = inf_calc_khelorvalshi_70_tt potential = { has_country_flag = khelorvalshi_restored NOT = { check_variable = { which = khelorvalshi_inf value = 70 } } } }
+custom_text_box = { name = inf_calc_khelorvalshi_90_active tooltip = inf_calc_khelorvalshi_90_tt potential = { has_country_flag = khelorvalshi_restored check_variable = { which = khelorvalshi_inf value = 90 } } }
+custom_text_box = { name = inf_calc_khelorvalshi_90_inactive tooltip = inf_calc_khelorvalshi_90_tt potential = { has_country_flag = khelorvalshi_restored NOT = { check_variable = { which = khelorvalshi_inf value = 90 } } } }
+
+custom_text_box = { name = inf_calc_chumijemoya_10_active tooltip = inf_calc_chumijemoya_10_tt potential = { NOT = { check_variable = { which = chumijemoya_inf value = 10 } } } }
+custom_text_box = { name = inf_calc_chumijemoya_10_inactive tooltip = inf_calc_chumijemoya_10_tt potential = { check_variable = { which = chumijemoya_inf value = 10 } } }
+custom_text_box = { name = inf_calc_chumijemoya_30_active tooltip = inf_calc_chumijemoya_30_tt potential = { check_variable = { which = chumijemoya_inf value = 30 } } }
+custom_text_box = { name = inf_calc_chumijemoya_30_inactive tooltip = inf_calc_chumijemoya_30_tt potential = { NOT = { check_variable = { which = chumijemoya_inf value = 30 } } } }
+custom_text_box = { name = inf_calc_chumijemoya_50_active tooltip = inf_calc_chumijemoya_50_tt potential = { check_variable = { which = chumijemoya_inf value = 50 } } }
+custom_text_box = { name = inf_calc_chumijemoya_50_inactive tooltip = inf_calc_chumijemoya_50_tt potential = { NOT = { check_variable = { which = chumijemoya_inf value = 50 } } } }
+custom_text_box = { name = inf_calc_chumijemoya_70_active tooltip = inf_calc_chumijemoya_70_tt potential = { check_variable = { which = chumijemoya_inf value = 70 } } }
+custom_text_box = { name = inf_calc_chumijemoya_70_inactive tooltip = inf_calc_chumijemoya_70_tt potential = { NOT = { check_variable = { which = chumijemoya_inf value = 70 } } } }
+custom_text_box = { name = inf_calc_chumijemoya_90_active tooltip = inf_calc_chumijemoya_90_tt potential = { check_variable = { which = chumijemoya_inf value = 90 } } }
+custom_text_box = { name = inf_calc_chumijemoya_90_inactive tooltip = inf_calc_chumijemoya_90_tt potential = { NOT = { check_variable = { which = chumijemoya_inf value = 90 } } } }

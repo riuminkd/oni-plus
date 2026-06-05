@@ -1,0 +1,2962 @@
+namespace = inf_calc
+
+country_event = {
+    id = inf_calc.1
+    title = inf_calc.1.t
+    desc = inf_calc.1.d
+    picture = DEBATE_REPUBLICAN_eventPicture
+    trigger = {
+        tag = Y01
+    }	
+    hidden = yes
+    is_triggered_only = yes
+
+    immediate = {
+        inf_calc_monthly_update = yes
+    }
+}
+
+
+country_event = {
+    id = inf_calc.2
+    title = inf_calc.2.t
+    desc = inf_calc.2.d
+    picture = DEBATE_REPUBLICAN_eventPicture
+    trigger = {
+        tag = Y01
+    }
+
+    is_triggered_only = yes
+
+    option = {
+        name = inf_calc.2.a
+    }
+}
+
+country_event = {
+    id = inf_calc.10
+    title = inf_calc.10.t
+    desc = inf_calc.10.d
+    picture = DEBATE_REPUBLICAN_eventPicture
+    trigger = {
+        tag = Y01
+    }
+    is_triggered_only = yes
+
+    option = {
+        name = inf_calc.kabiurgarko.impossible_architecture
+        trigger = {
+            has_mana = { amount = 1 }
+            check_variable = { which = kabiurgarko_inf value = 70 }
+            NOT = { has_country_modifier = inf_calc_influence_reduction_kabiurgarko }
+        }
+        custom_tooltip = inf_calc_kabiurgarko_impossible_architecture_tt
+        hidden_effect = {
+            add_country_modifier = { name = inf_calc_influence_reduction_kabiurgarko duration = 3650 hidden = yes }
+            add_country_modifier = { name = inf_calc_kabiurgarko_impossible_architecture duration = 365 }
+            inf_calc_kabiurgarko_impossible_architecture_effect = yes
+        }
+    }
+
+    option = {
+        name = inf_calc.kabiurgarko.energy_bending
+        trigger = {
+            has_mana = { amount = 1 }
+            check_variable = { which = kabiurgarko_inf value = 70 }
+            NOT = { has_country_modifier = inf_calc_influence_reduction_kabiurgarko }
+        }
+        custom_tooltip = inf_calc_kabiurgarko_energy_bending_tt
+        add_country_modifier = { name = inf_calc_influence_reduction_kabiurgarko duration = 3650 hidden = yes }
+        add_country_modifier = { name = inf_calc_kabiurgarko_energy_bending duration = 3650 }
+        add_country_modifier = { name = evocation_spell_three_quarter duration = 3650 }
+    }
+
+    option = {
+        name = inf_calc.small_boon.leave
+    }
+}
+
+country_event = {
+    id = inf_calc.11
+    title = inf_calc.11.t
+    desc = inf_calc.11.d
+    picture = DEBATE_REPUBLICAN_eventPicture
+    trigger = {
+        tag = Y01
+    }
+    is_triggered_only = yes
+
+    option = {
+        name = inf_calc.ajgriijarul.bright_tooth_claw
+        trigger = {
+            has_mana = { amount = 1 }
+            check_variable = { which = ajgriijarul_inf value = 70 }
+            NOT = { has_country_modifier = inf_calc_influence_reduction_ajgriijarul }
+        }
+        custom_tooltip = inf_calc_ajgriijarul_bright_tooth_claw_tt
+        add_country_modifier = { name = inf_calc_influence_reduction_ajgriijarul duration = 3650 hidden = yes }
+        add_country_modifier = { name = inf_calc_ajgriijarul_bright_tooth_claw_active duration = 3650 }
+    }
+
+    option = {
+        name = inf_calc.ajgriijarul.ritual_humiliation
+        trigger = {
+            has_mana = { amount = 1 }
+            check_variable = { which = ajgriijarul_inf value = 70 }
+            NOT = { has_country_modifier = inf_calc_influence_reduction_ajgriijarul }
+        }
+        custom_tooltip = inf_calc_ajgriijarul_ritual_humiliation_tt
+        add_country_modifier = { name = inf_calc_influence_reduction_ajgriijarul duration = 3650 hidden = yes }
+        add_country_modifier = { name = inf_calc_ajgriijarul_ritual_humiliation_active duration = 3650 }
+        inf_calc_ajgriijarul_ritual_humiliation_monthly = yes
+    }
+
+    option = {
+        name = inf_calc.small_boon.leave
+    }
+}
+
+country_event = {
+    id = inf_calc.12
+    title = inf_calc.12.t
+    desc = inf_calc.12.d
+    picture = DEBATE_REPUBLICAN_eventPicture
+    trigger = {
+        tag = Y01
+    }
+    is_triggered_only = yes
+
+    option = {
+        name = inf_calc.shinukhorchi.major_boon
+        trigger = {
+            has_mana = { amount = 1 }
+            check_variable = { which = shinukhorchi_inf value = 70 }
+            NOT = { has_country_modifier = inf_calc_influence_reduction_shinukhorchi }
+        }
+        custom_tooltip = inf_calc_shinukhorchi_major_boon_tt
+        add_country_modifier = { name = inf_calc_influence_reduction_shinukhorchi duration = 3650 hidden = yes }
+        if = {
+            limit = { has_country_modifier = dvp_devoured_mod }
+            remove_country_modifier = dvp_devoured_mod
+        }
+        add_church_power = 200
+    }
+
+    option = {
+        name = inf_calc.shinukhorchi.mind_control
+        trigger = {
+            has_mana = { amount = 1 }
+            has_country_flag = vassal_acceptance_magic_unlocked
+            check_variable = { which = shinukhorchi_inf value = 70 }
+            NOT = { has_country_modifier = inf_calc_influence_reduction_shinukhorchi }
+        }
+        custom_tooltip = inf_calc_shinukhorchi_mind_control_tt
+        add_country_modifier = { name = inf_calc_influence_reduction_shinukhorchi duration = 3650 hidden = yes }
+        add_country_modifier = { name = inf_calc_shinukhorchi_mind_control_subjects duration = 3650 }
+        if = {
+            limit = { has_idea = experienced_diplomats }
+            add_country_modifier = { name = inf_calc_shinukhorchi_mind_control_comp_diplomatic_ideas duration = 3650 }
+        }
+        if = {
+            limit = { has_idea = diplomatic_influence }
+            add_country_modifier = { name = inf_calc_shinukhorchi_mind_control_comp_influence_ideas duration = 3650 }
+        }
+        if = {
+            limit = { has_reform = aristocratic_court_reform }
+            add_country_modifier = { name = inf_calc_shinukhorchi_mind_control_comp_aristocratic_court duration = 3650 }
+        }
+        if = {
+            limit = { has_active_policy = diplomatic_cooperation_act }
+            add_country_modifier = { name = inf_calc_shinukhorchi_mind_control_comp_diplomatic_cooperation_act duration = 3650 }
+        }
+        if = {
+            limit = { has_active_policy = commercial_embassies }
+            add_country_modifier = { name = inf_calc_shinukhorchi_mind_control_comp_commercial_embassies duration = 3650 }
+        }
+        if = {
+            limit = { has_active_policy = professional_diplomatic_corps }
+            add_country_modifier = { name = inf_calc_shinukhorchi_mind_control_comp_professional_diplomatic_corps duration = 3650 }
+        }
+        if = {
+            limit = { has_active_policy = the_foreign_aid_act }
+            add_country_modifier = { name = inf_calc_shinukhorchi_mind_control_comp_the_foreign_aid_act duration = 3650 }
+        }
+        if = {
+            limit = { has_active_policy = faith_advisors_policy }
+            add_country_modifier = { name = inf_calc_shinukhorchi_mind_control_comp_faith_advisors_policy duration = 3650 }
+        }
+        if = {
+            limit = { has_active_policy = appeal_to_old_powers_policy }
+            add_country_modifier = { name = inf_calc_shinukhorchi_mind_control_comp_appeal_to_old_powers_policy duration = 3650 }
+        }
+        if = {
+            limit = { has_active_policy = the_smooth_integration_act }
+            add_country_modifier = { name = inf_calc_shinukhorchi_mind_control_comp_the_smooth_integration_act duration = 3650 }
+        }
+        if = {
+            limit = { has_active_policy = pen_rely_on_sword_act }
+            add_country_modifier = { name = inf_calc_shinukhorchi_mind_control_comp_pen_rely_on_sword_act duration = 3650 }
+        }
+        if = {
+            limit = { has_active_policy = underhanded_diplomacy_act }
+            add_country_modifier = { name = inf_calc_shinukhorchi_mind_control_comp_underhanded_diplomacy_act duration = 3650 }
+        }
+        if = {
+            limit = {
+                NOT = { has_global_modifier_value = { which = diplomatic_reputation value = 0 } }
+            }
+            if = {
+                limit = { has_global_modifier_value = { which = diplomatic_reputation value = -0.5 } }
+                add_country_modifier = { name = inf_calc_shinukhorchi_mind_control_floor_05 duration = 3650 }
+            }
+            else_if = {
+                limit = { has_global_modifier_value = { which = diplomatic_reputation value = -1 } }
+                add_country_modifier = { name = inf_calc_shinukhorchi_mind_control_floor_10 duration = 3650 }
+            }
+            else_if = {
+                limit = { has_global_modifier_value = { which = diplomatic_reputation value = -1.5 } }
+                add_country_modifier = { name = inf_calc_shinukhorchi_mind_control_floor_15 duration = 3650 }
+            }
+            else_if = {
+                limit = { has_global_modifier_value = { which = diplomatic_reputation value = -2 } }
+                add_country_modifier = { name = inf_calc_shinukhorchi_mind_control_floor_20 duration = 3650 }
+            }
+            else_if = {
+                limit = { has_global_modifier_value = { which = diplomatic_reputation value = -2.5 } }
+                add_country_modifier = { name = inf_calc_shinukhorchi_mind_control_floor_25 duration = 3650 }
+            }
+            else_if = {
+                limit = { has_global_modifier_value = { which = diplomatic_reputation value = -3 } }
+                add_country_modifier = { name = inf_calc_shinukhorchi_mind_control_floor_30 duration = 3650 }
+            }
+            else_if = {
+                limit = { has_global_modifier_value = { which = diplomatic_reputation value = -3.5 } }
+                add_country_modifier = { name = inf_calc_shinukhorchi_mind_control_floor_35 duration = 3650 }
+            }
+            else_if = {
+                limit = { has_global_modifier_value = { which = diplomatic_reputation value = -4 } }
+                add_country_modifier = { name = inf_calc_shinukhorchi_mind_control_floor_40 duration = 3650 }
+            }
+            else_if = {
+                limit = { has_global_modifier_value = { which = diplomatic_reputation value = -4.5 } }
+                add_country_modifier = { name = inf_calc_shinukhorchi_mind_control_floor_45 duration = 3650 }
+            }
+            else_if = {
+                limit = { has_global_modifier_value = { which = diplomatic_reputation value = -5 } }
+                add_country_modifier = { name = inf_calc_shinukhorchi_mind_control_floor_50 duration = 3650 }
+            }
+            else_if = {
+                limit = { has_global_modifier_value = { which = diplomatic_reputation value = -5.5 } }
+                add_country_modifier = { name = inf_calc_shinukhorchi_mind_control_floor_55 duration = 3650 }
+            }
+            else_if = {
+                limit = { has_global_modifier_value = { which = diplomatic_reputation value = -6 } }
+                add_country_modifier = { name = inf_calc_shinukhorchi_mind_control_floor_60 duration = 3650 }
+            }
+            else_if = {
+                limit = { has_global_modifier_value = { which = diplomatic_reputation value = -6.5 } }
+                add_country_modifier = { name = inf_calc_shinukhorchi_mind_control_floor_65 duration = 3650 }
+            }
+            else_if = {
+                limit = { has_global_modifier_value = { which = diplomatic_reputation value = -7 } }
+                add_country_modifier = { name = inf_calc_shinukhorchi_mind_control_floor_70 duration = 3650 }
+            }
+            else_if = {
+                limit = { has_global_modifier_value = { which = diplomatic_reputation value = -7.5 } }
+                add_country_modifier = { name = inf_calc_shinukhorchi_mind_control_floor_75 duration = 3650 }
+            }
+            else_if = {
+                limit = { has_global_modifier_value = { which = diplomatic_reputation value = -8 } }
+                add_country_modifier = { name = inf_calc_shinukhorchi_mind_control_floor_80 duration = 3650 }
+            }
+            else_if = {
+                limit = { has_global_modifier_value = { which = diplomatic_reputation value = -8.5 } }
+                add_country_modifier = { name = inf_calc_shinukhorchi_mind_control_floor_85 duration = 3650 }
+            }
+            else_if = {
+                limit = { has_global_modifier_value = { which = diplomatic_reputation value = -9 } }
+                add_country_modifier = { name = inf_calc_shinukhorchi_mind_control_floor_90 duration = 3650 }
+            }
+            else_if = {
+                limit = { has_global_modifier_value = { which = diplomatic_reputation value = -9.5 } }
+                add_country_modifier = { name = inf_calc_shinukhorchi_mind_control_floor_95 duration = 3650 }
+            }
+            else = {
+                add_country_modifier = { name = inf_calc_shinukhorchi_mind_control_floor_200 duration = 3650 }
+            }
+        }
+        add_country_modifier = { name = inf_calc_shinukhorchi_mind_control duration = 60 }
+        hidden_effect = {
+            every_country = {
+                limit = {
+                    OR = {
+                        NOT = { has_opinion_modifier = { who = root modifier = aggressive_expansion } }
+                        has_opinion_modifier = {
+                            who = root
+                            modifier = aggressive_expansion
+                            value = -50
+                        }
+                    }
+                }
+                set_country_flag = inf_calc_shinukhorchi_mind_control_target
+                add_opinion = { who = root modifier = inf_calc_shinukhorchi_mind_controlled }
+                reverse_add_opinion = { who = root modifier = inf_calc_shinukhorchi_mind_controlled }
+                add_trust = {
+                    who = root
+                    value = 10
+                }
+            }
+            country_event = { id = inf_calc.17 days = 60 }
+        }
+    }
+
+    option = {
+        name = inf_calc.small_boon.leave
+    }
+}
+
+country_event = {
+    id = inf_calc.13
+    title = inf_calc.13.t
+    desc = inf_calc.13.d
+    picture = DEBATE_REPUBLICAN_eventPicture
+    trigger = {
+        tag = Y01
+    }
+    is_triggered_only = yes
+
+    option = {
+        name = inf_calc.khelorvalshi.lifeblood
+        trigger = {
+            has_mana = { amount = 1 }
+            has_country_flag = khelorvalshi_restored
+            check_variable = { which = khelorvalshi_inf value = 70 }
+            NOT = { has_country_modifier = inf_calc_influence_reduction_khelorvalshi }
+        }
+        custom_tooltip = inf_calc_khelorvalshi_lifeblood_tt
+        add_country_modifier = { name = inf_calc_influence_reduction_khelorvalshi duration = 3650 hidden = yes }
+        add_country_modifier = { name = inf_calc_khelorvalshi_lifeblood_active duration = 3650 }
+        inf_calc_khelorvalshi_lifeblood_monthly = yes
+    }
+
+    option = {
+        name = inf_calc.khelorvalshi.unstable_magic
+        trigger = {
+            has_mana = { amount = 1 }
+            has_country_flag = khelorvalshi_restored
+            check_variable = { which = khelorvalshi_inf value = 70 }
+            NOT = { has_country_modifier = inf_calc_influence_reduction_khelorvalshi }
+        }
+        custom_tooltip = inf_calc_khelorvalshi_unstable_magic_tt
+        add_country_modifier = { name = inf_calc_influence_reduction_khelorvalshi duration = 3650 hidden = yes }
+        add_country_modifier = { name = inf_calc_khelorvalshi_unstable_magic_active duration = 3650 }
+        country_event = { id = inf_calc.18 }
+    }
+
+    option = {
+        name = inf_calc.small_boon.leave
+    }
+}
+
+country_event = {
+    id = inf_calc.18
+    title = inf_calc.18.t
+    desc = inf_calc.18.d
+    trigger = {
+        tag = Y01
+        has_country_modifier = inf_calc_khelorvalshi_unstable_magic_active
+    }
+    hidden = yes
+    is_triggered_only = yes
+
+    immediate = {
+        clr_country_flag = all_spell_half_next_cast
+        clr_country_flag = all_spell_free_next_cast
+        clr_country_flag = all_spell_three_quarter_next_cast
+        random_list = {
+            30 = { set_country_flag = all_spell_half_next_cast }
+            10 = { set_country_flag = all_spell_free_next_cast }
+            60 = { set_country_flag = all_spell_three_quarter_next_cast }
+        }
+    }
+}
+
+country_event = {
+    id = inf_calc.14
+    title = inf_calc.14.t
+    desc = inf_calc.14.d
+    picture = DEBATE_REPUBLICAN_eventPicture
+    trigger = {
+        tag = Y01
+    }
+    is_triggered_only = yes
+
+    option = {
+        name = inf_calc.chumijemoya.concealed_paths
+        trigger = {
+            has_mana = { amount = 1 }
+            check_variable = { which = chumijemoya_inf value = 70 }
+            NOT = { has_country_modifier = inf_calc_influence_reduction_chumijemoya }
+        }
+        custom_tooltip = inf_calc_chumijemoya_concealed_paths_tt
+        add_country_modifier = { name = inf_calc_influence_reduction_chumijemoya duration = 3650 hidden = yes }
+        add_country_modifier = { name = inf_calc_chumijemoya_concealed_paths duration = 730 }
+    }
+
+    option = {
+        name = inf_calc.chumijemoya.choking_mist
+        trigger = {
+            has_mana = { amount = 1 }
+            is_at_war = yes
+            check_variable = { which = chumijemoya_inf value = 70 }
+            NOT = { has_country_modifier = inf_calc_influence_reduction_chumijemoya }
+        }
+        custom_tooltip = inf_calc_chumijemoya_choking_mist_tt
+        add_country_modifier = { name = inf_calc_influence_reduction_chumijemoya duration = 3650 hidden = yes }
+        hidden_effect = {
+            every_country = {
+                limit = { war_with = ROOT }
+                if = {
+                    limit = {
+                        has_spy_network_from = { who = ROOT value = 75 }
+                    }
+                    add_country_modifier = { name = inf_calc_chumijemoya_choking_mist_enemy_3 duration = 730 }
+                    add_spy_network_from = { who = ROOT value = -75 }
+                }
+                else_if = {
+                    limit = {
+                        has_spy_network_from = { who = ROOT value = 50 }
+                    }
+                    add_country_modifier = { name = inf_calc_chumijemoya_choking_mist_enemy_2 duration = 730 }
+                    add_spy_network_from = { who = ROOT value = -50 }
+                }
+                else = {
+                    add_country_modifier = { name = inf_calc_chumijemoya_choking_mist_enemy_1 duration = 730 }
+                }
+            }
+        }
+    }
+
+    option = {
+        name = inf_calc.chumijemoya.choking_mist
+        trigger = {
+            is_at_war = no
+        }
+        custom_tooltip = inf_calc_chumijemoya_choking_mist_peace_tt
+    }
+
+    option = {
+        name = inf_calc.small_boon.leave
+    }
+}
+
+country_event = {
+    id = inf_calc.15
+    title = inf_calc.15.t
+    desc = inf_calc.15.d
+    picture = DEBATE_REPUBLICAN_eventPicture
+    trigger = {
+        tag = Y01
+    }
+
+    is_triggered_only = yes
+
+    option = {
+        name = inf_calc.15.a
+        set_variable = { which = kabiurgarko_inf value = 0 }
+        set_variable = { which = ajgriijarul_inf value = 0 }
+        set_variable = { which = shinukhorchi_inf value = 0 }
+        if = {
+            limit = { has_country_flag = khelorvalshi_restored }
+            set_variable = { which = khelorvalshi_inf value = 0 }
+        }
+        else = {
+            set_variable = { which = khelorvalshi_inf value = 15 }
+        }
+        set_variable = { which = chumijemoya_inf value = 0 }
+    }
+
+    option = {
+        name = inf_calc.15.b
+        set_variable = { which = kabiurgarko_inf value = 50 }
+        set_variable = { which = ajgriijarul_inf value = 50 }
+        set_variable = { which = shinukhorchi_inf value = 50 }
+        if = {
+            limit = { has_country_flag = khelorvalshi_restored }
+            set_variable = { which = khelorvalshi_inf value = 50 }
+        }
+        else = {
+            set_variable = { which = khelorvalshi_inf value = 15 }
+        }
+        set_variable = { which = chumijemoya_inf value = 50 }
+    }
+
+    option = {
+        name = inf_calc.15.c
+        set_variable = { which = kabiurgarko_inf value = 100 }
+        set_variable = { which = ajgriijarul_inf value = 100 }
+        set_variable = { which = shinukhorchi_inf value = 100 }
+        if = {
+            limit = { has_country_flag = khelorvalshi_restored }
+            set_variable = { which = khelorvalshi_inf value = 100 }
+        }
+        else = {
+            set_variable = { which = khelorvalshi_inf value = 15 }
+        }
+        set_variable = { which = chumijemoya_inf value = 100 }
+    }
+}
+
+country_event = {
+    id = inf_calc.16
+    title = inf_calc.16.t
+    desc = inf_calc.16.d
+    picture = DEBATE_REPUBLICAN_eventPicture
+    goto = inf_calc_khelorvalshi_drain_target
+    trigger = {
+        tag = Y01
+    }
+    is_triggered_only = yes
+
+    option = {
+        name = inf_calc.16.a
+    }
+}
+
+country_event = {
+    id = inf_calc.17
+    title = inf_calc.17.t
+    desc = inf_calc.17.d
+    trigger = {
+        tag = Y01
+    }
+    hidden = yes
+    is_triggered_only = yes
+
+    immediate = {
+        every_country = {
+            limit = {
+                has_country_flag = inf_calc_shinukhorchi_mind_control_target
+            }
+            clr_country_flag = inf_calc_shinukhorchi_mind_control_target
+            add_trust = {
+                who = root
+                value = -10
+            }
+            remove_opinion = { who = root modifier = inf_calc_shinukhorchi_mind_controlled }
+            reverse_remove_opinion = { who = root modifier = inf_calc_shinukhorchi_mind_controlled }
+            add_opinion = { who = root modifier = inf_calc_shinukhorchi_used_mind_control }
+        }
+    }
+}
+
+province_event = {
+    id = inf_calc.61
+    title = inf_calc.61.t
+    desc = inf_calc.61.d
+    picture = DEBATE_REPUBLICAN_eventPicture
+    is_triggered_only = yes
+
+    option = {
+        name = inf_calc.61.a
+    }
+}
+
+country_event = {
+    id = inf_calc.62
+    title = inf_calc.62.t
+    desc = inf_calc.62.d
+    picture = DEBATE_REPUBLICAN_eventPicture
+    goto = inf_calc_shirgrii_defense_target
+    is_triggered_only = yes
+
+    option = {
+        name = inf_calc.62.a
+    }
+}
+
+country_event = {
+    id = inf_calc.63
+    title = inf_calc.63.t
+    desc = inf_calc.63.d
+    picture = DEBATE_REPUBLICAN_eventPicture
+    goto = inf_calc_shirgrii_defense_target
+    is_triggered_only = yes
+
+    option = { name = inf_calc.shirgrii_defense.ok }
+}
+
+country_event = {
+    id = inf_calc.64
+    title = inf_calc.64.t
+    desc = inf_calc.64.d
+    picture = DEBATE_REPUBLICAN_eventPicture
+    goto = inf_calc_shirgrii_defense_target
+    is_triggered_only = yes
+
+    option = { name = inf_calc.shirgrii_defense.ok }
+}
+
+country_event = {
+    id = inf_calc.65
+    title = inf_calc.65.t
+    desc = inf_calc.65.d
+    picture = DEBATE_REPUBLICAN_eventPicture
+    goto = inf_calc_shirgrii_defense_target
+    is_triggered_only = yes
+
+    option = { name = inf_calc.shirgrii_defense.ok }
+}
+
+country_event = {
+    id = inf_calc.66
+    title = inf_calc.66.t
+    desc = inf_calc.66.d
+    picture = DEBATE_REPUBLICAN_eventPicture
+    goto = inf_calc_shirgrii_defense_target
+    is_triggered_only = yes
+
+    option = { name = inf_calc.shirgrii_defense.ok }
+}
+
+country_event = {
+    id = inf_calc.67
+    title = inf_calc.67.t
+    desc = inf_calc.67.d
+    picture = DEBATE_REPUBLICAN_eventPicture
+    goto = inf_calc_shirgrii_defense_target
+    is_triggered_only = yes
+
+    option = { name = inf_calc.shirgrii_defense.ok }
+}
+
+country_event = {
+    id = inf_calc.68
+    title = inf_calc.63.t
+    desc = inf_calc.68.d
+    picture = DEBATE_REPUBLICAN_eventPicture
+    goto = inf_calc_shirgrii_defense_target
+    is_triggered_only = yes
+
+    option = { name = inf_calc.shirgrii_defense.bad }
+}
+
+country_event = {
+    id = inf_calc.69
+    title = inf_calc.64.t
+    desc = inf_calc.69.d
+    picture = DEBATE_REPUBLICAN_eventPicture
+    goto = inf_calc_shirgrii_defense_target
+    is_triggered_only = yes
+
+    option = { name = inf_calc.shirgrii_defense.bad }
+}
+
+country_event = {
+    id = inf_calc.70
+    title = inf_calc.65.t
+    desc = inf_calc.70.d
+    picture = DEBATE_REPUBLICAN_eventPicture
+    goto = inf_calc_shirgrii_defense_target
+    is_triggered_only = yes
+
+    option = { name = inf_calc.shirgrii_defense.bad }
+}
+
+country_event = {
+    id = inf_calc.71
+    title = inf_calc.66.t
+    desc = inf_calc.71.d
+    picture = DEBATE_REPUBLICAN_eventPicture
+    goto = inf_calc_shirgrii_defense_target
+    is_triggered_only = yes
+
+    option = { name = inf_calc.shirgrii_defense.bad }
+}
+
+country_event = {
+    id = inf_calc.72
+    title = inf_calc.67.t
+    desc = inf_calc.72.d
+    picture = DEBATE_REPUBLICAN_eventPicture
+    goto = inf_calc_shirgrii_defense_target
+    is_triggered_only = yes
+
+    option = { name = inf_calc.shirgrii_defense.bad }
+}
+
+province_event = {
+    id = inf_calc.73
+    hidden = yes
+    is_triggered_only = yes
+
+    immediate = {
+        spawn_rebels = { type = noble_rebels size = 12 }
+    }
+}
+
+province_event = {
+    id = inf_calc.83
+    hidden = yes
+    is_triggered_only = yes
+
+    immediate = {
+        if = {
+            limit = {
+                owner = { tag = Y01 }
+                controlled_by = owner
+            }
+            change_siege = -1
+        }
+    }
+}
+
+province_event = {
+    id = inf_calc.84
+    hidden = yes
+    is_triggered_only = yes
+
+    immediate = {
+        if = {
+            limit = {
+                owner = { tag = Y01 }
+                controlled_by = owner
+            }
+            change_siege = -1
+        }
+    }
+}
+
+province_event = {
+    id = inf_calc.85
+    hidden = yes
+    is_triggered_only = yes
+
+    immediate = {
+        if = {
+            limit = {
+                owner = { tag = Y01 }
+                controlled_by = owner
+            }
+            change_siege = -1
+        }
+    }
+}
+
+country_event = {
+    id = inf_calc.74
+    title = inf_calc.74.t
+    desc = inf_calc.74.d
+    picture = DEBATE_REPUBLICAN_eventPicture
+    is_triggered_only = yes
+
+    option = { name = inf_calc.74.a }
+}
+
+country_event = {
+    id = inf_calc.75
+    title = inf_calc.75.t
+    desc = inf_calc.75.d
+    picture = DEBATE_REPUBLICAN_eventPicture
+    is_triggered_only = yes
+
+    option = { name = inf_calc.74.a }
+}
+
+country_event = {
+    id = inf_calc.77
+    title = inf_calc.77.t
+    desc = {
+        trigger = { has_country_flag = inf_calc_defense_popup_kabiurgarko }
+        desc = inf_calc.63.d
+    }
+    desc = {
+        trigger = { has_country_flag = inf_calc_defense_popup_chumijemoya }
+        desc = inf_calc.64.d
+    }
+    desc = {
+        trigger = { has_country_flag = inf_calc_defense_popup_ajgriijarul }
+        desc = inf_calc.65.d
+    }
+    desc = {
+        trigger = { has_country_flag = inf_calc_defense_popup_shinukhorchi }
+        desc = inf_calc.66.d
+    }
+    desc = {
+        trigger = { has_country_flag = inf_calc_defense_popup_khelorvalshi }
+        desc = inf_calc.67.d
+    }
+    desc = inf_calc.77.d
+    picture = DEBATE_REPUBLICAN_eventPicture
+    goto = inf_calc_shirgrii_defense_target
+    is_triggered_only = yes
+
+    option = {
+        name = inf_calc.shirgrii_defense.ok
+        clr_country_flag = inf_calc_defense_popup_kabiurgarko
+        clr_country_flag = inf_calc_defense_popup_chumijemoya
+        clr_country_flag = inf_calc_defense_popup_ajgriijarul
+        clr_country_flag = inf_calc_defense_popup_shinukhorchi
+        clr_country_flag = inf_calc_defense_popup_khelorvalshi
+    }
+}
+
+province_event = {
+    id = inf_calc.76
+    title = inf_calc.76.t
+    desc = inf_calc.76.d
+    picture = DEBATE_REPUBLICAN_eventPicture
+    is_triggered_only = yes
+
+    option = {
+        name = inf_calc.60.shinukhorchi
+        inf_calc_clear_temple_control = yes
+        add_permanent_province_modifier = { name = shinukhorchi_temple_control duration = -1 }
+    }
+
+    option = {
+        name = inf_calc.60.chumijemoya
+        inf_calc_clear_temple_control = yes
+        add_permanent_province_modifier = { name = chumijemoya_temple_control duration = -1 }
+    }
+
+    option = {
+        name = inf_calc.60.ajgriijarul
+        inf_calc_clear_temple_control = yes
+        add_permanent_province_modifier = { name = ajgriijarul_temple_control duration = -1 }
+    }
+
+    option = {
+        name = inf_calc.60.kabiurgarko
+        inf_calc_clear_temple_control = yes
+        add_permanent_province_modifier = { name = kabiurgarko_temple_control duration = -1 }
+    }
+
+    option = {
+        name = inf_calc.60.khelorvalshi
+        inf_calc_clear_temple_control = yes
+        add_permanent_province_modifier = { name = khelorvalshi_temple_control duration = -1 }
+    }
+}
+
+country_event = {
+    id = inf_calc.20
+    title = inf_calc.20.t
+    desc = inf_calc.concessions.d
+    picture = DEBATE_REPUBLICAN_eventPicture
+    trigger = { tag = Y01 }
+    is_triggered_only = yes
+
+    option = {
+        name = inf_calc.concession_tax_kabiurgarko_inactive
+        trigger = { NOT = { has_country_modifier = inf_calc_boost_kabiurgarko_penalty } }
+        add_country_modifier = { name = inf_calc_boost_kabiurgarko_penalty duration = -1 }
+    }
+    option = {
+        name = inf_calc.concession_tax_kabiurgarko_active
+        trigger = { has_country_modifier = inf_calc_boost_kabiurgarko_penalty }
+        remove_country_modifier = inf_calc_boost_kabiurgarko_penalty
+    }
+    option = {
+        name = inf_calc.concession_manpower_kabiurgarko_inactive
+        trigger = { NOT = { has_country_modifier = inf_calc_boost_kabiurgarko_manpower } }
+        add_country_modifier = { name = inf_calc_boost_kabiurgarko_manpower duration = -1 }
+    }
+    option = {
+        name = inf_calc.concession_manpower_kabiurgarko_active
+        trigger = { has_country_modifier = inf_calc_boost_kabiurgarko_manpower }
+        remove_country_modifier = inf_calc_boost_kabiurgarko_manpower
+    }
+    option = {
+        name = inf_calc.concession_rivals_kabiurgarko_inactive
+        trigger = { NOT = { has_country_modifier = inf_calc_boost_kabiurgarko_other_influence } }
+        add_country_modifier = { name = inf_calc_boost_kabiurgarko_other_influence duration = -1 }
+    }
+    option = {
+        name = inf_calc.concession_rivals_kabiurgarko_active
+        trigger = { has_country_modifier = inf_calc_boost_kabiurgarko_other_influence }
+        remove_country_modifier = inf_calc_boost_kabiurgarko_other_influence
+    }
+    option = {
+        name = inf_calc.concessions.exit
+    }
+}
+
+country_event = {
+    id = inf_calc.21
+    title = inf_calc.21.t
+    desc = inf_calc.concessions.d
+    picture = DEBATE_REPUBLICAN_eventPicture
+    trigger = { tag = Y01 }
+    is_triggered_only = yes
+
+    option = {
+        name = inf_calc.concession_tax_ajgriijarul_inactive
+        trigger = { NOT = { has_country_modifier = inf_calc_boost_ajgriijarul_penalty } }
+        add_country_modifier = { name = inf_calc_boost_ajgriijarul_penalty duration = -1 }
+    }
+    option = {
+        name = inf_calc.concession_tax_ajgriijarul_active
+        trigger = { has_country_modifier = inf_calc_boost_ajgriijarul_penalty }
+        remove_country_modifier = inf_calc_boost_ajgriijarul_penalty
+    }
+    option = {
+        name = inf_calc.concession_manpower_ajgriijarul_inactive
+        trigger = { NOT = { has_country_modifier = inf_calc_boost_ajgriijarul_manpower } }
+        add_country_modifier = { name = inf_calc_boost_ajgriijarul_manpower duration = -1 }
+    }
+    option = {
+        name = inf_calc.concession_manpower_ajgriijarul_active
+        trigger = { has_country_modifier = inf_calc_boost_ajgriijarul_manpower }
+        remove_country_modifier = inf_calc_boost_ajgriijarul_manpower
+    }
+    option = {
+        name = inf_calc.concession_rivals_ajgriijarul_inactive
+        trigger = { NOT = { has_country_modifier = inf_calc_boost_ajgriijarul_other_influence } }
+        add_country_modifier = { name = inf_calc_boost_ajgriijarul_other_influence duration = -1 }
+    }
+    option = {
+        name = inf_calc.concession_rivals_ajgriijarul_active
+        trigger = { has_country_modifier = inf_calc_boost_ajgriijarul_other_influence }
+        remove_country_modifier = inf_calc_boost_ajgriijarul_other_influence
+    }
+    option = {
+        name = inf_calc.concessions.exit
+    }
+}
+
+country_event = {
+    id = inf_calc.22
+    title = inf_calc.22.t
+    desc = inf_calc.concessions.d
+    picture = DEBATE_REPUBLICAN_eventPicture
+    trigger = { tag = Y01 }
+    is_triggered_only = yes
+
+    option = {
+        name = inf_calc.concession_tax_shinukhorchi_inactive
+        trigger = { NOT = { has_country_modifier = inf_calc_boost_shinukhorchi_penalty } }
+        add_country_modifier = { name = inf_calc_boost_shinukhorchi_penalty duration = -1 }
+    }
+    option = {
+        name = inf_calc.concession_tax_shinukhorchi_active
+        trigger = { has_country_modifier = inf_calc_boost_shinukhorchi_penalty }
+        remove_country_modifier = inf_calc_boost_shinukhorchi_penalty
+    }
+    option = {
+        name = inf_calc.concession_manpower_shinukhorchi_inactive
+        trigger = { NOT = { has_country_modifier = inf_calc_boost_shinukhorchi_manpower } }
+        add_country_modifier = { name = inf_calc_boost_shinukhorchi_manpower duration = -1 }
+    }
+    option = {
+        name = inf_calc.concession_manpower_shinukhorchi_active
+        trigger = { has_country_modifier = inf_calc_boost_shinukhorchi_manpower }
+        remove_country_modifier = inf_calc_boost_shinukhorchi_manpower
+    }
+    option = {
+        name = inf_calc.concession_rivals_shinukhorchi_inactive
+        trigger = { NOT = { has_country_modifier = inf_calc_boost_shinukhorchi_other_influence } }
+        add_country_modifier = { name = inf_calc_boost_shinukhorchi_other_influence duration = -1 }
+    }
+    option = {
+        name = inf_calc.concession_rivals_shinukhorchi_active
+        trigger = { has_country_modifier = inf_calc_boost_shinukhorchi_other_influence }
+        remove_country_modifier = inf_calc_boost_shinukhorchi_other_influence
+    }
+    option = {
+        name = inf_calc.concessions.exit
+    }
+}
+
+country_event = {
+    id = inf_calc.23
+    title = inf_calc.23.t
+    desc = inf_calc.concessions.d
+    picture = DEBATE_REPUBLICAN_eventPicture
+    trigger = {
+        tag = Y01
+        has_country_flag = khelorvalshi_restored
+    }
+    is_triggered_only = yes
+
+    option = {
+        name = inf_calc.concession_tax_khelorvalshi_inactive
+        trigger = { NOT = { has_country_modifier = inf_calc_boost_khelorvalshi_penalty } }
+        add_country_modifier = { name = inf_calc_boost_khelorvalshi_penalty duration = -1 }
+    }
+    option = {
+        name = inf_calc.concession_tax_khelorvalshi_active
+        trigger = { has_country_modifier = inf_calc_boost_khelorvalshi_penalty }
+        remove_country_modifier = inf_calc_boost_khelorvalshi_penalty
+    }
+    option = {
+        name = inf_calc.concession_manpower_khelorvalshi_inactive
+        trigger = { NOT = { has_country_modifier = inf_calc_boost_khelorvalshi_manpower } }
+        add_country_modifier = { name = inf_calc_boost_khelorvalshi_manpower duration = -1 }
+    }
+    option = {
+        name = inf_calc.concession_manpower_khelorvalshi_active
+        trigger = { has_country_modifier = inf_calc_boost_khelorvalshi_manpower }
+        remove_country_modifier = inf_calc_boost_khelorvalshi_manpower
+    }
+    option = {
+        name = inf_calc.concession_rivals_khelorvalshi_inactive
+        trigger = { NOT = { has_country_modifier = inf_calc_boost_khelorvalshi_other_influence } }
+        add_country_modifier = { name = inf_calc_boost_khelorvalshi_other_influence duration = -1 }
+    }
+    option = {
+        name = inf_calc.concession_rivals_khelorvalshi_active
+        trigger = { has_country_modifier = inf_calc_boost_khelorvalshi_other_influence }
+        remove_country_modifier = inf_calc_boost_khelorvalshi_other_influence
+    }
+    option = {
+        name = inf_calc.concessions.exit
+    }
+}
+
+country_event = {
+    id = inf_calc.24
+    title = inf_calc.24.t
+    desc = inf_calc.concessions.d
+    picture = DEBATE_REPUBLICAN_eventPicture
+    trigger = { tag = Y01 }
+    is_triggered_only = yes
+
+    option = {
+        name = inf_calc.concession_tax_chumijemoya_inactive
+        trigger = { NOT = { has_country_modifier = inf_calc_boost_chumijemoya_penalty } }
+        add_country_modifier = { name = inf_calc_boost_chumijemoya_penalty duration = -1 }
+    }
+    option = {
+        name = inf_calc.concession_tax_chumijemoya_active
+        trigger = { has_country_modifier = inf_calc_boost_chumijemoya_penalty }
+        remove_country_modifier = inf_calc_boost_chumijemoya_penalty
+    }
+    option = {
+        name = inf_calc.concession_manpower_chumijemoya_inactive
+        trigger = { NOT = { has_country_modifier = inf_calc_boost_chumijemoya_manpower } }
+        add_country_modifier = { name = inf_calc_boost_chumijemoya_manpower duration = -1 }
+    }
+    option = {
+        name = inf_calc.concession_manpower_chumijemoya_active
+        trigger = { has_country_modifier = inf_calc_boost_chumijemoya_manpower }
+        remove_country_modifier = inf_calc_boost_chumijemoya_manpower
+    }
+    option = {
+        name = inf_calc.concession_rivals_chumijemoya_inactive
+        trigger = { NOT = { has_country_modifier = inf_calc_boost_chumijemoya_other_influence } }
+        add_country_modifier = { name = inf_calc_boost_chumijemoya_other_influence duration = -1 }
+    }
+    option = {
+        name = inf_calc.concession_rivals_chumijemoya_active
+        trigger = { has_country_modifier = inf_calc_boost_chumijemoya_other_influence }
+        remove_country_modifier = inf_calc_boost_chumijemoya_other_influence
+    }
+    option = {
+        name = inf_calc.concessions.exit
+    }
+}
+
+country_event = {
+    id = inf_calc.40
+    title = inf_calc.40.t
+    desc = inf_calc.major_concessions.d
+    picture = DEBATE_REPUBLICAN_eventPicture
+    trigger = { tag = Y01 }
+    is_triggered_only = yes
+
+    option = {
+        name = inf_calc.shinukhorchi.elaborate_rituals_active
+        trigger = { has_country_modifier = inf_calc_shinukhorchi_elaborate_rituals }
+        country_event = { id = inf_calc.41 }
+    }
+    option = {
+        name = inf_calc.shinukhorchi.elaborate_rituals_inactive
+        trigger = { NOT = { has_country_modifier = inf_calc_shinukhorchi_elaborate_rituals } }
+        country_event = { id = inf_calc.41 }
+    }
+    option = {
+        name = inf_calc.shinukhorchi.thorough_inquisition_active
+        trigger = { has_country_modifier = inf_calc_shinukhorchi_thorough_inquisition }
+        country_event = { id = inf_calc.42 }
+    }
+    option = {
+        name = inf_calc.shinukhorchi.thorough_inquisition_inactive
+        trigger = { NOT = { has_country_modifier = inf_calc_shinukhorchi_thorough_inquisition } }
+        country_event = { id = inf_calc.42 }
+    }
+    option = {
+        name = inf_calc.concessions.exit
+    }
+}
+
+country_event = {
+    id = inf_calc.41
+    title = inf_calc.shinukhorchi.elaborate_rituals
+    desc = inf_calc.shinukhorchi.elaborate_rituals.d
+    picture = DEBATE_REPUBLICAN_eventPicture
+    trigger = { tag = Y01 }
+    is_triggered_only = yes
+
+    option = {
+        name = inf_calc.major_concession.activate
+        trigger = {
+            check_variable = { which = shinukhorchi_inf value = 50 }
+            NOT = { has_country_modifier = inf_calc_shinukhorchi_elaborate_rituals }
+            NOT = { has_country_modifier = inf_calc_shinukhorchi_elaborate_rituals_forced_stop }
+        }
+        add_country_modifier = { name = inf_calc_shinukhorchi_elaborate_rituals duration = 3650 }
+        if = {
+            limit = { has_country_flag = inf_calc_shinukhorchi_elaborate_rituals_auto }
+            set_country_flag = inf_calc_shinukhorchi_elaborate_rituals_refresh
+        }
+    }
+    option = {
+        name = inf_calc.major_concession.enable_auto_inactive
+        trigger = { NOT = { has_country_flag = inf_calc_shinukhorchi_elaborate_rituals_auto } }
+        set_country_flag = inf_calc_shinukhorchi_elaborate_rituals_auto
+        if = {
+            limit = { has_country_modifier = inf_calc_shinukhorchi_elaborate_rituals }
+            set_country_flag = inf_calc_shinukhorchi_elaborate_rituals_refresh
+        }
+        country_event = { id = inf_calc.140 }
+    }
+    option = {
+        name = inf_calc.major_concession.disable_auto_active
+        trigger = { has_country_flag = inf_calc_shinukhorchi_elaborate_rituals_auto }
+        clr_country_flag = inf_calc_shinukhorchi_elaborate_rituals_auto
+        clr_country_flag = inf_calc_shinukhorchi_elaborate_rituals_refresh
+        country_event = { id = inf_calc.140 }
+    }
+    option = {
+        name = inf_calc.major_concession.force_stop
+        trigger = { has_country_modifier = inf_calc_shinukhorchi_elaborate_rituals }
+        remove_country_modifier = inf_calc_shinukhorchi_elaborate_rituals
+        clr_country_flag = inf_calc_shinukhorchi_elaborate_rituals_auto
+        clr_country_flag = inf_calc_shinukhorchi_elaborate_rituals_refresh
+        add_country_modifier = { name = inf_calc_shinukhorchi_elaborate_rituals_forced_stop duration = 1825 }
+    }
+    option = {
+        name = inf_calc.major_concession.back
+        country_event = { id = inf_calc.40 }
+    }
+}
+
+country_event = {
+    id = inf_calc.42
+    title = inf_calc.shinukhorchi.thorough_inquisition
+    desc = inf_calc.shinukhorchi.thorough_inquisition.d
+    picture = DEBATE_REPUBLICAN_eventPicture
+    trigger = { tag = Y01 }
+    is_triggered_only = yes
+
+    option = {
+        name = inf_calc.major_concession.activate
+        trigger = {
+            check_variable = { which = shinukhorchi_inf value = 50 }
+            NOT = { has_country_modifier = inf_calc_shinukhorchi_thorough_inquisition }
+            NOT = { has_country_modifier = inf_calc_shinukhorchi_thorough_inquisition_forced_stop }
+        }
+        add_country_modifier = { name = inf_calc_shinukhorchi_thorough_inquisition duration = 3650 }
+        if = {
+            limit = { has_country_flag = inf_calc_shinukhorchi_thorough_inquisition_auto }
+            set_country_flag = inf_calc_shinukhorchi_thorough_inquisition_refresh
+        }
+    }
+    option = {
+        name = inf_calc.major_concession.enable_auto_inactive
+        trigger = { NOT = { has_country_flag = inf_calc_shinukhorchi_thorough_inquisition_auto } }
+        set_country_flag = inf_calc_shinukhorchi_thorough_inquisition_auto
+        if = {
+            limit = { has_country_modifier = inf_calc_shinukhorchi_thorough_inquisition }
+            set_country_flag = inf_calc_shinukhorchi_thorough_inquisition_refresh
+        }
+        country_event = { id = inf_calc.141 }
+    }
+    option = {
+        name = inf_calc.major_concession.disable_auto_active
+        trigger = { has_country_flag = inf_calc_shinukhorchi_thorough_inquisition_auto }
+        clr_country_flag = inf_calc_shinukhorchi_thorough_inquisition_auto
+        clr_country_flag = inf_calc_shinukhorchi_thorough_inquisition_refresh
+        country_event = { id = inf_calc.141 }
+    }
+    option = {
+        name = inf_calc.major_concession.force_stop
+        trigger = { has_country_modifier = inf_calc_shinukhorchi_thorough_inquisition }
+        remove_country_modifier = inf_calc_shinukhorchi_thorough_inquisition
+        clr_country_flag = inf_calc_shinukhorchi_thorough_inquisition_auto
+        clr_country_flag = inf_calc_shinukhorchi_thorough_inquisition_refresh
+        add_country_modifier = { name = inf_calc_shinukhorchi_thorough_inquisition_forced_stop duration = 1825 }
+    }
+    option = {
+        name = inf_calc.major_concession.back
+        country_event = { id = inf_calc.40 }
+    }
+}
+
+country_event = {
+    id = inf_calc.43
+    title = inf_calc.43.t
+    desc = inf_calc.major_concessions.d
+    picture = DEBATE_REPUBLICAN_eventPicture
+    trigger = { tag = Y01 }
+    is_triggered_only = yes
+
+    option = {
+        name = inf_calc.chumijemoya.suffocating_secrecy_active
+        trigger = { has_country_modifier = inf_calc_chumijemoya_suffocating_secrecy }
+        country_event = { id = inf_calc.44 }
+    }
+    option = {
+        name = inf_calc.chumijemoya.suffocating_secrecy_inactive
+        trigger = { NOT = { has_country_modifier = inf_calc_chumijemoya_suffocating_secrecy } }
+        country_event = { id = inf_calc.44 }
+    }
+    option = {
+        name = inf_calc.chumijemoya.shadow_overseers_active
+        trigger = { has_country_modifier = inf_calc_chumijemoya_shadow_overseers }
+        country_event = { id = inf_calc.45 }
+    }
+    option = {
+        name = inf_calc.chumijemoya.shadow_overseers_inactive
+        trigger = { NOT = { has_country_modifier = inf_calc_chumijemoya_shadow_overseers } }
+        country_event = { id = inf_calc.45 }
+    }
+    option = {
+        name = inf_calc.concessions.exit
+    }
+}
+
+country_event = {
+    id = inf_calc.44
+    title = inf_calc.chumijemoya.suffocating_secrecy
+    desc = inf_calc.chumijemoya.suffocating_secrecy.d
+    picture = DEBATE_REPUBLICAN_eventPicture
+    trigger = { tag = Y01 }
+    is_triggered_only = yes
+
+    option = {
+        name = inf_calc.major_concession.activate
+        trigger = {
+            check_variable = { which = chumijemoya_inf value = 50 }
+            NOT = { has_country_modifier = inf_calc_chumijemoya_suffocating_secrecy }
+            NOT = { has_country_modifier = inf_calc_chumijemoya_suffocating_secrecy_forced_stop }
+        }
+        add_country_modifier = { name = inf_calc_chumijemoya_suffocating_secrecy duration = 3650 }
+        if = {
+            limit = { has_country_flag = inf_calc_chumijemoya_suffocating_secrecy_auto }
+            set_country_flag = inf_calc_chumijemoya_suffocating_secrecy_refresh
+        }
+    }
+    option = {
+        name = inf_calc.major_concession.enable_auto_inactive
+        trigger = { NOT = { has_country_flag = inf_calc_chumijemoya_suffocating_secrecy_auto } }
+        set_country_flag = inf_calc_chumijemoya_suffocating_secrecy_auto
+        if = {
+            limit = { has_country_modifier = inf_calc_chumijemoya_suffocating_secrecy }
+            set_country_flag = inf_calc_chumijemoya_suffocating_secrecy_refresh
+        }
+        country_event = { id = inf_calc.142 }
+    }
+    option = {
+        name = inf_calc.major_concession.disable_auto_active
+        trigger = { has_country_flag = inf_calc_chumijemoya_suffocating_secrecy_auto }
+        clr_country_flag = inf_calc_chumijemoya_suffocating_secrecy_auto
+        clr_country_flag = inf_calc_chumijemoya_suffocating_secrecy_refresh
+        country_event = { id = inf_calc.142 }
+    }
+    option = {
+        name = inf_calc.major_concession.force_stop
+        trigger = { has_country_modifier = inf_calc_chumijemoya_suffocating_secrecy }
+        remove_country_modifier = inf_calc_chumijemoya_suffocating_secrecy
+        clr_country_flag = inf_calc_chumijemoya_suffocating_secrecy_auto
+        clr_country_flag = inf_calc_chumijemoya_suffocating_secrecy_refresh
+        add_country_modifier = { name = inf_calc_chumijemoya_suffocating_secrecy_forced_stop duration = 1825 }
+    }
+    option = {
+        name = inf_calc.major_concession.back
+        country_event = { id = inf_calc.43 }
+    }
+}
+
+country_event = {
+    id = inf_calc.45
+    title = inf_calc.chumijemoya.shadow_overseers
+    desc = inf_calc.chumijemoya.shadow_overseers.d
+    picture = DEBATE_REPUBLICAN_eventPicture
+    trigger = { tag = Y01 }
+    is_triggered_only = yes
+
+    option = {
+        name = inf_calc.major_concession.activate
+        trigger = {
+            check_variable = { which = chumijemoya_inf value = 50 }
+            NOT = { has_country_modifier = inf_calc_chumijemoya_shadow_overseers }
+            NOT = { has_country_modifier = inf_calc_chumijemoya_shadow_overseers_forced_stop }
+        }
+        add_country_modifier = { name = inf_calc_chumijemoya_shadow_overseers duration = 3650 }
+        if = {
+            limit = { has_country_flag = inf_calc_chumijemoya_shadow_overseers_auto }
+            set_country_flag = inf_calc_chumijemoya_shadow_overseers_refresh
+        }
+    }
+    option = {
+        name = inf_calc.major_concession.enable_auto_inactive
+        trigger = { NOT = { has_country_flag = inf_calc_chumijemoya_shadow_overseers_auto } }
+        set_country_flag = inf_calc_chumijemoya_shadow_overseers_auto
+        if = {
+            limit = { has_country_modifier = inf_calc_chumijemoya_shadow_overseers }
+            set_country_flag = inf_calc_chumijemoya_shadow_overseers_refresh
+        }
+        country_event = { id = inf_calc.143 }
+    }
+    option = {
+        name = inf_calc.major_concession.disable_auto_active
+        trigger = { has_country_flag = inf_calc_chumijemoya_shadow_overseers_auto }
+        clr_country_flag = inf_calc_chumijemoya_shadow_overseers_auto
+        clr_country_flag = inf_calc_chumijemoya_shadow_overseers_refresh
+        country_event = { id = inf_calc.143 }
+    }
+    option = {
+        name = inf_calc.major_concession.force_stop
+        trigger = { has_country_modifier = inf_calc_chumijemoya_shadow_overseers }
+        remove_country_modifier = inf_calc_chumijemoya_shadow_overseers
+        clr_country_flag = inf_calc_chumijemoya_shadow_overseers_auto
+        clr_country_flag = inf_calc_chumijemoya_shadow_overseers_refresh
+        add_country_modifier = { name = inf_calc_chumijemoya_shadow_overseers_forced_stop duration = 1825 }
+    }
+    option = {
+        name = inf_calc.major_concession.back
+        country_event = { id = inf_calc.43 }
+    }
+}
+
+country_event = {
+    id = inf_calc.46
+    title = inf_calc.46.t
+    desc = inf_calc.major_concessions.d
+    picture = DEBATE_REPUBLICAN_eventPicture
+    trigger = { tag = Y01 }
+    is_triggered_only = yes
+
+    option = {
+        name = inf_calc.ajgriijarul.gruesome_displays_active
+        trigger = { has_country_modifier = inf_calc_ajgriijarul_gruesome_displays }
+        country_event = { id = inf_calc.47 }
+    }
+    option = {
+        name = inf_calc.ajgriijarul.gruesome_displays_inactive
+        trigger = { NOT = { has_country_modifier = inf_calc_ajgriijarul_gruesome_displays } }
+        country_event = { id = inf_calc.47 }
+    }
+    option = {
+        name = inf_calc.ajgriijarul.lethal_duels_active
+        trigger = { has_country_modifier = inf_calc_ajgriijarul_lethal_duels }
+        country_event = { id = inf_calc.48 }
+    }
+    option = {
+        name = inf_calc.ajgriijarul.lethal_duels_inactive
+        trigger = { NOT = { has_country_modifier = inf_calc_ajgriijarul_lethal_duels } }
+        country_event = { id = inf_calc.48 }
+    }
+    option = {
+        name = inf_calc.concessions.exit
+    }
+}
+
+country_event = {
+    id = inf_calc.47
+    title = inf_calc.ajgriijarul.gruesome_displays
+    desc = inf_calc.ajgriijarul.gruesome_displays.d
+    picture = DEBATE_REPUBLICAN_eventPicture
+    trigger = { tag = Y01 }
+    is_triggered_only = yes
+
+    option = {
+        name = inf_calc.major_concession.activate
+        trigger = {
+            check_variable = { which = ajgriijarul_inf value = 50 }
+            NOT = { has_country_modifier = inf_calc_ajgriijarul_gruesome_displays }
+            NOT = { has_country_modifier = inf_calc_ajgriijarul_gruesome_displays_forced_stop }
+        }
+        add_country_modifier = { name = inf_calc_ajgriijarul_gruesome_displays duration = 3650 }
+        if = {
+            limit = { has_country_flag = inf_calc_ajgriijarul_gruesome_displays_auto }
+            set_country_flag = inf_calc_ajgriijarul_gruesome_displays_refresh
+        }
+    }
+    option = {
+        name = inf_calc.major_concession.enable_auto_inactive
+        trigger = { NOT = { has_country_flag = inf_calc_ajgriijarul_gruesome_displays_auto } }
+        set_country_flag = inf_calc_ajgriijarul_gruesome_displays_auto
+        if = {
+            limit = { has_country_modifier = inf_calc_ajgriijarul_gruesome_displays }
+            set_country_flag = inf_calc_ajgriijarul_gruesome_displays_refresh
+        }
+        country_event = { id = inf_calc.144 }
+    }
+    option = {
+        name = inf_calc.major_concession.disable_auto_active
+        trigger = { has_country_flag = inf_calc_ajgriijarul_gruesome_displays_auto }
+        clr_country_flag = inf_calc_ajgriijarul_gruesome_displays_auto
+        clr_country_flag = inf_calc_ajgriijarul_gruesome_displays_refresh
+        country_event = { id = inf_calc.144 }
+    }
+    option = {
+        name = inf_calc.major_concession.force_stop
+        trigger = { has_country_modifier = inf_calc_ajgriijarul_gruesome_displays }
+        remove_country_modifier = inf_calc_ajgriijarul_gruesome_displays
+        clr_country_flag = inf_calc_ajgriijarul_gruesome_displays_auto
+        clr_country_flag = inf_calc_ajgriijarul_gruesome_displays_refresh
+        add_country_modifier = { name = inf_calc_ajgriijarul_gruesome_displays_forced_stop duration = 1825 }
+    }
+    option = {
+        name = inf_calc.major_concession.back
+        country_event = { id = inf_calc.46 }
+    }
+}
+
+country_event = {
+    id = inf_calc.48
+    title = inf_calc.ajgriijarul.lethal_duels
+    desc = inf_calc.ajgriijarul.lethal_duels.d
+    picture = DEBATE_REPUBLICAN_eventPicture
+    trigger = { tag = Y01 }
+    is_triggered_only = yes
+
+    option = {
+        name = inf_calc.major_concession.activate
+        trigger = {
+            check_variable = { which = ajgriijarul_inf value = 50 }
+            NOT = { has_country_modifier = inf_calc_ajgriijarul_lethal_duels }
+            NOT = { has_country_modifier = inf_calc_ajgriijarul_lethal_duels_forced_stop }
+        }
+        add_country_modifier = { name = inf_calc_ajgriijarul_lethal_duels duration = 3650 }
+        if = {
+            limit = { has_country_flag = inf_calc_ajgriijarul_lethal_duels_auto }
+            set_country_flag = inf_calc_ajgriijarul_lethal_duels_refresh
+        }
+    }
+    option = {
+        name = inf_calc.major_concession.enable_auto_inactive
+        trigger = { NOT = { has_country_flag = inf_calc_ajgriijarul_lethal_duels_auto } }
+        set_country_flag = inf_calc_ajgriijarul_lethal_duels_auto
+        if = {
+            limit = { has_country_modifier = inf_calc_ajgriijarul_lethal_duels }
+            set_country_flag = inf_calc_ajgriijarul_lethal_duels_refresh
+        }
+        country_event = { id = inf_calc.145 }
+    }
+    option = {
+        name = inf_calc.major_concession.disable_auto_active
+        trigger = { has_country_flag = inf_calc_ajgriijarul_lethal_duels_auto }
+        clr_country_flag = inf_calc_ajgriijarul_lethal_duels_auto
+        clr_country_flag = inf_calc_ajgriijarul_lethal_duels_refresh
+        country_event = { id = inf_calc.145 }
+    }
+    option = {
+        name = inf_calc.major_concession.force_stop
+        trigger = { has_country_modifier = inf_calc_ajgriijarul_lethal_duels }
+        remove_country_modifier = inf_calc_ajgriijarul_lethal_duels
+        clr_country_flag = inf_calc_ajgriijarul_lethal_duels_auto
+        clr_country_flag = inf_calc_ajgriijarul_lethal_duels_refresh
+        add_country_modifier = { name = inf_calc_ajgriijarul_lethal_duels_forced_stop duration = 1825 }
+    }
+    option = {
+        name = inf_calc.major_concession.back
+        country_event = { id = inf_calc.46 }
+    }
+}
+
+country_event = {
+    id = inf_calc.49
+    title = inf_calc.49.t
+    desc = inf_calc.major_concessions.d
+    picture = DEBATE_REPUBLICAN_eventPicture
+    trigger = {
+        tag = Y01
+        has_country_flag = khelorvalshi_restored
+    }
+    is_triggered_only = yes
+
+    option = {
+        name = inf_calc.khelorvalshi.soultithe_active
+        trigger = { has_country_modifier = inf_calc_khelorvalshi_soultithe }
+        country_event = { id = inf_calc.50 }
+    }
+    option = {
+        name = inf_calc.khelorvalshi.soultithe_inactive
+        trigger = { NOT = { has_country_modifier = inf_calc_khelorvalshi_soultithe } }
+        country_event = { id = inf_calc.50 }
+    }
+    option = {
+        name = inf_calc.khelorvalshi.temple_expedition_focus_active
+        trigger = { has_country_modifier = inf_calc_khelorvalshi_temple_expedition_focus }
+        country_event = { id = inf_calc.51 }
+    }
+    option = {
+        name = inf_calc.khelorvalshi.temple_expedition_focus_inactive
+        trigger = { NOT = { has_country_modifier = inf_calc_khelorvalshi_temple_expedition_focus } }
+        country_event = { id = inf_calc.51 }
+    }
+    option = {
+        name = inf_calc.concessions.exit
+    }
+}
+
+country_event = {
+    id = inf_calc.50
+    title = inf_calc.khelorvalshi.soultithe
+    desc = inf_calc.khelorvalshi.soultithe.d
+    picture = DEBATE_REPUBLICAN_eventPicture
+    trigger = {
+        tag = Y01
+        has_country_flag = khelorvalshi_restored
+    }
+    is_triggered_only = yes
+
+    option = {
+        name = inf_calc.major_concession.activate
+        trigger = {
+            check_variable = { which = khelorvalshi_inf value = 50 }
+            NOT = { has_country_modifier = inf_calc_khelorvalshi_soultithe }
+            NOT = { has_country_modifier = inf_calc_khelorvalshi_soultithe_forced_stop }
+        }
+        add_country_modifier = { name = inf_calc_khelorvalshi_soultithe duration = 3650 }
+        if = {
+            limit = { has_country_flag = inf_calc_khelorvalshi_soultithe_auto }
+            set_country_flag = inf_calc_khelorvalshi_soultithe_refresh
+        }
+    }
+    option = {
+        name = inf_calc.major_concession.enable_auto_inactive
+        trigger = { NOT = { has_country_flag = inf_calc_khelorvalshi_soultithe_auto } }
+        set_country_flag = inf_calc_khelorvalshi_soultithe_auto
+        if = {
+            limit = { has_country_modifier = inf_calc_khelorvalshi_soultithe }
+            set_country_flag = inf_calc_khelorvalshi_soultithe_refresh
+        }
+        country_event = { id = inf_calc.146 }
+    }
+    option = {
+        name = inf_calc.major_concession.disable_auto_active
+        trigger = { has_country_flag = inf_calc_khelorvalshi_soultithe_auto }
+        clr_country_flag = inf_calc_khelorvalshi_soultithe_auto
+        clr_country_flag = inf_calc_khelorvalshi_soultithe_refresh
+        country_event = { id = inf_calc.146 }
+    }
+    option = {
+        name = inf_calc.major_concession.force_stop
+        trigger = { has_country_modifier = inf_calc_khelorvalshi_soultithe }
+        remove_country_modifier = inf_calc_khelorvalshi_soultithe
+        clr_country_flag = inf_calc_khelorvalshi_soultithe_auto
+        clr_country_flag = inf_calc_khelorvalshi_soultithe_refresh
+        add_country_modifier = { name = inf_calc_khelorvalshi_soultithe_forced_stop duration = 1825 }
+    }
+    option = {
+        name = inf_calc.major_concession.back
+        country_event = { id = inf_calc.49 }
+    }
+}
+
+country_event = {
+    id = inf_calc.51
+    title = inf_calc.khelorvalshi.temple_expedition_focus
+    desc = inf_calc.khelorvalshi.temple_expedition_focus.d
+    picture = DEBATE_REPUBLICAN_eventPicture
+    trigger = {
+        tag = Y01
+        has_country_flag = khelorvalshi_restored
+    }
+    is_triggered_only = yes
+
+    option = {
+        name = inf_calc.major_concession.activate
+        trigger = {
+            check_variable = { which = khelorvalshi_inf value = 50 }
+            NOT = { has_country_modifier = inf_calc_khelorvalshi_temple_expedition_focus }
+            NOT = { has_country_modifier = inf_calc_khelorvalshi_temple_expedition_focus_forced_stop }
+        }
+        add_country_modifier = { name = inf_calc_khelorvalshi_temple_expedition_focus duration = 3650 }
+        if = {
+            limit = { has_country_flag = inf_calc_khelorvalshi_temple_expedition_focus_auto }
+            set_country_flag = inf_calc_khelorvalshi_temple_expedition_focus_refresh
+        }
+    }
+    option = {
+        name = inf_calc.major_concession.enable_auto_inactive
+        trigger = { NOT = { has_country_flag = inf_calc_khelorvalshi_temple_expedition_focus_auto } }
+        set_country_flag = inf_calc_khelorvalshi_temple_expedition_focus_auto
+        if = {
+            limit = { has_country_modifier = inf_calc_khelorvalshi_temple_expedition_focus }
+            set_country_flag = inf_calc_khelorvalshi_temple_expedition_focus_refresh
+        }
+        country_event = { id = inf_calc.147 }
+    }
+    option = {
+        name = inf_calc.major_concession.disable_auto_active
+        trigger = { has_country_flag = inf_calc_khelorvalshi_temple_expedition_focus_auto }
+        clr_country_flag = inf_calc_khelorvalshi_temple_expedition_focus_auto
+        clr_country_flag = inf_calc_khelorvalshi_temple_expedition_focus_refresh
+        country_event = { id = inf_calc.147 }
+    }
+    option = {
+        name = inf_calc.major_concession.force_stop
+        trigger = { has_country_modifier = inf_calc_khelorvalshi_temple_expedition_focus }
+        remove_country_modifier = inf_calc_khelorvalshi_temple_expedition_focus
+        clr_country_flag = inf_calc_khelorvalshi_temple_expedition_focus_auto
+        clr_country_flag = inf_calc_khelorvalshi_temple_expedition_focus_refresh
+        add_country_modifier = { name = inf_calc_khelorvalshi_temple_expedition_focus_forced_stop duration = 1825 }
+    }
+    option = {
+        name = inf_calc.major_concession.back
+        country_event = { id = inf_calc.49 }
+    }
+}
+
+country_event = {
+    id = inf_calc.52
+    title = inf_calc.52.t
+    desc = inf_calc.major_concessions.d
+    picture = DEBATE_REPUBLICAN_eventPicture
+    trigger = { tag = Y01 }
+    is_triggered_only = yes
+
+    option = {
+        name = inf_calc.kabiurgarko.harsh_quotas_active
+        trigger = { has_country_modifier = inf_calc_kabiurgarko_harsh_quotas }
+        country_event = { id = inf_calc.53 }
+    }
+    option = {
+        name = inf_calc.kabiurgarko.harsh_quotas_inactive
+        trigger = { NOT = { has_country_modifier = inf_calc_kabiurgarko_harsh_quotas } }
+        country_event = { id = inf_calc.53 }
+    }
+    option = {
+        name = inf_calc.kabiurgarko.foreigner_access_active
+        trigger = { has_country_modifier = inf_calc_kabiurgarko_foreigner_access }
+        country_event = { id = inf_calc.54 }
+    }
+    option = {
+        name = inf_calc.kabiurgarko.foreigner_access_inactive
+        trigger = { NOT = { has_country_modifier = inf_calc_kabiurgarko_foreigner_access } }
+        country_event = { id = inf_calc.54 }
+    }
+    option = {
+        name = inf_calc.concessions.exit
+    }
+}
+
+country_event = {
+    id = inf_calc.53
+    title = inf_calc.kabiurgarko.harsh_quotas
+    desc = inf_calc.kabiurgarko.harsh_quotas.d
+    picture = DEBATE_REPUBLICAN_eventPicture
+    trigger = { tag = Y01 }
+    is_triggered_only = yes
+
+    option = {
+        name = inf_calc.major_concession.activate
+        trigger = {
+            check_variable = { which = kabiurgarko_inf value = 50 }
+            NOT = { has_country_modifier = inf_calc_kabiurgarko_harsh_quotas }
+            NOT = { has_country_modifier = inf_calc_kabiurgarko_harsh_quotas_forced_stop }
+        }
+        add_country_modifier = { name = inf_calc_kabiurgarko_harsh_quotas duration = 3650 }
+        if = {
+            limit = { has_country_flag = inf_calc_kabiurgarko_harsh_quotas_auto }
+            set_country_flag = inf_calc_kabiurgarko_harsh_quotas_refresh
+        }
+    }
+    option = {
+        name = inf_calc.major_concession.enable_auto_inactive
+        trigger = { NOT = { has_country_flag = inf_calc_kabiurgarko_harsh_quotas_auto } }
+        set_country_flag = inf_calc_kabiurgarko_harsh_quotas_auto
+        if = {
+            limit = { has_country_modifier = inf_calc_kabiurgarko_harsh_quotas }
+            set_country_flag = inf_calc_kabiurgarko_harsh_quotas_refresh
+        }
+        country_event = { id = inf_calc.148 }
+    }
+    option = {
+        name = inf_calc.major_concession.disable_auto_active
+        trigger = { has_country_flag = inf_calc_kabiurgarko_harsh_quotas_auto }
+        clr_country_flag = inf_calc_kabiurgarko_harsh_quotas_auto
+        clr_country_flag = inf_calc_kabiurgarko_harsh_quotas_refresh
+        country_event = { id = inf_calc.148 }
+    }
+    option = {
+        name = inf_calc.major_concession.force_stop
+        trigger = { has_country_modifier = inf_calc_kabiurgarko_harsh_quotas }
+        remove_country_modifier = inf_calc_kabiurgarko_harsh_quotas
+        clr_country_flag = inf_calc_kabiurgarko_harsh_quotas_auto
+        clr_country_flag = inf_calc_kabiurgarko_harsh_quotas_refresh
+        add_country_modifier = { name = inf_calc_kabiurgarko_harsh_quotas_forced_stop duration = 1825 }
+    }
+    option = {
+        name = inf_calc.major_concession.back
+        country_event = { id = inf_calc.52 }
+    }
+}
+
+country_event = {
+    id = inf_calc.54
+    title = inf_calc.kabiurgarko.foreigner_access
+    desc = inf_calc.kabiurgarko.foreigner_access.d
+    picture = DEBATE_REPUBLICAN_eventPicture
+    trigger = { tag = Y01 }
+    is_triggered_only = yes
+
+    option = {
+        name = inf_calc.major_concession.activate
+        trigger = {
+            check_variable = { which = kabiurgarko_inf value = 50 }
+            NOT = { has_country_modifier = inf_calc_kabiurgarko_foreigner_access }
+            NOT = { has_country_modifier = inf_calc_kabiurgarko_foreigner_access_forced_stop }
+        }
+        add_country_modifier = { name = inf_calc_kabiurgarko_foreigner_access duration = 3650 }
+        if = {
+            limit = { has_country_flag = inf_calc_kabiurgarko_foreigner_access_auto }
+            set_country_flag = inf_calc_kabiurgarko_foreigner_access_refresh
+        }
+    }
+    option = {
+        name = inf_calc.major_concession.enable_auto_inactive
+        trigger = { NOT = { has_country_flag = inf_calc_kabiurgarko_foreigner_access_auto } }
+        set_country_flag = inf_calc_kabiurgarko_foreigner_access_auto
+        if = {
+            limit = { has_country_modifier = inf_calc_kabiurgarko_foreigner_access }
+            set_country_flag = inf_calc_kabiurgarko_foreigner_access_refresh
+        }
+        country_event = { id = inf_calc.149 }
+    }
+    option = {
+        name = inf_calc.major_concession.disable_auto_active
+        trigger = { has_country_flag = inf_calc_kabiurgarko_foreigner_access_auto }
+        clr_country_flag = inf_calc_kabiurgarko_foreigner_access_auto
+        clr_country_flag = inf_calc_kabiurgarko_foreigner_access_refresh
+        country_event = { id = inf_calc.149 }
+    }
+    option = {
+        name = inf_calc.major_concession.force_stop
+        trigger = { has_country_modifier = inf_calc_kabiurgarko_foreigner_access }
+        remove_country_modifier = inf_calc_kabiurgarko_foreigner_access
+        clr_country_flag = inf_calc_kabiurgarko_foreigner_access_auto
+        clr_country_flag = inf_calc_kabiurgarko_foreigner_access_refresh
+        add_country_modifier = { name = inf_calc_kabiurgarko_foreigner_access_forced_stop duration = 1825 }
+    }
+    option = {
+        name = inf_calc.major_concession.back
+        country_event = { id = inf_calc.52 }
+    }
+}
+
+country_event = {
+    id = inf_calc.140
+    title = inf_calc.40.t
+    desc = inf_calc.major_concessions.d
+    picture = DEBATE_REPUBLICAN_eventPicture
+    trigger = { tag = Y01 }
+    hidden = yes
+    is_triggered_only = yes
+
+    immediate = {
+        country_event = { id = inf_calc.41 }
+    }
+}
+
+country_event = {
+    id = inf_calc.141
+    title = inf_calc.40.t
+    desc = inf_calc.major_concessions.d
+    picture = DEBATE_REPUBLICAN_eventPicture
+    trigger = { tag = Y01 }
+    hidden = yes
+    is_triggered_only = yes
+
+    immediate = {
+        country_event = { id = inf_calc.42 }
+    }
+}
+
+country_event = {
+    id = inf_calc.142
+    title = inf_calc.43.t
+    desc = inf_calc.major_concessions.d
+    picture = DEBATE_REPUBLICAN_eventPicture
+    trigger = { tag = Y01 }
+    hidden = yes
+    is_triggered_only = yes
+
+    immediate = {
+        country_event = { id = inf_calc.44 }
+    }
+}
+
+country_event = {
+    id = inf_calc.143
+    title = inf_calc.43.t
+    desc = inf_calc.major_concessions.d
+    picture = DEBATE_REPUBLICAN_eventPicture
+    trigger = { tag = Y01 }
+    hidden = yes
+    is_triggered_only = yes
+
+    immediate = {
+        country_event = { id = inf_calc.45 }
+    }
+}
+
+country_event = {
+    id = inf_calc.144
+    title = inf_calc.46.t
+    desc = inf_calc.major_concessions.d
+    picture = DEBATE_REPUBLICAN_eventPicture
+    trigger = { tag = Y01 }
+    hidden = yes
+    is_triggered_only = yes
+
+    immediate = {
+        country_event = { id = inf_calc.47 }
+    }
+}
+
+country_event = {
+    id = inf_calc.145
+    title = inf_calc.46.t
+    desc = inf_calc.major_concessions.d
+    picture = DEBATE_REPUBLICAN_eventPicture
+    trigger = { tag = Y01 }
+    hidden = yes
+    is_triggered_only = yes
+
+    immediate = {
+        country_event = { id = inf_calc.48 }
+    }
+}
+
+country_event = {
+    id = inf_calc.146
+    title = inf_calc.49.t
+    desc = inf_calc.major_concessions.d
+    picture = DEBATE_REPUBLICAN_eventPicture
+    trigger = {
+        tag = Y01
+        has_country_flag = khelorvalshi_restored
+    }
+    hidden = yes
+    is_triggered_only = yes
+
+    immediate = {
+        country_event = { id = inf_calc.50 }
+    }
+}
+
+country_event = {
+    id = inf_calc.147
+    title = inf_calc.49.t
+    desc = inf_calc.major_concessions.d
+    picture = DEBATE_REPUBLICAN_eventPicture
+    trigger = {
+        tag = Y01
+        has_country_flag = khelorvalshi_restored
+    }
+    hidden = yes
+    is_triggered_only = yes
+
+    immediate = {
+        country_event = { id = inf_calc.51 }
+    }
+}
+
+country_event = {
+    id = inf_calc.148
+    title = inf_calc.52.t
+    desc = inf_calc.major_concessions.d
+    picture = DEBATE_REPUBLICAN_eventPicture
+    trigger = { tag = Y01 }
+    hidden = yes
+    is_triggered_only = yes
+
+    immediate = {
+        country_event = { id = inf_calc.53 }
+    }
+}
+
+country_event = {
+    id = inf_calc.149
+    title = inf_calc.52.t
+    desc = inf_calc.major_concessions.d
+    picture = DEBATE_REPUBLICAN_eventPicture
+    trigger = { tag = Y01 }
+    hidden = yes
+    is_triggered_only = yes
+
+    immediate = {
+        country_event = { id = inf_calc.54 }
+    }
+}
+
+country_event = {
+    id = inf_calc.30
+    title = inf_calc.30.t
+    desc = inf_calc.small_boon.d
+    picture = DEBATE_REPUBLICAN_eventPicture
+    trigger = {
+        tag = Y01
+        check_variable = { which = kabiurgarko_inf value = 30 }
+        NOT = { has_country_modifier = kabiurgarko_small_boost }
+    }
+    is_triggered_only = yes
+
+    option = {
+        name = estate_kabiurgarko_production_lvl1_mod
+        trigger = { has_mana = { amount = 1 } }
+        add_country_modifier = { name = kabiurgarko_small_boost duration = 3650 hidden = yes }
+        add_years_of_income = -0.5
+        if = {
+            limit = { check_variable = { which = kabiurgarko_inf value = 70 } }
+            add_country_modifier = { name = inf_calc_kabiurgarko_minor_influence_penalty_3 duration = 3650 hidden = yes }
+            custom_tooltip = estate_kabiurgarko_production_lvl3_mod_tooltip
+            hidden_effect = {
+                every_owned_province = {
+                    limit = {
+                        region = demon_hills_region
+                        OR = {
+                            has_terrain = hills
+                            has_terrain = mountain
+                        }
+                    }
+                    add_province_modifier = { name = estate_kabiurgarko_production_lvl3_mod duration = 3650 }
+                }
+                every_owned_province = {
+                    limit = { region = demon_hills_region }
+                    add_province_modifier = { name = inf_calc_kabiurgarko_earth_dev_cost_3 duration = 3650 }
+                }
+            }
+        }
+        else_if = {
+            limit = { check_variable = { which = kabiurgarko_inf value = 50 } }
+            add_country_modifier = { name = inf_calc_kabiurgarko_minor_influence_penalty_2 duration = 3650 hidden = yes }
+            custom_tooltip = estate_kabiurgarko_production_lvl2_mod_tooltip
+            hidden_effect = {
+                every_owned_province = {
+                    limit = {
+                        region = demon_hills_region
+                        OR = {
+                            has_terrain = hills
+                            has_terrain = mountain
+                        }
+                    }
+                    add_province_modifier = { name = estate_kabiurgarko_production_lvl2_mod duration = 3650 }
+                }
+                every_owned_province = {
+                    limit = { region = demon_hills_region }
+                    add_province_modifier = { name = inf_calc_kabiurgarko_earth_dev_cost_2 duration = 3650 }
+                }
+            }
+        }
+        else = {
+            add_country_modifier = { name = inf_calc_kabiurgarko_minor_influence_penalty_1 duration = 3650 hidden = yes }
+            custom_tooltip = estate_kabiurgarko_production_lvl1_mod_tooltip
+            hidden_effect = {
+                every_owned_province = {
+                    limit = {
+                        region = demon_hills_region
+                        OR = {
+                            has_terrain = hills
+                            has_terrain = mountain
+                        }
+                    }
+                    add_province_modifier = { name = estate_kabiurgarko_production_lvl1_mod duration = 3650 }
+                }
+                every_owned_province = {
+                    limit = { region = demon_hills_region }
+                    add_province_modifier = { name = inf_calc_kabiurgarko_earth_dev_cost_1 duration = 3650 }
+                }
+            }
+        }
+        custom_tooltip = magic_production_desc_tt
+    }
+    option = {
+        name = estate_kabiurgarko_construction_lvl1_mod
+        trigger = { has_mana = { amount = 1 } }
+        add_country_modifier = { name = kabiurgarko_small_boost duration = 3650 hidden = yes }
+        add_years_of_income = -0.5
+        if = {
+            limit = { check_variable = { which = kabiurgarko_inf value = 70 } }
+            add_country_modifier = { name = inf_calc_kabiurgarko_minor_influence_penalty_3 duration = 3650 hidden = yes }
+            add_country_modifier = { name = estate_kabiurgarko_construction_lvl3_mod duration = 3650 }
+        }
+        else_if = {
+            limit = { check_variable = { which = kabiurgarko_inf value = 50 } }
+            add_country_modifier = { name = inf_calc_kabiurgarko_minor_influence_penalty_2 duration = 3650 hidden = yes }
+            add_country_modifier = { name = estate_kabiurgarko_construction_lvl2_mod duration = 3650 }
+        }
+        else = {
+            add_country_modifier = { name = inf_calc_kabiurgarko_minor_influence_penalty_1 duration = 3650 hidden = yes }
+            add_country_modifier = { name = estate_kabiurgarko_construction_lvl1_mod duration = 3650 }
+        }
+        custom_tooltip = magic_contruction_desc_tt
+    }
+    option = {
+        name = estate_kabiurgarko_metal_bending_lvl1_mod
+        trigger = { has_mana = { amount = 1 } }
+        add_country_modifier = { name = kabiurgarko_small_boost duration = 3650 hidden = yes }
+        add_years_of_income = -0.5
+        if = {
+            limit = { check_variable = { which = kabiurgarko_inf value = 70 } }
+            add_country_modifier = { name = inf_calc_kabiurgarko_minor_influence_penalty_3 duration = 3650 hidden = yes }
+            add_country_modifier = { name = estate_kabiurgarko_metal_bending_lvl3_mod duration = 3650 }
+        }
+        else_if = {
+            limit = { check_variable = { which = kabiurgarko_inf value = 50 } }
+            add_country_modifier = { name = inf_calc_kabiurgarko_minor_influence_penalty_2 duration = 3650 hidden = yes }
+            add_country_modifier = { name = estate_kabiurgarko_metal_bending_lvl2_mod duration = 3650 }
+        }
+        else = {
+            add_country_modifier = { name = inf_calc_kabiurgarko_minor_influence_penalty_1 duration = 3650 hidden = yes }
+            add_country_modifier = { name = estate_kabiurgarko_metal_bending_lvl1_mod duration = 3650 }
+        }
+        custom_tooltip = magic_metal_bending_desc_tt
+    }
+    option = {
+        name = inf_calc.small_boon.leave
+    }
+}
+
+country_event = {
+    id = inf_calc.31
+    title = inf_calc.31.t
+    desc = inf_calc.small_boon.d
+    picture = DEBATE_REPUBLICAN_eventPicture
+    trigger = {
+        tag = Y01
+        check_variable = { which = ajgriijarul_inf value = 30 }
+        NOT = { has_country_modifier = ajgriijarul_small_boost }
+    }
+    is_triggered_only = yes
+
+    option = {
+        name = inf_calc.ajgriijarul.soul_ignition
+        trigger = { has_mana = { amount = 1 } }
+        add_country_modifier = { name = ajgriijarul_small_boost duration = 3650 hidden = yes }
+        add_manpower = -3
+        if = {
+            limit = { check_variable = { which = ajgriijarul_inf value = 70 } }
+            add_country_modifier = { name = estate_ajgriijarul_soul_ignition_lvl3_mod duration = 3650 }
+        }
+        else_if = {
+            limit = { check_variable = { which = ajgriijarul_inf value = 50 } }
+            add_country_modifier = { name = estate_ajgriijarul_soul_ignition_lvl2_mod duration = 3650 }
+        }
+        else = {
+            add_country_modifier = { name = estate_ajgriijarul_soul_ignition_lvl1_mod duration = 3650 }
+        }
+        custom_tooltip = magic_soul_ignition_desc_tt
+    }
+    option = {
+        name = inf_calc.ajgriijarul.trance_induced_rage
+        trigger = { has_mana = { amount = 1 } }
+        add_country_modifier = { name = ajgriijarul_small_boost duration = 3650 hidden = yes }
+        if = {
+            limit = { check_variable = { which = ajgriijarul_inf value = 70 } }
+            add_country_modifier = { name = estate_ajgriijarul_trance_induced_rage_lvl3_mod duration = 3650 }
+        }
+        else_if = {
+            limit = { check_variable = { which = ajgriijarul_inf value = 50 } }
+            add_country_modifier = { name = estate_ajgriijarul_trance_induced_rage_lvl2_mod duration = 3650 }
+        }
+        else = {
+            add_country_modifier = { name = estate_ajgriijarul_trance_induced_rage_lvl1_mod duration = 3650 }
+        }
+        custom_tooltip = magic_trance_rage_desc_tt
+    }
+    option = {
+        name = inf_calc.ajgriijarul.dominate_the_unruly
+        trigger = {
+            has_mana = { amount = 1 }
+            has_country_flag = unlock_ajgriijarul_rebel_supression
+        }
+        custom_tooltip = azjakuma_clear_rebels_tt
+        hidden_effect = {
+            every_owned_province = {
+                clear_rebels = yes
+            }
+        }
+        if = {
+            limit = { check_variable = { which = ajgriijarul_inf value = 70 } }
+            add_country_modifier = { name = ajgriijarul_small_boost duration = 1825 hidden = yes }
+            add_country_modifier = { name = inf_calc_ajgriijarul_minor_influence_penalty_3 duration = 1825 hidden = yes }
+        }
+        else_if = {
+            limit = { check_variable = { which = ajgriijarul_inf value = 50 } }
+            add_country_modifier = { name = ajgriijarul_small_boost duration = 2737 hidden = yes }
+            add_country_modifier = { name = inf_calc_ajgriijarul_minor_influence_penalty_2 duration = 2737 hidden = yes }
+        }
+        else = {
+            add_country_modifier = { name = ajgriijarul_small_boost duration = 3650 hidden = yes }
+            add_country_modifier = { name = inf_calc_ajgriijarul_minor_influence_penalty_1 duration = 3650 hidden = yes }
+        }
+        custom_tooltip = magic_dominate_unruly_desc_tt
+    }
+    option = {
+        name = inf_calc.small_boon.leave
+    }
+}
+
+country_event = {
+    id = inf_calc.32
+    title = inf_calc.32.t
+    desc = inf_calc.small_boon.d
+    picture = DEBATE_REPUBLICAN_eventPicture
+    trigger = {
+        tag = Y01
+        check_variable = { which = shinukhorchi_inf value = 30 }
+        NOT = { has_country_modifier = shinukhorchi_small_boost }
+    }
+    is_triggered_only = yes
+
+    option = {
+        name = estate_shinukhorchi_blazing_souls_1_mod
+        trigger = { has_mana = { amount = 1 } }
+        add_country_modifier = { name = shinukhorchi_small_boost duration = 3650 hidden = yes }
+        if = {
+            limit = { check_variable = { which = shinukhorchi_inf value = 70 } }
+            add_country_modifier = { name = inf_calc_shinukhorchi_blazing_souls_3_mod duration = 3650 }
+        }
+        else_if = {
+            limit = { check_variable = { which = shinukhorchi_inf value = 50 } }
+            add_country_modifier = { name = inf_calc_shinukhorchi_blazing_souls_2_mod duration = 3650 }
+        }
+        else = {
+            add_country_modifier = { name = inf_calc_shinukhorchi_blazing_souls_1_mod duration = 3650 }
+        }
+        custom_tooltip = magic_blazing_field_desc_tt
+    }
+    option = {
+        name = estate_shinukhorchi_korashi_talisman_mod
+        trigger = {
+            has_mana = { amount = 1 }
+            has_country_flag = korashi_talismans_unlocked
+        }
+        add_country_modifier = { name = shinukhorchi_small_boost duration = 3650 hidden = yes }
+        if = {
+            limit = { check_variable = { which = shinukhorchi_inf value = 70 } }
+            add_country_modifier = { name = inf_calc_shinukhorchi_korashi_talisman_3_mod duration = 3650 }
+            5430 = { add_province_modifier = { name = inf_calc_shinukhorchi_korashi_talismans_prod_3_mod duration = 3650 } }
+        }
+        else_if = {
+            limit = { check_variable = { which = shinukhorchi_inf value = 50 } }
+            add_country_modifier = { name = inf_calc_shinukhorchi_korashi_talisman_2_mod duration = 3650 }
+            5430 = { add_province_modifier = { name = inf_calc_shinukhorchi_korashi_talismans_prod_2_mod duration = 3650 } }
+        }
+        else = {
+            add_country_modifier = { name = inf_calc_shinukhorchi_korashi_talisman_1_mod duration = 3650 }
+            5430 = { add_province_modifier = { name = inf_calc_shinukhorchi_korashi_talismans_prod_1_mod duration = 3650 } }
+        }
+        custom_tooltip = magic_korashi_talisman_desc_tt
+    }
+    option = {
+        name = inf_calc.shinukhorchi.warriors_of_the_mist
+        trigger = {
+            has_mana = { amount = 1 }
+            has_country_modifier = inf_calc_dangerous_foe
+        }
+        add_country_modifier = { name = shinukhorchi_small_boost duration = 3650 hidden = yes }
+        if = {
+            limit = { check_variable = { which = shinukhorchi_inf value = 70 } }
+            add_country_modifier = { name = inf_calc_shinukhorchi_warriors_mist_penalty_3 duration = 3650 hidden = yes }
+            custom_tooltip = estate_ajgriijarul_defend_demon_hills_mod_lvl3_tooltp
+            hidden_effect = {
+                every_owned_province = {
+                    limit = {
+                        region = demon_hills_region
+                        OR = {
+                            has_terrain = hills
+                            has_terrain = mountain
+                        }
+                    }
+                    add_province_modifier = { name = estate_ajgriijarul_defend_demon_hills_lvl3_mod duration = 3650 }
+                }
+            }
+        }
+        else_if = {
+            limit = { check_variable = { which = shinukhorchi_inf value = 50 } }
+            add_country_modifier = { name = inf_calc_shinukhorchi_warriors_mist_penalty_2 duration = 3650 hidden = yes }
+            custom_tooltip = estate_ajgriijarul_defend_demon_hills_mod_lvl2_tooltp
+            hidden_effect = {
+                every_owned_province = {
+                    limit = {
+                        region = demon_hills_region
+                        OR = {
+                            has_terrain = hills
+                            has_terrain = mountain
+                        }
+                    }
+                    add_province_modifier = { name = estate_ajgriijarul_defend_demon_hills_lvl2_mod duration = 3650 }
+                }
+            }
+        }
+        else = {
+            custom_tooltip = estate_ajgriijarul_defend_demon_hills_mod_lvl1_tooltp
+            hidden_effect = {
+                every_owned_province = {
+                    limit = {
+                        region = demon_hills_region
+                        OR = {
+                            has_terrain = hills
+                            has_terrain = mountain
+                        }
+                    }
+                    add_province_modifier = { name = estate_ajgriijarul_defend_demon_hills_lvl1_mod duration = 3650 }
+                }
+            }
+        }
+        custom_tooltip = magic_demon_hills_desc_tt
+    }
+    option = {
+        name = inf_calc.shinukhorchi.warriors_of_the_mist
+        trigger = {
+            NOT = { has_country_modifier = inf_calc_dangerous_foe }
+        }
+        custom_tooltip = inf_calc_shinukhorchi_warriors_of_the_mist_unavailable_tt
+    }
+    option = {
+        name = inf_calc.small_boon.leave
+    }
+}
+
+country_event = {
+    id = inf_calc.33
+    title = inf_calc.33.t
+    desc = inf_calc.small_boon.d
+    picture = DEBATE_REPUBLICAN_eventPicture
+    trigger = {
+        tag = Y01
+        has_country_flag = khelorvalshi_restored
+        check_variable = { which = khelorvalshi_inf value = 30 }
+        NOT = { has_country_modifier = khelorvalshi_small_boost }
+    }
+    is_triggered_only = yes
+
+    option = {
+        name = inf_calc.khelorvalshi.drain_defenders
+        trigger = { has_mana = { amount = 1 } }
+        add_country_modifier = { name = khelorvalshi_small_boost duration = 3650 hidden = yes }
+        if = {
+            limit = { check_variable = { which = khelorvalshi_inf value = 70 } }
+            add_country_modifier = { name = inf_calc_khelorvalshi_drain_defenders_3 duration = 3650 hidden = yes }
+            if = {
+                limit = {
+                    any_army = {
+                        location = {
+                            fort_level = 1
+                            sieged_by = ROOT
+                            num_of_units_in_province = {
+                                who = ROOT
+                                amount = 1
+                            }
+                        }
+                    }
+                }
+                hidden_effect = { inf_calc_khelorvalshi_drain_defenders_3_effect = yes }
+                add_country_modifier = { name = inf_calc_khelorvalshi_drain_defenders_cooldown duration = 240 }
+            }
+            custom_tooltip = inf_calc_khelorvalshi_drain_defenders_3_tt
+        }
+        else_if = {
+            limit = { check_variable = { which = khelorvalshi_inf value = 50 } }
+            add_country_modifier = { name = inf_calc_khelorvalshi_drain_defenders_2 duration = 3650 hidden = yes }
+            if = {
+                limit = {
+                    any_army = {
+                        location = {
+                            fort_level = 1
+                            sieged_by = ROOT
+                            num_of_units_in_province = {
+                                who = ROOT
+                                amount = 1
+                            }
+                        }
+                    }
+                }
+                hidden_effect = { inf_calc_khelorvalshi_drain_defenders_2_effect = yes }
+                add_country_modifier = { name = inf_calc_khelorvalshi_drain_defenders_cooldown duration = 300 }
+            }
+            custom_tooltip = inf_calc_khelorvalshi_drain_defenders_2_tt
+        }
+        else = {
+            add_country_modifier = { name = inf_calc_khelorvalshi_drain_defenders_1 duration = 3650 hidden = yes }
+            if = {
+                limit = {
+                    any_army = {
+                        location = {
+                            fort_level = 1
+                            sieged_by = ROOT
+                            num_of_units_in_province = {
+                                who = ROOT
+                                amount = 1
+                            }
+                        }
+                    }
+                }
+                hidden_effect = { inf_calc_khelorvalshi_drain_defenders_1_effect = yes }
+                add_country_modifier = { name = inf_calc_khelorvalshi_drain_defenders_cooldown duration = 360 }
+            }
+            custom_tooltip = inf_calc_khelorvalshi_drain_defenders_1_tt
+        }
+        custom_tooltip = magic_drain_defenders_desc_tt
+    }
+    option = {
+        name = inf_calc.khelorvalshi.drain_populace
+        trigger = {
+            calc_true_if = {
+                all_owned_province = {
+                    base_tax = 2
+                    base_production = 2
+                    base_manpower = 2
+                    NOT = { devastation = 50 }
+                    NOT = { province_has_shigrii = yes }
+                    NOT = { culture = horned_ogre }
+                }
+                amount = 2
+            }
+        }
+        add_country_modifier = { name = khelorvalshi_small_boost duration = 3650 hidden = yes }
+        hidden_effect = {
+            random_owned_province = {
+                limit = {
+                    base_tax = 2
+                    base_production = 2
+                    base_manpower = 2
+                    NOT = { devastation = 50 }
+                    NOT = { province_has_shigrii = yes }
+                    NOT = { culture = horned_ogre }
+                }
+                save_event_target_as = inf_calc_khelorvalshi_drain_populace_target_1
+                set_province_flag = inf_calc_khelorvalshi_drain_populace_dont_pick
+            }
+            random_owned_province = {
+                limit = {
+                    base_tax = 2
+                    base_production = 2
+                    base_manpower = 2
+                    NOT = { devastation = 50 }
+                    NOT = { province_has_shigrii = yes }
+                    NOT = { culture = horned_ogre }
+                    NOT = { has_province_flag = inf_calc_khelorvalshi_drain_populace_dont_pick }
+                }
+                save_event_target_as = inf_calc_khelorvalshi_drain_populace_target_2
+            }
+            event_target:inf_calc_khelorvalshi_drain_populace_target_1 = {
+                clr_province_flag = inf_calc_khelorvalshi_drain_populace_dont_pick
+                add_devastation = 70
+                add_base_tax = -1
+                add_base_production = -1
+                add_base_manpower = -1
+            }
+            event_target:inf_calc_khelorvalshi_drain_populace_target_2 = {
+                add_devastation = 70
+                add_base_tax = -1
+                add_base_production = -1
+                add_base_manpower = -1
+            }
+        }
+        if = {
+            limit = { check_variable = { which = khelorvalshi_inf value = 70 } }
+            add_country_modifier = { name = inf_calc_khelorvalshi_drain_populace_3 duration = 3650 hidden = yes }
+            change_mana = { amount = 175 }
+            custom_tooltip = inf_calc_khelorvalshi_drain_populace_3_tt
+        }
+        else_if = {
+            limit = { check_variable = { which = khelorvalshi_inf value = 50 } }
+            add_country_modifier = { name = inf_calc_khelorvalshi_drain_populace_2 duration = 3650 hidden = yes }
+            change_mana = { amount = 125 }
+            custom_tooltip = inf_calc_khelorvalshi_drain_populace_2_tt
+        }
+        else = {
+            add_country_modifier = { name = inf_calc_khelorvalshi_drain_populace_1 duration = 3650 hidden = yes }
+            change_mana = { amount = 75 }
+            custom_tooltip = inf_calc_khelorvalshi_drain_populace_1_tt
+        }
+        custom_tooltip = magic_drain_populace_desc_tt
+    }
+    option = {
+        name = inf_calc.khelorvalshi.blood_ritual
+        country_event = { id = inf_calc.35 }
+    }
+    option = {
+        name = inf_calc.small_boon.leave
+    }
+}
+
+country_event = {
+    id = inf_calc.35
+    title = inf_calc.35.t
+    desc = inf_calc.35.d
+    picture = DEBATE_REPUBLICAN_eventPicture
+    trigger = {
+        tag = Y01
+        has_country_flag = khelorvalshi_restored
+        check_variable = { which = khelorvalshi_inf value = 30 }
+        NOT = { has_country_modifier = khelorvalshi_small_boost }
+    }
+    is_triggered_only = yes
+
+    option = {
+        name = inf_calc.khelorvalshi.blood_ritual_adm
+        trigger = {
+            has_mana = { amount = 1 }
+            employed_advisor = { category = ADM }
+        }
+        add_country_modifier = { name = khelorvalshi_small_boost duration = 3650 hidden = yes }
+        if = {
+            limit = { check_variable = { which = khelorvalshi_inf value = 70 } }
+            add_country_modifier = { name = inf_calc_khelorvalshi_blood_ritual_3 duration = 3650 hidden = yes }
+        }
+        else_if = {
+            limit = { check_variable = { which = khelorvalshi_inf value = 50 } }
+            add_country_modifier = { name = inf_calc_khelorvalshi_blood_ritual_2 duration = 3650 hidden = yes }
+        }
+        else = {
+            add_country_modifier = { name = inf_calc_khelorvalshi_blood_ritual_1 duration = 3650 hidden = yes }
+        }
+        if = {
+            limit = { employed_advisor = { category = ADM skill = 3 } }
+            if = {
+                limit = { check_variable = { which = khelorvalshi_inf value = 70 } }
+                add_stability = 2
+                add_adm_power = 100
+                custom_tooltip = inf_calc_khelorvalshi_blood_ritual_adm_high_3_tt
+            }
+            else_if = {
+                limit = { check_variable = { which = khelorvalshi_inf value = 50 } }
+                add_stability = 2
+                add_adm_power = 50
+                custom_tooltip = inf_calc_khelorvalshi_blood_ritual_adm_high_2_tt
+            }
+            else = {
+                add_stability = 1
+                add_adm_power = 100
+                custom_tooltip = inf_calc_khelorvalshi_blood_ritual_adm_high_1_tt
+            }
+        }
+        else = {
+            if = {
+                limit = { check_variable = { which = khelorvalshi_inf value = 70 } }
+                add_stability = 1
+                add_adm_power = 100
+                custom_tooltip = inf_calc_khelorvalshi_blood_ritual_adm_low_3_tt
+            }
+            else_if = {
+                limit = { check_variable = { which = khelorvalshi_inf value = 50 } }
+                add_stability = 1
+                add_adm_power = 50
+                custom_tooltip = inf_calc_khelorvalshi_blood_ritual_adm_low_2_tt
+            }
+            else = {
+                add_stability = 1
+                custom_tooltip = inf_calc_khelorvalshi_blood_ritual_adm_low_1_tt
+            }
+        }
+        kill_advisor_by_category_effect = { ADM = yes }
+    }
+
+    option = {
+        name = inf_calc.khelorvalshi.blood_ritual_dip
+        trigger = {
+            has_mana = { amount = 1 }
+            employed_advisor = { category = DIP }
+        }
+        add_country_modifier = { name = khelorvalshi_small_boost duration = 3650 hidden = yes }
+        if = {
+            limit = { check_variable = { which = khelorvalshi_inf value = 70 } }
+            add_country_modifier = { name = inf_calc_khelorvalshi_blood_ritual_3 duration = 3650 hidden = yes }
+        }
+        else_if = {
+            limit = { check_variable = { which = khelorvalshi_inf value = 50 } }
+            add_country_modifier = { name = inf_calc_khelorvalshi_blood_ritual_2 duration = 3650 hidden = yes }
+        }
+        else = {
+            add_country_modifier = { name = inf_calc_khelorvalshi_blood_ritual_1 duration = 3650 hidden = yes }
+        }
+        if = {
+            limit = { employed_advisor = { category = DIP skill = 3 } }
+            if = {
+                limit = { check_variable = { which = khelorvalshi_inf value = 70 } }
+                add_war_exhaustion = -8
+                add_dip_power = 100
+                custom_tooltip = inf_calc_khelorvalshi_blood_ritual_dip_high_3_tt
+            }
+            else_if = {
+                limit = { check_variable = { which = khelorvalshi_inf value = 50 } }
+                add_war_exhaustion = -8
+                add_dip_power = 50
+                custom_tooltip = inf_calc_khelorvalshi_blood_ritual_dip_high_2_tt
+            }
+            else = {
+                add_war_exhaustion = -4
+                add_dip_power = 100
+                custom_tooltip = inf_calc_khelorvalshi_blood_ritual_dip_high_1_tt
+            }
+        }
+        else = {
+            if = {
+                limit = { check_variable = { which = khelorvalshi_inf value = 70 } }
+                add_war_exhaustion = -4
+                add_dip_power = 100
+                custom_tooltip = inf_calc_khelorvalshi_blood_ritual_dip_low_3_tt
+            }
+            else_if = {
+                limit = { check_variable = { which = khelorvalshi_inf value = 50 } }
+                add_war_exhaustion = -4
+                add_dip_power = 50
+                custom_tooltip = inf_calc_khelorvalshi_blood_ritual_dip_low_2_tt
+            }
+            else = {
+                add_war_exhaustion = -4
+                custom_tooltip = inf_calc_khelorvalshi_blood_ritual_dip_low_1_tt
+            }
+        }
+        kill_advisor_by_category_effect = { DIP = yes }
+    }
+
+    option = {
+        name = inf_calc.khelorvalshi.blood_ritual_mil
+        trigger = {
+            has_mana = { amount = 1 }
+            employed_advisor = { category = MIL }
+        }
+        add_country_modifier = { name = khelorvalshi_small_boost duration = 3650 hidden = yes }
+        if = {
+            limit = { check_variable = { which = khelorvalshi_inf value = 70 } }
+            add_country_modifier = { name = inf_calc_khelorvalshi_blood_ritual_3 duration = 3650 hidden = yes }
+        }
+        else_if = {
+            limit = { check_variable = { which = khelorvalshi_inf value = 50 } }
+            add_country_modifier = { name = inf_calc_khelorvalshi_blood_ritual_2 duration = 3650 hidden = yes }
+        }
+        else = {
+            add_country_modifier = { name = inf_calc_khelorvalshi_blood_ritual_1 duration = 3650 hidden = yes }
+        }
+        if = {
+            limit = { employed_advisor = { category = MIL skill = 3 } }
+            if = {
+                limit = { check_variable = { which = khelorvalshi_inf value = 70 } }
+                add_army_professionalism = 0.04
+                add_mil_power = 100
+                custom_tooltip = inf_calc_khelorvalshi_blood_ritual_mil_high_3_tt
+            }
+            else_if = {
+                limit = { check_variable = { which = khelorvalshi_inf value = 50 } }
+                add_army_professionalism = 0.04
+                add_mil_power = 50
+                custom_tooltip = inf_calc_khelorvalshi_blood_ritual_mil_high_2_tt
+            }
+            else = {
+                add_army_professionalism = 0.02
+                add_mil_power = 100
+                custom_tooltip = inf_calc_khelorvalshi_blood_ritual_mil_high_1_tt
+            }
+        }
+        else = {
+            if = {
+                limit = { check_variable = { which = khelorvalshi_inf value = 70 } }
+                add_army_professionalism = 0.02
+                add_mil_power = 100
+                custom_tooltip = inf_calc_khelorvalshi_blood_ritual_mil_low_3_tt
+            }
+            else_if = {
+                limit = { check_variable = { which = khelorvalshi_inf value = 50 } }
+                add_army_professionalism = 0.02
+                add_mil_power = 50
+                custom_tooltip = inf_calc_khelorvalshi_blood_ritual_mil_low_2_tt
+            }
+            else = {
+                add_army_professionalism = 0.02
+                custom_tooltip = inf_calc_khelorvalshi_blood_ritual_mil_low_1_tt
+            }
+        }
+        kill_advisor_by_category_effect = { MIL = yes }
+    }
+
+    option = {
+        name = inf_calc.small_boon.leave
+    }
+}
+
+country_event = {
+    id = inf_calc.34
+    title = inf_calc.34.t
+    desc = inf_calc.small_boon.d
+    picture = DEBATE_REPUBLICAN_eventPicture
+    trigger = {
+        tag = Y01
+        check_variable = { which = chumijemoya_inf value = 30 }
+        NOT = { has_country_modifier = chumijemoya_small_boost }
+    }
+    is_triggered_only = yes
+
+    option = {
+        name = inf_calc.chumijemoya.sense_numbing_haze
+        trigger = { has_mana = { amount = 1 } }
+        add_country_modifier = { name = chumijemoya_small_boost duration = 3650 hidden = yes }
+        if = {
+            limit = { check_variable = { which = chumijemoya_inf value = 70 } }
+            add_country_modifier = { name = inf_calc_chumijemoya_minor_influence_penalty_3 duration = 3650 hidden = yes }
+            custom_tooltip = azjakuma_lost_in_mist_3_tooltip
+            hidden_effect = {
+                every_owned_province = {
+                    limit = { region = demon_hills_region }
+                    add_province_modifier = { name = estate_chumijemoya_magic_lost_in_mist_lvl3_mod duration = 3650 }
+                }
+            }
+        }
+        else_if = {
+            limit = { check_variable = { which = chumijemoya_inf value = 50 } }
+            add_country_modifier = { name = inf_calc_chumijemoya_minor_influence_penalty_2 duration = 3650 hidden = yes }
+            custom_tooltip = azjakuma_lost_in_mist_2_tooltip
+            hidden_effect = {
+                every_owned_province = {
+                    limit = { region = demon_hills_region }
+                    add_province_modifier = { name = estate_chumijemoya_magic_lost_in_mist_lvl2_mod duration = 3650 }
+                }
+            }
+        }
+        else = {
+            add_country_modifier = { name = inf_calc_chumijemoya_minor_influence_penalty_1 duration = 3650 hidden = yes }
+            custom_tooltip = azjakuma_lost_in_mist_1_tooltip
+            hidden_effect = {
+                every_owned_province = {
+                    limit = { region = demon_hills_region }
+                    add_province_modifier = { name = estate_chumijemoya_magic_lost_in_mist_lvl1_mod duration = 3650 }
+                }
+            }
+        }
+        custom_tooltip = magic_mist_desc_tt
+    }
+    option = {
+        name = inf_calc.chumijemoya.whispers_of_the_mist
+        trigger = { has_mana = { amount = 1 } }
+        add_country_modifier = { name = chumijemoya_small_boost duration = 3650 hidden = yes }
+        if = {
+            limit = { check_variable = { which = chumijemoya_inf value = 70 } }
+            add_country_modifier = { name = estate_chumijemoya_spymasters_lvl3_mod duration = 3650 }
+        }
+        else_if = {
+            limit = { check_variable = { which = chumijemoya_inf value = 50 } }
+            add_country_modifier = { name = estate_chumijemoya_spymasters_lvl2_mod duration = 3650 }
+        }
+        else = {
+            add_country_modifier = { name = estate_chumijemoya_spymasters_lvl1_mod duration = 3650 }
+        }
+        custom_tooltip = magic_spynetworks_desc_tt
+    }
+    option = {
+        name = inf_calc.chumijemoya.fog_unravelling
+        trigger = {
+            has_mana = { amount = 1 }
+            is_at_war = yes
+        }
+        if = {
+            limit = { check_variable = { which = chumijemoya_inf value = 70 } }
+            add_country_modifier = { name = chumijemoya_small_boost duration = 730 hidden = yes }
+            add_country_modifier = { name = inf_calc_chumijemoya_minor_influence_penalty_3 duration = 730 hidden = yes }
+            every_country = {
+                limit = { war_with = ROOT }
+                remove_fow = 120
+            }
+        }
+        else_if = {
+            limit = { check_variable = { which = chumijemoya_inf value = 50 } }
+            add_country_modifier = { name = chumijemoya_small_boost duration = 1825 hidden = yes }
+            add_country_modifier = { name = inf_calc_chumijemoya_minor_influence_penalty_2 duration = 1825 hidden = yes }
+            every_country = {
+                limit = { war_with = ROOT }
+                remove_fow = 120
+            }
+        }
+        else = {
+            add_country_modifier = { name = chumijemoya_small_boost duration = 3650 hidden = yes }
+            add_country_modifier = { name = inf_calc_chumijemoya_minor_influence_penalty_1 duration = 3650 hidden = yes }
+            every_country = {
+                limit = { war_with = ROOT }
+                remove_fow = 120
+            }
+        }
+        custom_tooltip = azjakuma_remove_fow_tt
+        custom_tooltip = magic_fow_desc_tt
+    }
+    option = {
+        name = inf_calc.small_boon.leave
+    }
+}
+
+province_event = {
+    id = inf_calc.60
+    title = inf_calc.60.t
+    desc = inf_calc.60.d
+    picture = DEBATE_REPUBLICAN_eventPicture
+    is_triggered_only = yes
+
+    option = {
+        name = inf_calc.60.shinukhorchi
+        add_permanent_province_modifier = { name = shinukhorchi_temple_control duration = -1 }
+        inf_calc_add_shirgrii_garrison_if_needed = yes
+    }
+
+    option = {
+        name = inf_calc.60.chumijemoya
+        add_permanent_province_modifier = { name = chumijemoya_temple_control duration = -1 }
+        inf_calc_add_shirgrii_garrison_if_needed = yes
+    }
+
+    option = {
+        name = inf_calc.60.ajgriijarul
+        add_permanent_province_modifier = { name = ajgriijarul_temple_control duration = -1 }
+        inf_calc_add_shirgrii_garrison_if_needed = yes
+    }
+
+    option = {
+        name = inf_calc.60.kabiurgarko
+        add_permanent_province_modifier = { name = kabiurgarko_temple_control duration = -1 }
+        inf_calc_add_shirgrii_garrison_if_needed = yes
+    }
+
+    option = {
+        name = inf_calc.60.khelorvalshi
+        add_permanent_province_modifier = { name = khelorvalshi_temple_control duration = -1 }
+        inf_calc_add_shirgrii_garrison_if_needed = yes
+    }
+}
+
+country_event = {
+    id = inf_calc.79
+    title = inf_calc.79.t
+    desc = inf_calc.79.desc
+    picture = COMET_SIGHTED_eventPicture
+    is_triggered_only = yes
+
+    trigger = {
+        tag = Y01
+    }
+
+    option = {
+        name = inf_calc.79.a
+        trigger = {
+            NOT = {
+                OR = {
+                    has_ruler_modifier = witch_king_hoard_modifier
+                    has_ruler_modifier = witch_king_thorns_modifier
+                    has_ruler_modifier = witch_king_armies_modifier
+                    has_ruler_modifier = witch_king_skill_modifier
+                }
+            }
+        }
+        custom_tooltip = inf_calc_eternal_tamongor_become_witch_king_tt
+        hidden_effect = {
+            increase_ruler_witch_king_points = { size = large }
+            increase_ruler_witch_king_points = { size = large }
+            increase_ruler_witch_king_points = { size = large }
+            increase_ruler_witch_king_points = { size = large }
+            increase_ruler_witch_king_points = { size = large }
+            increase_ruler_witch_king_points = { size = large }
+            increase_ruler_witch_king_points = { size = large }
+            increase_ruler_witch_king_points = { size = large }
+            increase_ruler_witch_king_points = { size = large }
+            increase_ruler_witch_king_points = { size = large }
+            increase_ruler_witch_king_points = { size = large }
+            increase_ruler_witch_king_points = { size = large }
+            increase_ruler_witch_king_points = { size = large }
+            increase_ruler_witch_king_points = { size = large }
+            increase_ruler_witch_king_points = { size = large }
+            increase_ruler_witch_king_points = { size = large }
+            increase_ruler_witch_king_points = { size = large }
+            increase_ruler_witch_king_points = { size = large }
+            increase_ruler_witch_king_points = { size = large }
+            increase_ruler_witch_king_points = { size = large }
+        }
+    }
+
+    option = {
+        name = inf_calc.79.b
+        trigger = {
+            has_ruler_modifier = witch_king_skill_modifier
+            NOT = { has_ruler_modifier = witch_king_armies_modifier }
+        }
+        set_country_flag = witch_king_armies
+        add_ruler_modifier = { name = witch_king_armies_modifier duration = -1 }
+        custom_tooltip = witch_king_armies_modifier_desc
+        hidden_effect = {
+            make_spell_half_off = { school = evocation level = 2 id = meteor_swarm ruler = yes }
+        }
+    }
+
+    option = {
+        name = inf_calc.79.c
+        trigger = {
+            NOT = { has_ruler_modifier = witch_king_skill_modifier }
+            OR = {
+                has_ruler_modifier = witch_king_hoard_modifier
+                has_ruler_modifier = witch_king_thorns_modifier
+                has_ruler_modifier = witch_king_armies_modifier
+            }
+        }
+        set_country_flag = witch_king_skill
+        add_ruler_modifier = { name = witch_king_skill_modifier duration = -1 }
+        custom_tooltip = witch_king_skill_modifier_desc
+        hidden_effect = {
+            make_spell_half_off = { school = conjuration level = 3 id = extraplanar_contact ruler = yes }
+            remove_country_modifier = necromancy_2_speak_with_dead_cooldown_mod
+        }
+    }
+
+    option = {
+        name = inf_calc.79.e
+        trigger = {
+            NOT = {
+                OR = {
+                    has_ruler_modifier = witch_king_hoard_modifier
+                    has_ruler_modifier = witch_king_thorns_modifier
+                    has_ruler_modifier = witch_king_armies_modifier
+                    has_ruler_modifier = witch_king_skill_modifier
+                }
+            }
+        }
+    }
+
+    option = {
+        name = inf_calc.79.d
+        trigger = {
+            OR = {
+                has_ruler_modifier = witch_king_hoard_modifier
+                has_ruler_modifier = witch_king_thorns_modifier
+                has_ruler_modifier = witch_king_armies_modifier
+                has_ruler_modifier = witch_king_skill_modifier
+            }
+        }
+    }
+}
+
+country_event = {
+    id = inf_calc.80
+    title = inf_calc.80.t
+    desc = inf_calc.80.d
+    picture = DEBATE_REPUBLICAN_eventPicture
+    is_triggered_only = yes
+
+    trigger = {
+        tag = Y01
+    }
+
+    option = {
+        name = inf_calc.80.a
+    }
+}
+
+country_event = {
+    id = inf_calc.81
+    title = inf_calc.81.t
+    desc = inf_calc.81.d
+    picture = COMET_SIGHTED_eventPicture
+
+    trigger = {
+        tag = Y01
+        has_country_modifier = azjakuma_ritual_modifier
+        has_ruler_flag = dvp_life_extension_5
+        NOT = { has_ruler_flag = inf_calc_power_eternal }
+    }
+    is_triggered_only = yes
+
+    option = {
+        name = inf_calc.81.a
+        trigger = {
+            OR = {
+                NOT = { has_ruler_modifier = witch_king_hoard_modifier }
+                NOT = { has_ruler_modifier = witch_king_thorns_modifier }
+            }
+        }
+        make_ruler_immortal = yes
+        set_ruler_flag = inf_calc_power_eternal
+        if = {
+            limit = { NOT = { has_ruler_modifier = witch_king_hoard_modifier } }
+            set_country_flag = witch_king_hoard
+            add_ruler_modifier = { name = witch_king_hoard_modifier duration = -1 }
+            custom_tooltip = witch_king_hoard_modifier_desc
+            hidden_effect = {
+                make_spell_half_off = { school = abjuration level = 3 id = field_of_forbiddance ruler = yes }
+            }
+        }
+        if = {
+            limit = { NOT = { has_ruler_modifier = witch_king_thorns_modifier } }
+            set_country_flag = witch_king_thorns
+            add_ruler_modifier = { name = witch_king_thorns_modifier duration = -1 }
+            custom_tooltip = witch_king_thorns_modifier_desc
+            hidden_effect = {
+                make_spell_half_off = { school = enchantment level = 2 id = enchanting_embassy ruler = yes }
+            }
+        }
+    }
+
+    option = {
+        name = inf_calc.81.b
+        trigger = {
+            NOT = { has_ruler_modifier = witch_king_hoard_modifier }
+        }
+        make_ruler_immortal = yes
+        set_ruler_flag = inf_calc_power_eternal
+        set_country_flag = witch_king_hoard
+        add_ruler_modifier = { name = witch_king_hoard_modifier duration = -1 }
+        custom_tooltip = witch_king_hoard_modifier_desc
+        hidden_effect = {
+            make_spell_half_off = { school = abjuration level = 3 id = field_of_forbiddance ruler = yes }
+        }
+    }
+
+    option = {
+        name = inf_calc.81.c
+        trigger = {
+            NOT = { has_ruler_modifier = witch_king_thorns_modifier }
+        }
+        make_ruler_immortal = yes
+        set_ruler_flag = inf_calc_power_eternal
+        set_country_flag = witch_king_thorns
+        add_ruler_modifier = { name = witch_king_thorns_modifier duration = -1 }
+        custom_tooltip = witch_king_thorns_modifier_desc
+        hidden_effect = {
+            make_spell_half_off = { school = enchantment level = 2 id = enchanting_embassy ruler = yes }
+        }
+    }
+
+    option = {
+        name = inf_calc.81.e
+        make_ruler_immortal = yes
+        set_ruler_flag = inf_calc_power_eternal
+    }
+}
+
+country_event = {
+    id = inf_calc.82
+    hidden = yes
+    is_triggered_only = yes
+
+    trigger = {
+        tag = Y01
+    }
+
+    immediate = {
+        if = {
+            limit = {
+                NOT = { has_global_flag = rending_startup_complete }
+            }
+            hidden_effect = {
+                set_global_flag = start_rending_of_realms_earlier
+                country_event = {
+                    id = spirits.700
+                    days = 1
+                }
+            }
+        }
+    }
+}

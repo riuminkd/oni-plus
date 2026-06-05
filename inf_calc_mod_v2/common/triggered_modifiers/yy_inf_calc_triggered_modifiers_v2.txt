@@ -1,0 +1,1077 @@
+# Azjakuma Shirgrii passive influence threshold modifiers
+inf_calc_mod_kabiurgarko_10 = {
+    trigger = {
+        tag = Y01
+        date = 1445.1.1
+        NOT = { check_variable = { which = kabiurgarko_inf value = 10 } }
+    }
+    picture = "kabiurgarko_shirgrii"
+	production_efficiency = -0.3
+}
+
+inf_calc_mod_kabiurgarko_30 = {
+    trigger = {
+        tag = Y01
+        check_variable = { which = kabiurgarko_inf value = 30 }
+        NOT = { check_variable = { which = kabiurgarko_inf value = 50 } }
+    }
+    picture = "kabiurgarko_shirgrii"
+	monthly_gold_inflation_modifier = -0.2
+	production_efficiency = 0.1
+	yearly_corruption = 0.05
+}
+
+inf_calc_mod_kabiurgarko_50 = {
+    trigger = {
+        tag = Y01
+        check_variable = { which = kabiurgarko_inf value = 50 }
+        NOT = { check_variable = { which = kabiurgarko_inf value = 70 } }
+    }
+    picture = "kabiurgarko_shirgrii"
+	monthly_gold_inflation_modifier = -0.2
+	production_efficiency = 0.1
+	gold_depletion_chance_modifier = -0.3
+	development_cost_in_primary_culture = -0.05
+	yearly_corruption = 0.1
+}
+
+inf_calc_mod_kabiurgarko_70 = {
+    trigger = {
+        tag = Y01
+        check_variable = { which = kabiurgarko_inf value = 70 }
+        NOT = { check_variable = { which = kabiurgarko_inf value = 90 } }
+    }
+    picture = "kabiurgarko_shirgrii"
+	monthly_gold_inflation_modifier = -0.2
+	production_efficiency = 0.1
+	gold_depletion_chance_modifier = -0.7
+	development_cost_in_primary_culture = -0.05
+	global_trade_goods_size_modifier = 0.1
+	yearly_corruption = 0.15
+}
+
+inf_calc_mod_kabiurgarko_90 = {
+    trigger = {
+        tag = Y01
+        check_variable = { which = kabiurgarko_inf value = 90 }
+    }
+    picture = "kabiurgarko_shirgrii"
+	monthly_gold_inflation_modifier = -0.2
+	production_efficiency = 0.1
+	gold_depletion_chance_modifier = -0.7
+	global_trade_goods_size_modifier = 0.1
+	global_trade_goods_size = 0.4
+	development_cost_in_primary_culture = -0.2
+	yearly_corruption = 0.2
+}
+
+inf_calc_mod_ajgriijarul_10 = {
+    trigger = {
+        tag = Y01
+        date = 1445.1.1
+        NOT = { check_variable = { which = ajgriijarul_inf value = 10 } }
+    }
+    picture = "ajgriijarul_shirgrii"
+	morale_damage_received  = 0.2
+}
+
+inf_calc_mod_ajgriijarul_30 = {
+    trigger = {
+        tag = Y01
+        check_variable = { which = ajgriijarul_inf value = 30 }
+        NOT = { check_variable = { which = ajgriijarul_inf value = 50 } }
+    }
+    picture = "ajgriijarul_shirgrii"
+	morale_damage = 0.1
+	global_unrest = 1
+}
+
+inf_calc_mod_ajgriijarul_50 = {
+    trigger = {
+        tag = Y01
+        check_variable = { which = ajgriijarul_inf value = 50 }
+        NOT = { check_variable = { which = ajgriijarul_inf value = 70 } }
+    }
+    picture = "ajgriijarul_shirgrii"
+	morale_damage = 0.1
+	land_attrition = -0.10
+	assault_fort_ability = 0.4
+	global_unrest = 2
+}
+
+inf_calc_mod_ajgriijarul_70 = {
+    trigger = {
+        tag = Y01
+        check_variable = { which = ajgriijarul_inf value = 70 }
+        NOT = { check_variable = { which = ajgriijarul_inf value = 90 } }
+    }
+    picture = "ajgriijarul_shirgrii"
+	morale_damage = 0.1
+	land_attrition = -0.10
+	assault_fort_ability = 0.4
+	drill_decay_modifier = -0.33
+	movement_speed = 0.10
+	global_unrest = 3
+}
+
+inf_calc_mod_ajgriijarul_90 = {
+    trigger = {
+        tag = Y01
+        check_variable = { which = ajgriijarul_inf value = 90 }
+    }
+    picture = "ajgriijarul_shirgrii"
+	morale_damage = 0.1
+	land_attrition = -0.10
+	assault_fort_ability = 0.4
+	drill_decay_modifier = -0.33
+	movement_speed = 0.10
+	leader_land_shock = 1
+	max_general_shock = 2
+	artillery_shock = 2
+	global_unrest = 4
+}
+
+inf_calc_mod_shinukhorchi_10 = {
+    trigger = {
+        tag = Y01
+        date = 1445.1.1
+        NOT = { check_variable = { which = shinukhorchi_inf value = 10 } }
+    }
+    picture = "shinukhorchi_shirgrii"
+	church_power_modifier = -0.5
+}
+
+inf_calc_mod_shinukhorchi_30 = {
+    trigger = {
+        tag = Y01
+        check_variable = { which = shinukhorchi_inf value = 30 }
+        NOT = { check_variable = { which = shinukhorchi_inf value = 50 } }
+    }
+    picture = "shinukhorchi_shirgrii"
+	global_tax_modifier  = 0.1
+	church_power_modifier = 0.1
+	global_autonomy = 0.05
+}
+
+inf_calc_mod_shinukhorchi_50 = {
+    trigger = {
+        tag = Y01
+        check_variable = { which = shinukhorchi_inf value = 50 }
+        NOT = { check_variable = { which = shinukhorchi_inf value = 70 } }
+    }
+    picture = "shinukhorchi_shirgrii"
+	global_tax_modifier  = 0.1
+	church_power_modifier = 0.1
+	missionaries = 1
+	monthly_church_power = 1
+	global_autonomy = 0.1
+}
+
+inf_calc_mod_shinukhorchi_70 = {
+    trigger = {
+        tag = Y01
+        check_variable = { which = shinukhorchi_inf value = 70 }
+        NOT = { check_variable = { which = shinukhorchi_inf value = 90 } }
+    }
+    picture = "shinukhorchi_shirgrii"
+	global_tax_modifier  = 0.1
+	church_power_modifier = 0.1
+	missionaries = 1
+	monthly_church_power = 1
+	same_religion_advisor_cost = -0.2
+	prestige_decay = -0.02
+	global_autonomy = 0.15
+}
+
+inf_calc_mod_shinukhorchi_90 = {
+    trigger = {
+        tag = Y01
+        check_variable = { which = shinukhorchi_inf value = 90 }
+    }
+    picture = "shinukhorchi_shirgrii"
+	global_tax_modifier  = 0.1
+	missionaries = 1
+	monthly_church_power = 1
+	same_religion_advisor_cost = -0.2
+	prestige_decay = -0.02
+	church_power_modifier = 0.6
+	manpower_in_true_faith_provinces = 0.20
+	global_autonomy = 0.2
+}
+
+inf_calc_mod_khelorvalshi_10 = {
+    trigger = {
+        tag = Y01
+        date = 1445.1.1
+        NOT = { check_variable = { which = khelorvalshi_inf value = 10 } }
+    }
+    picture = "khelorvalshi_shirgrii"
+	mages_mana_regen = -0.25
+}
+
+inf_calc_mod_khelorvalshi_30 = {
+    trigger = {
+        tag = Y01
+        check_variable = { which = khelorvalshi_inf value = 30 }
+        NOT = { check_variable = { which = khelorvalshi_inf value = 50 } }
+    }
+    picture = "khelorvalshi_shirgrii"
+	mages_estate_experience_mod = 0.3
+	diplomatic_reputation = -0.5
+}
+
+inf_calc_mod_khelorvalshi_50 = {
+    trigger = {
+        tag = Y01
+        check_variable = { which = khelorvalshi_inf value = 50 }
+        NOT = { check_variable = { which = khelorvalshi_inf value = 70 } }
+    }
+    picture = "khelorvalshi_shirgrii"
+	mages_estate_experience_mod = 0.3
+	mages_mana_regen = 0.25
+	mages_ruler_experience_mod = 0.2
+	diplomatic_reputation = -1
+}
+
+inf_calc_mod_khelorvalshi_70 = {
+    trigger = {
+        tag = Y01
+        check_variable = { which = khelorvalshi_inf value = 70 }
+        NOT = { check_variable = { which = khelorvalshi_inf value = 90 } }
+    }
+    picture = "khelorvalshi_shirgrii"
+	mages_estate_experience_mod = 0.3
+	mages_mana_regen = 0.25
+	mages_ruler_experience_mod = 0.2
+	mages_mana_regen_mult = 0.2
+	all_power_cost = -0.025
+	diplomatic_reputation = -1.5
+}
+
+inf_calc_mod_khelorvalshi_90 = {
+    trigger = {
+        tag = Y01
+        check_variable = { which = khelorvalshi_inf value = 90 }
+    }
+    picture = "khelorvalshi_shirgrii"
+	mages_mana_regen = 0.25
+	mages_ruler_experience_mod = 0.2
+	all_power_cost = -0.025
+	mages_mana_regen_mult = 0.5
+	mages_estate_experience_mod = 0.8
+	diplomatic_reputation = -2
+}
+
+inf_calc_mod_chumijemoya_10 = {
+    trigger = {
+        tag = Y01
+        date = 1445.1.1
+        NOT = { check_variable = { which = chumijemoya_inf value = 10 } }
+    }
+    picture = "chumijemoya_shirgrii"
+	global_spy_defence = -0.5
+}
+
+inf_calc_mod_chumijemoya_30 = {
+    trigger = {
+        tag = Y01
+        check_variable = { which = chumijemoya_inf value = 30 }
+        NOT = { check_variable = { which = chumijemoya_inf value = 50 } }
+    }
+    picture = "chumijemoya_shirgrii"
+	spy_offence = 0.1
+	fabricate_claims_cost = -0.2
+	governing_capacity_modifier = -0.05
+}
+
+inf_calc_mod_chumijemoya_50 = {
+    trigger = {
+        tag = Y01
+        check_variable = { which = chumijemoya_inf value = 50 }
+        NOT = { check_variable = { which = chumijemoya_inf value = 70 } }
+    }
+    picture = "chumijemoya_shirgrii"
+	spy_offence = 0.1
+	fabricate_claims_cost = -0.2
+	global_institution_spread = 0.25
+	harsh_treatment_cost = -0.3
+	governing_capacity_modifier = -0.1
+}
+
+inf_calc_mod_chumijemoya_70 = {
+    trigger = {
+        tag = Y01
+        check_variable = { which = chumijemoya_inf value = 70 }
+        NOT = { check_variable = { which = chumijemoya_inf value = 90 } }
+    }
+    picture = "chumijemoya_shirgrii"
+	spy_offence = 0.1
+	fabricate_claims_cost = -0.2
+	global_institution_spread = 0.25
+	harsh_treatment_cost = -0.3
+	reduced_liberty_desire = 20
+	claim_duration = 0.3
+	no_claim_cost_increasement = yes
+	governing_capacity_modifier = -0.15
+}
+
+inf_calc_mod_chumijemoya_90 = {
+    trigger = {
+        tag = Y01
+        check_variable = { which = chumijemoya_inf value = 90 }
+    }
+    picture = "chumijemoya_shirgrii"
+	spy_offence = 0.1
+	fabricate_claims_cost = -0.2
+	global_institution_spread = 0.25
+	harsh_treatment_cost = -0.3
+	reduced_liberty_desire = 20
+	claim_duration = 0.3
+	no_claim_cost_increasement = yes
+	can_chain_claim = yes
+	spy_action_cost_modifier = -0.2
+	administrative_efficiency = 0.05
+	governing_capacity_modifier = -0.2
+}
+
+# Azjakuma Shirgrii spell mana strain
+inf_calc_spell_mana_degen_normal_1 = {
+	trigger = {
+		tag = Y01
+		check_variable = { which = inf_calc_active_spell_cooldowns value = 1 }
+		NOT = { check_variable = { which = inf_calc_active_spell_cooldowns value = 2 } }
+		NOT = { has_country_flag = azjakuma_two_magics_allowed }
+		NOT = { has_country_modifier = azjakuma_ritual_modifier }
+	}
+	mages_mana_regen = -0.1
+}
+
+inf_calc_spell_mana_degen_normal_2 = {
+	trigger = {
+		tag = Y01
+		check_variable = { which = inf_calc_active_spell_cooldowns value = 2 }
+		NOT = { check_variable = { which = inf_calc_active_spell_cooldowns value = 3 } }
+		NOT = { has_country_flag = azjakuma_two_magics_allowed }
+		NOT = { has_country_modifier = azjakuma_ritual_modifier }
+	}
+	mages_mana_regen = -0.3
+}
+
+inf_calc_spell_mana_degen_normal_3 = {
+	trigger = {
+		tag = Y01
+		check_variable = { which = inf_calc_active_spell_cooldowns value = 3 }
+		NOT = { check_variable = { which = inf_calc_active_spell_cooldowns value = 4 } }
+		NOT = { has_country_flag = azjakuma_two_magics_allowed }
+		NOT = { has_country_modifier = azjakuma_ritual_modifier }
+	}
+	mages_mana_regen = -0.6
+}
+
+inf_calc_spell_mana_degen_normal_4 = {
+	trigger = {
+		tag = Y01
+		check_variable = { which = inf_calc_active_spell_cooldowns value = 4 }
+		NOT = { check_variable = { which = inf_calc_active_spell_cooldowns value = 5 } }
+		NOT = { has_country_flag = azjakuma_two_magics_allowed }
+		NOT = { has_country_modifier = azjakuma_ritual_modifier }
+	}
+	mages_mana_regen = -1
+}
+
+inf_calc_spell_mana_degen_normal_5 = {
+	trigger = {
+		tag = Y01
+		check_variable = { which = inf_calc_active_spell_cooldowns value = 5 }
+		NOT = { check_variable = { which = inf_calc_active_spell_cooldowns value = 6 } }
+		NOT = { has_country_flag = azjakuma_two_magics_allowed }
+		NOT = { has_country_modifier = azjakuma_ritual_modifier }
+	}
+	mages_mana_regen = -1.5
+}
+
+inf_calc_spell_mana_degen_normal_6 = {
+	trigger = {
+		tag = Y01
+		check_variable = { which = inf_calc_active_spell_cooldowns value = 6 }
+		NOT = { check_variable = { which = inf_calc_active_spell_cooldowns value = 7 } }
+		NOT = { has_country_flag = azjakuma_two_magics_allowed }
+		NOT = { has_country_modifier = azjakuma_ritual_modifier }
+	}
+	mages_mana_regen = -2.1
+}
+
+inf_calc_spell_mana_degen_normal_7 = {
+	trigger = {
+		tag = Y01
+		check_variable = { which = inf_calc_active_spell_cooldowns value = 7 }
+		NOT = { check_variable = { which = inf_calc_active_spell_cooldowns value = 8 } }
+		NOT = { has_country_flag = azjakuma_two_magics_allowed }
+		NOT = { has_country_modifier = azjakuma_ritual_modifier }
+	}
+	mages_mana_regen = -2.8
+}
+
+inf_calc_spell_mana_degen_normal_8 = {
+	trigger = {
+		tag = Y01
+		check_variable = { which = inf_calc_active_spell_cooldowns value = 8 }
+		NOT = { check_variable = { which = inf_calc_active_spell_cooldowns value = 9 } }
+		NOT = { has_country_flag = azjakuma_two_magics_allowed }
+		NOT = { has_country_modifier = azjakuma_ritual_modifier }
+	}
+	mages_mana_regen = -3.6
+}
+
+inf_calc_spell_mana_degen_normal_9 = {
+	trigger = {
+		tag = Y01
+		check_variable = { which = inf_calc_active_spell_cooldowns value = 9 }
+		NOT = { check_variable = { which = inf_calc_active_spell_cooldowns value = 10 } }
+		NOT = { has_country_flag = azjakuma_two_magics_allowed }
+		NOT = { has_country_modifier = azjakuma_ritual_modifier }
+	}
+	mages_mana_regen = -4.5
+}
+
+inf_calc_spell_mana_degen_normal_10 = {
+	trigger = {
+		tag = Y01
+		check_variable = { which = inf_calc_active_spell_cooldowns value = 10 }
+		NOT = { check_variable = { which = inf_calc_active_spell_cooldowns value = 11 } }
+		NOT = { has_country_flag = azjakuma_two_magics_allowed }
+		NOT = { has_country_modifier = azjakuma_ritual_modifier }
+	}
+	mages_mana_regen = -5.5
+}
+
+inf_calc_spell_mana_degen_normal_11 = {
+	trigger = {
+		tag = Y01
+		check_variable = { which = inf_calc_active_spell_cooldowns value = 11 }
+		NOT = { check_variable = { which = inf_calc_active_spell_cooldowns value = 12 } }
+		NOT = { has_country_flag = azjakuma_two_magics_allowed }
+		NOT = { has_country_modifier = azjakuma_ritual_modifier }
+	}
+	mages_mana_regen = -6.6
+}
+
+inf_calc_spell_mana_degen_normal_12 = {
+	trigger = {
+		tag = Y01
+		check_variable = { which = inf_calc_active_spell_cooldowns value = 12 }
+		NOT = { check_variable = { which = inf_calc_active_spell_cooldowns value = 13 } }
+		NOT = { has_country_flag = azjakuma_two_magics_allowed }
+		NOT = { has_country_modifier = azjakuma_ritual_modifier }
+	}
+	mages_mana_regen = -7.8
+}
+
+inf_calc_spell_mana_degen_normal_13 = {
+	trigger = {
+		tag = Y01
+		check_variable = { which = inf_calc_active_spell_cooldowns value = 13 }
+		NOT = { check_variable = { which = inf_calc_active_spell_cooldowns value = 14 } }
+		NOT = { has_country_flag = azjakuma_two_magics_allowed }
+		NOT = { has_country_modifier = azjakuma_ritual_modifier }
+	}
+	mages_mana_regen = -9.1
+}
+
+inf_calc_spell_mana_degen_normal_14 = {
+	trigger = {
+		tag = Y01
+		check_variable = { which = inf_calc_active_spell_cooldowns value = 14 }
+		NOT = { check_variable = { which = inf_calc_active_spell_cooldowns value = 15 } }
+		NOT = { has_country_flag = azjakuma_two_magics_allowed }
+		NOT = { has_country_modifier = azjakuma_ritual_modifier }
+	}
+	mages_mana_regen = -10.5
+}
+
+inf_calc_spell_mana_degen_normal_15 = {
+	trigger = {
+		tag = Y01
+		check_variable = { which = inf_calc_active_spell_cooldowns value = 15 }
+		NOT = { has_country_flag = azjakuma_two_magics_allowed }
+		NOT = { has_country_modifier = azjakuma_ritual_modifier }
+	}
+	mages_mana_regen = -12
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+inf_calc_spell_mana_degen_two_magics_1 = {
+	trigger = {
+		tag = Y01
+		check_variable = { which = inf_calc_active_spell_cooldowns value = 1 }
+		NOT = { check_variable = { which = inf_calc_active_spell_cooldowns value = 2 } }
+		has_country_flag = azjakuma_two_magics_allowed
+		NOT = { has_country_modifier = azjakuma_ritual_modifier }
+	}
+	mages_mana_regen = -0.2
+}
+
+inf_calc_spell_mana_degen_two_magics_2 = {
+	trigger = {
+		tag = Y01
+		check_variable = { which = inf_calc_active_spell_cooldowns value = 2 }
+		NOT = { check_variable = { which = inf_calc_active_spell_cooldowns value = 3 } }
+		has_country_flag = azjakuma_two_magics_allowed
+		NOT = { has_country_modifier = azjakuma_ritual_modifier }
+	}
+	mages_mana_regen = -0.4
+}
+
+inf_calc_spell_mana_degen_two_magics_3 = {
+	trigger = {
+		tag = Y01
+		check_variable = { which = inf_calc_active_spell_cooldowns value = 3 }
+		NOT = { check_variable = { which = inf_calc_active_spell_cooldowns value = 4 } }
+		has_country_flag = azjakuma_two_magics_allowed
+		NOT = { has_country_modifier = azjakuma_ritual_modifier }
+	}
+	mages_mana_regen = -0.6
+}
+
+inf_calc_spell_mana_degen_two_magics_4 = {
+	trigger = {
+		tag = Y01
+		check_variable = { which = inf_calc_active_spell_cooldowns value = 4 }
+		NOT = { check_variable = { which = inf_calc_active_spell_cooldowns value = 5 } }
+		has_country_flag = azjakuma_two_magics_allowed
+		NOT = { has_country_modifier = azjakuma_ritual_modifier }
+	}
+	mages_mana_regen = -0.8
+}
+
+inf_calc_spell_mana_degen_two_magics_5 = {
+	trigger = {
+		tag = Y01
+		check_variable = { which = inf_calc_active_spell_cooldowns value = 5 }
+		NOT = { check_variable = { which = inf_calc_active_spell_cooldowns value = 6 } }
+		has_country_flag = azjakuma_two_magics_allowed
+		NOT = { has_country_modifier = azjakuma_ritual_modifier }
+	}
+	mages_mana_regen = -1
+}
+
+inf_calc_spell_mana_degen_two_magics_6 = {
+	trigger = {
+		tag = Y01
+		check_variable = { which = inf_calc_active_spell_cooldowns value = 6 }
+		NOT = { check_variable = { which = inf_calc_active_spell_cooldowns value = 7 } }
+		has_country_flag = azjakuma_two_magics_allowed
+		NOT = { has_country_modifier = azjakuma_ritual_modifier }
+	}
+	mages_mana_regen = -1.4
+}
+
+inf_calc_spell_mana_degen_two_magics_7 = {
+	trigger = {
+		tag = Y01
+		check_variable = { which = inf_calc_active_spell_cooldowns value = 7 }
+		NOT = { check_variable = { which = inf_calc_active_spell_cooldowns value = 8 } }
+		has_country_flag = azjakuma_two_magics_allowed
+		NOT = { has_country_modifier = azjakuma_ritual_modifier }
+	}
+	mages_mana_regen = -1.8
+}
+
+inf_calc_spell_mana_degen_two_magics_8 = {
+	trigger = {
+		tag = Y01
+		check_variable = { which = inf_calc_active_spell_cooldowns value = 8 }
+		NOT = { check_variable = { which = inf_calc_active_spell_cooldowns value = 9 } }
+		has_country_flag = azjakuma_two_magics_allowed
+		NOT = { has_country_modifier = azjakuma_ritual_modifier }
+	}
+	mages_mana_regen = -2.2
+}
+
+inf_calc_spell_mana_degen_two_magics_9 = {
+	trigger = {
+		tag = Y01
+		check_variable = { which = inf_calc_active_spell_cooldowns value = 9 }
+		NOT = { check_variable = { which = inf_calc_active_spell_cooldowns value = 10 } }
+		has_country_flag = azjakuma_two_magics_allowed
+		NOT = { has_country_modifier = azjakuma_ritual_modifier }
+	}
+	mages_mana_regen = -2.6
+}
+
+inf_calc_spell_mana_degen_two_magics_10 = {
+	trigger = {
+		tag = Y01
+		check_variable = { which = inf_calc_active_spell_cooldowns value = 10 }
+		NOT = { check_variable = { which = inf_calc_active_spell_cooldowns value = 11 } }
+		has_country_flag = azjakuma_two_magics_allowed
+		NOT = { has_country_modifier = azjakuma_ritual_modifier }
+	}
+	mages_mana_regen = -3
+}
+
+inf_calc_spell_mana_degen_two_magics_11 = {
+	trigger = {
+		tag = Y01
+		check_variable = { which = inf_calc_active_spell_cooldowns value = 11 }
+		NOT = { check_variable = { which = inf_calc_active_spell_cooldowns value = 12 } }
+		has_country_flag = azjakuma_two_magics_allowed
+		NOT = { has_country_modifier = azjakuma_ritual_modifier }
+	}
+	mages_mana_regen = -3.4
+}
+
+inf_calc_spell_mana_degen_two_magics_12 = {
+	trigger = {
+		tag = Y01
+		check_variable = { which = inf_calc_active_spell_cooldowns value = 12 }
+		NOT = { check_variable = { which = inf_calc_active_spell_cooldowns value = 13 } }
+		has_country_flag = azjakuma_two_magics_allowed
+		NOT = { has_country_modifier = azjakuma_ritual_modifier }
+	}
+	mages_mana_regen = -3.8
+}
+
+inf_calc_spell_mana_degen_two_magics_13 = {
+	trigger = {
+		tag = Y01
+		check_variable = { which = inf_calc_active_spell_cooldowns value = 13 }
+		NOT = { check_variable = { which = inf_calc_active_spell_cooldowns value = 14 } }
+		has_country_flag = azjakuma_two_magics_allowed
+		NOT = { has_country_modifier = azjakuma_ritual_modifier }
+	}
+	mages_mana_regen = -4.2
+}
+
+inf_calc_spell_mana_degen_two_magics_14 = {
+	trigger = {
+		tag = Y01
+		check_variable = { which = inf_calc_active_spell_cooldowns value = 14 }
+		NOT = { check_variable = { which = inf_calc_active_spell_cooldowns value = 15 } }
+		has_country_flag = azjakuma_two_magics_allowed
+		NOT = { has_country_modifier = azjakuma_ritual_modifier }
+	}
+	mages_mana_regen = -4.6
+}
+
+inf_calc_spell_mana_degen_two_magics_15 = {
+	trigger = {
+		tag = Y01
+		check_variable = { which = inf_calc_active_spell_cooldowns value = 15 }
+		has_country_flag = azjakuma_two_magics_allowed
+		NOT = { has_country_modifier = azjakuma_ritual_modifier }
+	}
+	mages_mana_regen = -5
+}
+
+inf_calc_spell_mana_degen_two_magics_ritual_1 = {
+	trigger = {
+		tag = Y01
+		check_variable = { which = inf_calc_active_spell_cooldowns value = 1 }
+		NOT = { check_variable = { which = inf_calc_active_spell_cooldowns value = 2 } }
+		has_country_flag = azjakuma_two_magics_allowed
+		has_country_modifier = azjakuma_ritual_modifier
+	}
+	mages_mana_regen = -0.1
+}
+
+inf_calc_spell_mana_degen_two_magics_ritual_2 = {
+	trigger = {
+		tag = Y01
+		check_variable = { which = inf_calc_active_spell_cooldowns value = 2 }
+		NOT = { check_variable = { which = inf_calc_active_spell_cooldowns value = 3 } }
+		has_country_flag = azjakuma_two_magics_allowed
+		has_country_modifier = azjakuma_ritual_modifier
+	}
+	mages_mana_regen = -0.2
+}
+
+inf_calc_spell_mana_degen_two_magics_ritual_3 = {
+	trigger = {
+		tag = Y01
+		check_variable = { which = inf_calc_active_spell_cooldowns value = 3 }
+		NOT = { check_variable = { which = inf_calc_active_spell_cooldowns value = 4 } }
+		has_country_flag = azjakuma_two_magics_allowed
+		has_country_modifier = azjakuma_ritual_modifier
+	}
+	mages_mana_regen = -0.3
+}
+
+inf_calc_spell_mana_degen_two_magics_ritual_4 = {
+	trigger = {
+		tag = Y01
+		check_variable = { which = inf_calc_active_spell_cooldowns value = 4 }
+		NOT = { check_variable = { which = inf_calc_active_spell_cooldowns value = 5 } }
+		has_country_flag = azjakuma_two_magics_allowed
+		has_country_modifier = azjakuma_ritual_modifier
+	}
+	mages_mana_regen = -0.4
+}
+
+inf_calc_spell_mana_degen_two_magics_ritual_5 = {
+	trigger = {
+		tag = Y01
+		check_variable = { which = inf_calc_active_spell_cooldowns value = 5 }
+		NOT = { check_variable = { which = inf_calc_active_spell_cooldowns value = 6 } }
+		has_country_flag = azjakuma_two_magics_allowed
+		has_country_modifier = azjakuma_ritual_modifier
+	}
+	mages_mana_regen = -0.5
+}
+
+inf_calc_spell_mana_degen_two_magics_ritual_6 = {
+	trigger = {
+		tag = Y01
+		check_variable = { which = inf_calc_active_spell_cooldowns value = 6 }
+		NOT = { check_variable = { which = inf_calc_active_spell_cooldowns value = 7 } }
+		has_country_flag = azjakuma_two_magics_allowed
+		has_country_modifier = azjakuma_ritual_modifier
+	}
+	mages_mana_regen = -0.7
+}
+
+inf_calc_spell_mana_degen_two_magics_ritual_7 = {
+	trigger = {
+		tag = Y01
+		check_variable = { which = inf_calc_active_spell_cooldowns value = 7 }
+		NOT = { check_variable = { which = inf_calc_active_spell_cooldowns value = 8 } }
+		has_country_flag = azjakuma_two_magics_allowed
+		has_country_modifier = azjakuma_ritual_modifier
+	}
+	mages_mana_regen = -0.9
+}
+
+inf_calc_spell_mana_degen_two_magics_ritual_8 = {
+	trigger = {
+		tag = Y01
+		check_variable = { which = inf_calc_active_spell_cooldowns value = 8 }
+		NOT = { check_variable = { which = inf_calc_active_spell_cooldowns value = 9 } }
+		has_country_flag = azjakuma_two_magics_allowed
+		has_country_modifier = azjakuma_ritual_modifier
+	}
+	mages_mana_regen = -1.1
+}
+
+inf_calc_spell_mana_degen_two_magics_ritual_9 = {
+	trigger = {
+		tag = Y01
+		check_variable = { which = inf_calc_active_spell_cooldowns value = 9 }
+		NOT = { check_variable = { which = inf_calc_active_spell_cooldowns value = 10 } }
+		has_country_flag = azjakuma_two_magics_allowed
+		has_country_modifier = azjakuma_ritual_modifier
+	}
+	mages_mana_regen = -1.3
+}
+
+inf_calc_spell_mana_degen_two_magics_ritual_10 = {
+	trigger = {
+		tag = Y01
+		check_variable = { which = inf_calc_active_spell_cooldowns value = 10 }
+		NOT = { check_variable = { which = inf_calc_active_spell_cooldowns value = 11 } }
+		has_country_flag = azjakuma_two_magics_allowed
+		has_country_modifier = azjakuma_ritual_modifier
+	}
+	mages_mana_regen = -1.5
+}
+
+inf_calc_spell_mana_degen_two_magics_ritual_11 = {
+	trigger = {
+		tag = Y01
+		check_variable = { which = inf_calc_active_spell_cooldowns value = 11 }
+		NOT = { check_variable = { which = inf_calc_active_spell_cooldowns value = 12 } }
+		has_country_flag = azjakuma_two_magics_allowed
+		has_country_modifier = azjakuma_ritual_modifier
+	}
+	mages_mana_regen = -1.7
+}
+
+inf_calc_spell_mana_degen_two_magics_ritual_12 = {
+	trigger = {
+		tag = Y01
+		check_variable = { which = inf_calc_active_spell_cooldowns value = 12 }
+		NOT = { check_variable = { which = inf_calc_active_spell_cooldowns value = 13 } }
+		has_country_flag = azjakuma_two_magics_allowed
+		has_country_modifier = azjakuma_ritual_modifier
+	}
+	mages_mana_regen = -1.9
+}
+
+inf_calc_spell_mana_degen_two_magics_ritual_13 = {
+	trigger = {
+		tag = Y01
+		check_variable = { which = inf_calc_active_spell_cooldowns value = 13 }
+		NOT = { check_variable = { which = inf_calc_active_spell_cooldowns value = 14 } }
+		has_country_flag = azjakuma_two_magics_allowed
+		has_country_modifier = azjakuma_ritual_modifier
+	}
+	mages_mana_regen = -2.1
+}
+
+inf_calc_spell_mana_degen_two_magics_ritual_14 = {
+	trigger = {
+		tag = Y01
+		check_variable = { which = inf_calc_active_spell_cooldowns value = 14 }
+		NOT = { check_variable = { which = inf_calc_active_spell_cooldowns value = 15 } }
+		has_country_flag = azjakuma_two_magics_allowed
+		has_country_modifier = azjakuma_ritual_modifier
+	}
+	mages_mana_regen = -2.3
+}
+
+inf_calc_spell_mana_degen_two_magics_ritual_15 = {
+	trigger = {
+		tag = Y01
+		check_variable = { which = inf_calc_active_spell_cooldowns value = 15 }
+		has_country_flag = azjakuma_two_magics_allowed
+		has_country_modifier = azjakuma_ritual_modifier
+	}
+	mages_mana_regen = -2.5
+}
+
+inf_calc_mana_drought = {
+	trigger = {
+		tag = Y01
+		NOT = { has_mana = { amount = 1 } }
+		NOT = { has_global_modifier_value = { which = mages_mana_regen value = 0 } }
+	}
+	kabiurgarko_influence_gain = -2
+	ajgriijarul_influence_gain = -2
+	shinukhorchi_influence_gain = -2
+	khelorvalshi_influence_gain = -2
+	chumijemoya_influence_gain = -2
+}
+
+inf_calc_demon_empires_grip = {
+	trigger = {
+		tag = Y01
+		has_country_flag = azjakuma_two_magics_allowed
+	}
+	kabiurgarko_influence_gain = 0.5
+	ajgriijarul_influence_gain = 0.5
+	shinukhorchi_influence_gain = 0.5
+	khelorvalshi_influence_gain = 0.5
+	chumijemoya_influence_gain = 0.5
+}
+
+inf_calc_dangerous_foe = {
+	trigger = {
+		tag = Y01
+		any_known_country = {
+			war_with = ROOT
+			army_strength = {
+				who = ROOT
+				value = 0.70
+			}
+		}
+	}
+	kabiurgarko_influence_gain = 0.5
+	ajgriijarul_influence_gain = 0.5
+	shinukhorchi_influence_gain = 0.5
+	khelorvalshi_influence_gain = 0.5
+	chumijemoya_influence_gain = 0.5
+}
+
+inf_calc_true_immortality = {
+	trigger = {
+		tag = Y01
+		has_country_modifier = azjakuma_ritual_modifier
+		has_ruler_flag = dvp_life_extension_5
+		has_ruler_flag = inf_calc_power_eternal
+		ruler_is_immortal = yes
+	}
+	kabiurgarko_influence_gain = 2
+	ajgriijarul_influence_gain = 2
+	shinukhorchi_influence_gain = 2
+	khelorvalshi_influence_gain = 2
+	chumijemoya_influence_gain = 2
+	max_estate_spell_levels = 2
+}
+
+# Save compatibility stubs. Wide power base is handled directly in monthly influence calculation.
+inf_calc_shinukhorchi_wide_power_base = {
+	trigger = {
+		always = no
+	}
+	hidden = yes
+}
+
+inf_calc_chumijemoya_wide_power_base = {
+	trigger = {
+		always = no
+	}
+	hidden = yes
+}
+
+inf_calc_ajgriijarul_wide_power_base = {
+	trigger = {
+		always = no
+	}
+	hidden = yes
+}
+
+inf_calc_kabiurgarko_wide_power_base = {
+	trigger = {
+		always = no
+	}
+	hidden = yes
+}
+
+inf_calc_khelorvalshi_wide_power_base = {
+	trigger = {
+		always = no
+	}
+	hidden = yes
+}
+
+inf_calc_religious_shinukhorchi_influence = {
+	trigger = {
+		tag = Y01
+		has_idea_group = religious_ideas
+	}
+	hidden = yes
+	shinukhorchi_influence_gain = 0.10
+}
+
+inf_calc_espionage_chumijemoya_influence = {
+	trigger = {
+		tag = Y01
+		has_idea_group = espionage_ideas
+	}
+	hidden = yes
+	chumijemoya_influence_gain = 0.10
+}
+
+inf_calc_offensive_ajgriijarul_influence = {
+	trigger = {
+		tag = Y01
+		has_idea_group = offensive_ideas
+	}
+	hidden = yes
+	ajgriijarul_influence_gain = 0.10
+}
+
+inf_calc_economic_kabiurgarko_influence = {
+	trigger = {
+		tag = Y01
+		has_idea_group = economic_ideas
+	}
+	hidden = yes
+	kabiurgarko_influence_gain = 0.10
+}
+
+inf_calc_shinukhorchi_heir_influence = {
+	trigger = {
+		tag = Y01
+		has_reform = tagharoghi_reform
+		has_country_flag = oni_heir_shinukhorchi
+	}
+	picture = "shinukhorchi_shirgrii"
+	shinukhorchi_influence_gain = 0.10
+}
+
+inf_calc_chumijemoya_heir_influence = {
+	trigger = {
+		tag = Y01
+		has_reform = tagharoghi_reform
+		has_country_flag = oni_heir_chumijemoya
+	}
+	picture = "chumijemoya_shirgrii"
+	chumijemoya_influence_gain = 0.10
+}
+
+inf_calc_ajgriijarul_heir_influence = {
+	trigger = {
+		tag = Y01
+		has_reform = tagharoghi_reform
+		has_country_flag = oni_heir_ajgriijarul
+	}
+	picture = "ajgriijarul_shirgrii"
+	ajgriijarul_influence_gain = 0.10
+}
+
+inf_calc_kabiurgarko_heir_influence = {
+	trigger = {
+		tag = Y01
+		has_reform = tagharoghi_reform
+		has_country_flag = oni_heir_kabiurgarko
+	}
+	picture = "kabiurgarko_shirgrii"
+	kabiurgarko_influence_gain = 0.10
+}
+
+inf_calc_khelorvalshi_heir_influence = {
+	trigger = {
+		tag = Y01
+		has_reform = tagharoghi_reform
+		has_country_flag = khelorvalshi_restored
+		has_country_flag = oni_heir_khelorvalshi
+	}
+	picture = "khelorvalshi_shirgrii"
+	khelorvalshi_influence_gain = 0.10
+}
+
+inf_calc_shinukhorchi_ruler_influence = {
+	trigger = {
+		tag = Y01
+		has_reform = tagharoghi_reform
+		has_country_flag = oni_ruler_shinukhorchi
+	}
+	picture = "shinukhorchi_shirgrii"
+	shinukhorchi_influence_gain = 0.20
+}
+
+inf_calc_chumijemoya_ruler_influence = {
+	trigger = {
+		tag = Y01
+		has_reform = tagharoghi_reform
+		has_country_flag = oni_ruler_chumijemoya
+	}
+	picture = "chumijemoya_shirgrii"
+	chumijemoya_influence_gain = 0.20
+}
+
+inf_calc_ajgriijarul_ruler_influence = {
+	trigger = {
+		tag = Y01
+		has_reform = tagharoghi_reform
+		has_country_flag = oni_ruler_ajgriijarul
+	}
+	picture = "ajgriijarul_shirgrii"
+	ajgriijarul_influence_gain = 0.20
+}
+
+inf_calc_kabiurgarko_ruler_influence = {
+	trigger = {
+		tag = Y01
+		has_reform = tagharoghi_reform
+		has_country_flag = oni_ruler_kabiurgarko
+	}
+	picture = "kabiurgarko_shirgrii"
+	kabiurgarko_influence_gain = 0.20
+}
+
+inf_calc_khelorvalshi_ruler_influence = {
+	trigger = {
+		tag = Y01
+		has_reform = tagharoghi_reform
+		has_country_flag = khelorvalshi_restored
+		has_country_flag = oni_ruler_khelorvalshi
+	}
+	picture = "khelorvalshi_shirgrii"
+	khelorvalshi_influence_gain = 0.20
+}
+

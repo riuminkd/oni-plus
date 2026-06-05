@@ -1,0 +1,11 @@
+inf_calc_shinukhorchi_mind_controlled = {
+	opinion = 200
+	years = 1
+	yearly_decay = 200
+}
+
+inf_calc_shinukhorchi_used_mind_control = {
+	opinion = -50
+	years = 13
+	yearly_decay = 4
+}

@@ -1,0 +1,147 @@
+artifice_invention_black_damestear_bullets = {
+	icon = Artf_MaMi3
+	max_absolutism = 0
+	loyalty = 0.00
+	influence = 0 #artificer privileges must never affect influence due to the fact influence affects points
+	is_valid = {
+		NOT = { tag = Y01 } #inf_calc_change
+		has_country_flag = unlocked_artifice_invention_black_damestear_bullets
+		OR = {
+			ai = yes
+			has_estate_privilege = artifice_invention_black_damestear_bullets
+		}
+	}
+	can_select = {
+        ai = yes
+		OR = {
+			artifice_has_points_30 = yes
+			custom_trigger_tooltip = {
+				tooltip = artifice_free_upkeep_tt
+				has_country_flag = no_upkeep_artifice_invention_black_damestear_bullets
+			}
+		}
+	}
+	can_revoke = {
+		hidden_trigger = {
+			ai = yes
+		}
+	}
+	on_granted = {
+		hidden_effect = {
+			artifice_inventions_currently_used_increase = yes
+		}
+		if = {
+			limit = { NOT = { has_country_flag = no_upkeep_artifice_invention_black_damestear_bullets } }
+			artifice_granted_30 = yes
+		}
+	}
+	on_revoked = {
+		hidden_effect = {
+			artifice_inventions_currently_used_decrease = yes
+		}
+		if = {
+			limit = { NOT = { has_country_flag = no_upkeep_artifice_invention_black_damestear_bullets } }
+			artifice_remove_30 = yes
+		}
+	}
+	on_invalid = {
+		hidden_effect = {
+			artifice_inventions_currently_used_decrease = yes
+		}
+		if = {
+			limit = { NOT = { has_country_flag = no_upkeep_artifice_invention_black_damestear_bullets } }
+			artifice_remove_30 = yes
+		}
+	}
+	penalties = {
+		#foo
+	}
+	benefits = {
+		artificers_privilege_slots = 1
+		dragon_command_privilege_slots = 1
+		discipline = 0.05
+		yearly_revolutionary_zeal = 1
+		tec_mechanists_influence = 0.06
+	}
+	ai_will_do = {
+		factor = 10
+		modifier = {
+			factor = 0
+			over_artifice_capacity = yes
+		}
+	}
+}
+
+artifice_invention_korashi_bullets = {
+	icon = Artf_MaMi3
+	max_absolutism = 0
+	loyalty = 0.00
+	influence = 0 #artificer privileges must never affect influence due to the fact influence affects points
+	is_valid = {
+		tag = Y01 #inf_calc_change
+		has_country_flag = unlocked_artifice_invention_black_damestear_bullets #inf_calc_change
+		OR = {
+			ai = yes
+			has_estate_privilege = artifice_invention_korashi_bullets #inf_calc_change
+		}
+	}
+	can_select = {
+        ai = yes
+		OR = {
+			artifice_has_points_30 = yes
+			custom_trigger_tooltip = {
+				tooltip = artifice_free_upkeep_tt
+				has_country_flag = no_upkeep_artifice_invention_black_damestear_bullets
+			}
+		}
+	}
+	can_revoke = {
+		hidden_trigger = {
+			ai = yes
+		}
+	}
+	on_granted = {
+		hidden_effect = {
+			artifice_inventions_currently_used_increase = yes
+		}
+		if = {
+			limit = { NOT = { has_country_flag = no_upkeep_artifice_invention_black_damestear_bullets } }
+			artifice_granted_30 = yes
+		}
+	}
+	on_revoked = {
+		hidden_effect = {
+			artifice_inventions_currently_used_decrease = yes
+		}
+		if = {
+			limit = { NOT = { has_country_flag = no_upkeep_artifice_invention_black_damestear_bullets } }
+			artifice_remove_30 = yes
+		}
+	}
+	on_invalid = {
+		hidden_effect = {
+			artifice_inventions_currently_used_decrease = yes
+		}
+		if = {
+			limit = { NOT = { has_country_flag = no_upkeep_artifice_invention_black_damestear_bullets } }
+			artifice_remove_30 = yes
+		}
+	}
+	penalties = {
+		#foo
+	}
+	benefits = {
+		artificers_privilege_slots = 1
+		dragon_command_privilege_slots = 1
+		discipline = 0.05
+		yearly_revolutionary_zeal = 1
+		tec_mechanists_influence = 0.06
+	}
+	ai_will_do = {
+		factor = 10
+		modifier = {
+			factor = 0
+			over_artifice_capacity = yes
+		}
+	}
+}

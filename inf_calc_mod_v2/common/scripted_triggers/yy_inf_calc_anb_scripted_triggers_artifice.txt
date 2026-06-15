@@ -625,15 +625,11 @@ has_discovered_all_society_tier_3_inventions = {
 
 
 has_discovered_all_insyaa_inventions = {
-	has_country_flag = unlocked_artifice_invention_kraken_galleons
-	has_country_flag = unlocked_artifice_invention_spirit_munition
-	has_country_flag = unlocked_artifice_invention_bio_processor
 	has_country_flag = unlocked_artifice_invention_reverse_mechanim
 	has_country_flag = unlocked_artifice_invention_industrial_automatories 
 	has_country_flag = unlocked_artifice_invention_memory_module
 	has_country_flag = unlocked_artifice_invention_fireproof_plating
 	has_country_flag = unlocked_artifice_invention_okalu_scanners
-	has_country_flag = unlocked_artifice_invention_pillar_scouts
 	has_country_flag = unlocked_artifice_invention_behavioral_chip
 	has_country_flag = unlocked_artifice_invention_construction_bots
 	has_country_flag = unlocked_artifice_invention_mechanim_regiments
@@ -1376,17 +1372,6 @@ artifice_invention_researched_all = {
 						NOT = {
 							6234 = {
 								had_province_flag = {
-									flag = unlocked_artifice_invention_pillar_scouts_local
-									days = 5475
-								}
-							}
-						}
-						has_country_flag = unlocked_artifice_invention_pillar_scouts
-					}
-					OR = {
-						NOT = {
-							6234 = {
-								had_province_flag = {
 									flag = unlocked_artifice_invention_animal_gene_local
 									days = 5475
 								}
@@ -1942,16 +1927,12 @@ is_not_researching_or_blocked_from_researching_invention = {
 	if = {
 		limit = { mechanim_privilege_check_proxy = yes }
 		NOT = {
-			has_estate_privilege = estate_artificers_organization_pillar_expedition
 			has_estate_privilege = estate_artificers_organization_mechanim_base
 		}
 	}
 }
 mechanim_privilege_check_proxy = { #scripted triggers with if-limits can bug if there are multiple levels of checks, we use a scripted trigger proxy to avoid this
-	OR = {
-		has_estate_privilege = estate_artificers_organization_pillar_expedition
-		has_estate_privilege = estate_artificers_organization_mechanim_base
-	}
+	has_estate_privilege = estate_artificers_organization_mechanim_base
 }
 
 is_not_blocked_from_using_invention = {

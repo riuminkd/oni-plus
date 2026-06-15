@@ -804,15 +804,15 @@ inf_calc_khelorvalshi_lifeblood_3 = {
 }
 
 inf_calc_chumijemoya_choking_mist_enemy_1 = {
-	global_supply_limit_modifier = -1
+	global_supply_limit_modifier = -2
 }
 
 inf_calc_chumijemoya_choking_mist_enemy_2 = {
-	global_supply_limit_modifier = -1.5
+	global_supply_limit_modifier = -4
 }
 
 inf_calc_chumijemoya_choking_mist_enemy_3 = {
-	global_supply_limit_modifier = -2
+	global_supply_limit_modifier = -6
 }
 
 inf_calc_shinukhorchi_mind_control = {

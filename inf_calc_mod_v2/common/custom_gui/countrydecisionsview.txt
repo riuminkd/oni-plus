@@ -7036,28 +7036,50 @@ custom_button = {
 	tooltip = racial_military_invention_3_tt
 	potential = {
 		has_country_flag = artifice_invention_menu_open_cultural
-		has_country_modifier = goblin_military
+		OR = {
+			has_country_modifier = goblin_military
+			has_country_modifier = mechanim_military
+		}
 	}
 	frame = {
 		number = 3
 		trigger = {
-			has_estate_privilege = artifice_invention_eplusplus_compound
+			OR = {
+				has_estate_privilege = artifice_invention_eplusplus_compound
+				has_estate_privilege = artifice_invention_mech_pillar_scouts
+			}
 		}
 	}
 	frame = {
 		number = 2
 		trigger = {
-			has_country_modifier = goblin_military
-			has_country_flag = unlocked_artifice_invention_eplusplus_compound
-			NOT = { is_or_was_tag = { tag = F81 } }
+			OR = {
+				AND = {
+					has_country_modifier = goblin_military
+					has_country_flag = unlocked_artifice_invention_eplusplus_compound
+					NOT = { is_or_was_tag = { tag = F81 } }
+				}
+				AND = {
+					has_country_modifier = mechanim_military
+					has_country_flag = unlocked_artifice_invention_mech_pillar_scouts
+				}
+			}
 		}
 	}
 	frame = { number = 1 }
 	trigger = {
 		hidden_trigger = {
-			has_country_modifier = goblin_military
-			has_country_flag = unlocked_artifice_invention_eplusplus_compound
-			NOT = { is_or_was_tag = { tag = F81 } }
+			OR = {
+				AND = {
+					has_country_modifier = goblin_military
+					has_country_flag = unlocked_artifice_invention_eplusplus_compound
+					NOT = { is_or_was_tag = { tag = F81 } }
+				}
+				AND = {
+					has_country_modifier = mechanim_military
+					has_country_flag = unlocked_artifice_invention_mech_pillar_scouts
+				}
+			}
 		}
 	}
 	effect = { 
@@ -7091,6 +7113,36 @@ custom_button = {
 					has_estate_privilege = artifice_invention_eplusplus_compound
 				}
 				remove_estate_privilege = artifice_invention_eplusplus_compound
+			}
+		}
+		else_if = {
+			limit = { has_country_modifier = mechanim_military }
+			if = {
+				limit = {
+					artifice_can_select_invention_10 = yes
+					NOT = {
+						has_estate_privilege = artifice_invention_mech_pillar_scouts
+					}
+				}
+				set_estate_privilege = artifice_invention_mech_pillar_scouts
+			}
+			else_if = {
+				limit = {
+					artifice_can_select_invention_10 = no
+					NOT = {
+						has_estate_privilege = artifice_invention_mech_pillar_scouts
+					}
+				}
+				custom_tooltip = artifice_cannot_afford_invention
+				tooltip = {
+					set_estate_privilege = artifice_invention_mech_pillar_scouts
+				}
+			}
+			else_if = {
+				limit = {
+					has_estate_privilege = artifice_invention_mech_pillar_scouts
+				}
+				remove_estate_privilege = artifice_invention_mech_pillar_scouts
 			}
 		}
 	}
@@ -13002,49 +13054,104 @@ custom_button = {
 	frame = {
 		number = 3
 		trigger = {
-			has_estate_privilege = artifice_invention_auto_scribes
+			OR = {
+				has_estate_privilege = artifice_invention_pillar_scouts
+				has_estate_privilege = artifice_invention_auto_scribes
+			}
 		}
 	}
 	frame = {
 		number = 2
 		trigger = {
-			has_country_flag = unlocked_artifice_invention_auto_scribes
+			if = {
+				limit = { capital_scope = { continent = oceania } }
+				has_country_flag = unlocked_artifice_invention_pillar_scouts
+			}
+			else = {
+				has_country_flag = unlocked_artifice_invention_auto_scribes
+			}
 		}
 	}
 	frame = { number = 1 }
 
 	trigger = {
 		hidden_trigger = {
-			has_country_flag = unlocked_artifice_invention_auto_scribes
+			if = {
+				limit = {
+					capital_scope = {
+						continent = oceania
+					}
+				}
+				has_country_flag = unlocked_artifice_invention_pillar_scouts
+			}
+			else = {
+				has_country_flag = unlocked_artifice_invention_auto_scribes
+			}
 		}
 	}
 	effect = {
 		if = {
 			limit = {
-				artifice_can_select_invention_30 = yes
-				NOT = {
-					has_estate_privilege = artifice_invention_auto_scribes
+				capital_scope = {
+					continent = oceania
 				}
 			}
-			set_estate_privilege = artifice_invention_auto_scribes
+			if = {
+				limit = {
+					artifice_can_select_invention_10 = yes
+					NOT = {
+						has_estate_privilege = artifice_invention_pillar_scouts
+					}
+				}
+				set_estate_privilege = artifice_invention_pillar_scouts
+			}
+			else_if = {
+				limit = {
+					artifice_can_select_invention_10 = no
+					NOT = {
+						has_estate_privilege = artifice_invention_pillar_scouts
+					}
+				}
+				custom_tooltip = artifice_cannot_afford_invention
+				tooltip = {
+					set_estate_privilege = artifice_invention_pillar_scouts
+				}
+			}
+			else_if = {
+				limit = {
+					has_estate_privilege = artifice_invention_pillar_scouts
+				}
+				remove_estate_privilege = artifice_invention_pillar_scouts
+			}
 		}
-		else_if = {
-			limit = {
-				artifice_can_select_invention_30 = no
-				NOT = {
-					has_estate_privilege = artifice_invention_auto_scribes
+		else = {
+			if = {
+				limit = {
+					artifice_can_select_invention_30 = yes
+					NOT = {
+						has_estate_privilege = artifice_invention_auto_scribes
+					}
 				}
-			}
-			custom_tooltip = artifice_cannot_afford_invention
-			tooltip = {
 				set_estate_privilege = artifice_invention_auto_scribes
 			}
-		}
-		else_if = {
-			limit = {
-				has_estate_privilege = artifice_invention_auto_scribes
+			else_if = {
+				limit = {
+					artifice_can_select_invention_30 = no
+					NOT = {
+						has_estate_privilege = artifice_invention_auto_scribes
+					}
+				}
+				custom_tooltip = artifice_cannot_afford_invention
+				tooltip = {
+					set_estate_privilege = artifice_invention_auto_scribes
+				}
 			}
-			remove_estate_privilege = artifice_invention_auto_scribes
+			else_if = {
+				limit = {
+					has_estate_privilege = artifice_invention_auto_scribes
+				}
+				remove_estate_privilege = artifice_invention_auto_scribes
+			}
 		}
 	}
 }
@@ -14011,6 +14118,273 @@ custom_button = {
 # }
 
 #Tier 4 Inventions
+custom_button = {
+	name = insyaa_invention_mechanim_tier4_bio
+	tooltip = artifice_invention_kraken_galleons
+	
+	frame = {
+		number = 5
+		trigger = {
+			has_estate_privilege = artifice_invention_kraken_galleons
+		}
+	}
+	frame = {
+		number = 4
+		trigger = {
+			has_country_flag = unlocked_artifice_invention_kraken_galleons
+		}
+	}
+	frame = {
+		number = 3
+		trigger = {
+			calc_true_if = {
+				amount = 2
+				has_country_flag = aPUI_gene_pillar_explored_level_3_in_6962
+				has_country_flag = aPUI_gene_pillar_explored_level_3_in_3173
+				has_country_flag = aPUI_gene_pillar_explored_level_3_in_3551
+			}
+		}
+	}
+	frame = {
+		number = 2
+		trigger = {
+			OR = {
+				has_country_flag = aPUI_gene_pillar_explored_level_3_in_6962
+				has_country_flag = aPUI_gene_pillar_explored_level_3_in_3173
+				has_country_flag = aPUI_gene_pillar_explored_level_3_in_3551
+			}
+		}
+	}
+	frame = { number = 1 }
+
+	trigger = {
+		hidden_trigger = {
+			OR = {
+				has_country_flag = aPUI_gene_pillar_explored_level_3_in_6962
+				has_country_flag = aPUI_gene_pillar_explored_level_3_in_3173
+				has_country_flag = aPUI_gene_pillar_explored_level_3_in_3551
+			}
+		}
+	}
+	effect = {
+		custom_tooltip = you_need_to_find_kraken_galleons
+		if = {
+			limit = {
+				has_country_flag = unlocked_artifice_invention_kraken_galleons
+			}
+			if = {
+				limit = {
+					artifice_can_select_invention_10 = yes
+					NOT = {
+						has_estate_privilege = artifice_invention_kraken_galleons
+					}
+				}
+				set_estate_privilege = artifice_invention_kraken_galleons
+			}
+			else_if = {
+				limit = {
+					artifice_can_select_invention_10 = no
+					NOT = {
+						has_estate_privilege = artifice_invention_kraken_galleons
+					}
+				}
+				custom_tooltip = artifice_cannot_afford_invention
+				tooltip = {
+					set_estate_privilege = artifice_invention_kraken_galleons
+				}
+			}
+			else_if = {
+				limit = {
+					has_estate_privilege = artifice_invention_kraken_galleons
+				}
+				remove_estate_privilege = artifice_invention_kraken_galleons
+		}
+		}
+		else = {
+			tooltip = {
+				set_estate_privilege = artifice_invention_kraken_galleons
+			}
+		}
+	}
+}
+custom_button = {
+	name = insyaa_invention_gene_tier4_bio
+	tooltip = artifice_invention_bio_processor
+	
+	frame = {
+		number = 5
+		trigger = {
+			has_estate_privilege = artifice_invention_bio_processor
+		}
+	}
+	frame = {
+		number = 4
+		trigger = {
+			has_country_flag = unlocked_artifice_invention_bio_processor
+		}
+	}
+	frame = {
+		number = 3
+		trigger = {
+			calc_true_if = {
+				amount = 2
+				has_country_flag = aPUI_gene_pillar_explored_level_3_in_3376
+				has_country_flag = aPUI_gene_pillar_explored_level_3_in_6950
+				has_country_flag = aPUI_gene_pillar_explored_level_3_in_6386
+			}
+		}
+	}
+	frame = {
+		number = 2
+		trigger = {
+			OR = {
+				has_country_flag = aPUI_gene_pillar_explored_level_3_in_3376
+				has_country_flag = aPUI_gene_pillar_explored_level_3_in_6950
+				has_country_flag = aPUI_gene_pillar_explored_level_3_in_6386
+			}
+		}
+	}
+	frame = { number = 1 }
+
+	trigger = {
+		hidden_trigger = {
+			OR = {
+				has_country_flag = aPUI_gene_pillar_explored_level_3_in_3376
+				has_country_flag = aPUI_gene_pillar_explored_level_3_in_6950
+				has_country_flag = aPUI_gene_pillar_explored_level_3_in_6386
+			}
+		}
+	}
+	effect = {
+		custom_tooltip = you_need_to_find_bio_processor
+		if = {
+			limit = {
+				has_country_flag = unlocked_artifice_invention_bio_processor
+			}
+			if = {
+				limit = {
+					artifice_can_select_invention_10 = yes
+					NOT = {
+						has_estate_privilege = artifice_invention_bio_processor
+					}
+				}
+				set_estate_privilege = artifice_invention_bio_processor
+			}
+			else_if = {
+				limit = {
+					artifice_can_select_invention_10 = no
+					NOT = {
+						has_estate_privilege = artifice_invention_bio_processor
+					}
+				}
+				custom_tooltip = artifice_cannot_afford_invention
+				tooltip = {
+					set_estate_privilege = artifice_invention_bio_processor
+				}
+			}
+			else_if = {
+				limit = {
+					has_estate_privilege = artifice_invention_bio_processor
+				}
+				remove_estate_privilege = artifice_invention_bio_processor
+			}
+		}
+		else = {
+			tooltip = {
+				set_estate_privilege = artifice_invention_bio_processor
+			}
+		}
+	}
+}
+custom_button = {
+	name = insyaa_invention_precursor_tier4_bio
+	tooltip = artifice_invention_spirit_munition
+	
+	frame = {
+		number = 5
+		trigger = {
+			has_estate_privilege = artifice_invention_spirit_munition
+		}
+	}
+	frame = {
+		number = 4
+		trigger = {
+			has_country_flag = unlocked_artifice_invention_spirit_munition
+		}
+	}
+	frame = {
+		number = 3
+		trigger = {
+			calc_true_if = {
+				amount = 2
+				has_country_flag = aPUI_gene_pillar_explored_level_3_in_3376
+				has_country_flag = aPUI_gene_pillar_explored_level_3_in_6950
+				has_country_flag = aPUI_gene_pillar_explored_level_3_in_6386
+			}
+		}
+	}
+	frame = {
+		number = 2
+		trigger = {
+			OR = {
+				has_country_flag = aPUI_gene_pillar_explored_level_3_in_3376
+				has_country_flag = aPUI_gene_pillar_explored_level_3_in_6950
+				has_country_flag = aPUI_gene_pillar_explored_level_3_in_6386
+			}
+		}
+	}
+	frame = { number = 1 }
+
+	trigger = {
+		hidden_trigger = {
+			OR = {
+				has_country_flag = aPUI_gene_pillar_explored_level_3_in_3376
+				has_country_flag = aPUI_gene_pillar_explored_level_3_in_6950
+				has_country_flag = aPUI_gene_pillar_explored_level_3_in_6386
+			}
+		}
+	}
+	effect = {
+		custom_tooltip = you_need_to_find_spirit_munition
+		if = {
+			limit = {
+				has_country_flag = unlocked_artifice_invention_spirit_munition
+			}
+			if = {
+				limit = {
+					artifice_can_select_invention_10 = yes
+					NOT = {
+						has_estate_privilege = artifice_invention_spirit_munition
+					}
+				}
+				set_estate_privilege = artifice_invention_spirit_munition
+			}
+			else_if = {
+				limit = {
+					artifice_can_select_invention_10 = no
+					NOT = {
+						has_estate_privilege = artifice_invention_spirit_munition
+					}
+				}
+				custom_tooltip = artifice_cannot_afford_invention
+				tooltip = {
+					set_estate_privilege = artifice_invention_spirit_munition
+				}
+			}
+			else_if = {
+				limit = {
+					has_estate_privilege = artifice_invention_spirit_munition
+				}
+				remove_estate_privilege = artifice_invention_spirit_munition
+			}
+		}
+		else = {
+			tooltip = {
+				set_estate_privilege = artifice_invention_spirit_munition
+			}
+		}
+	}
+}
 
 #### Mechanim WORKSHOP inventions ####
 	#Head
@@ -14062,6 +14436,273 @@ custom_button = {
 				clr_country_flag = insyaa_invention_legs_menu_open
 			}
 		}
+	}
+}
+custom_button = {
+	name = insyaa_invention_precursor_tier4_mech
+	tooltip = artifice_invention_spirit_munition
+	
+	frame = {
+		number = 5
+		trigger = {
+			has_estate_privilege = artifice_invention_spirit_munition
+		}
+	}
+	frame = {
+		number = 4
+		trigger = {
+			has_country_flag = unlocked_artifice_invention_spirit_munition
+		}
+	}
+	frame = {
+		number = 3
+		trigger = {
+			calc_true_if = {
+				amount = 2
+				has_country_flag = aPUI_gene_pillar_explored_level_3_in_3376
+				has_country_flag = aPUI_gene_pillar_explored_level_3_in_6950
+				has_country_flag = aPUI_gene_pillar_explored_level_3_in_6386
+			}
+		}
+	}
+	frame = {
+		number = 2
+		trigger = {
+			OR = {
+				has_country_flag = aPUI_gene_pillar_explored_level_3_in_3376
+				has_country_flag = aPUI_gene_pillar_explored_level_3_in_6950
+				has_country_flag = aPUI_gene_pillar_explored_level_3_in_6386
+			}
+		}
+	}
+	frame = { number = 1 }
+
+	trigger = {
+		hidden_trigger = {
+			OR = {
+				has_country_flag = aPUI_gene_pillar_explored_level_3_in_3376
+				has_country_flag = aPUI_gene_pillar_explored_level_3_in_6950
+				has_country_flag = aPUI_gene_pillar_explored_level_3_in_6386
+			}
+		}
+	}
+	effect = {
+		custom_tooltip = you_need_to_find_spirit_munition
+		if = {
+			limit = {
+				has_country_flag = unlocked_artifice_invention_spirit_munition
+			}
+			if = {
+				limit = {
+					artifice_can_select_invention_10 = yes
+					NOT = {
+						has_estate_privilege = artifice_invention_spirit_munition
+					}
+				}
+				set_estate_privilege = artifice_invention_spirit_munition
+			}
+			else_if = {
+				limit = {
+					artifice_can_select_invention_10 = no
+					NOT = {
+						has_estate_privilege = artifice_invention_spirit_munition
+					}
+				}
+				custom_tooltip = artifice_cannot_afford_invention
+				tooltip = {
+					set_estate_privilege = artifice_invention_spirit_munition
+				}
+			}
+			else_if = {
+				limit = {
+					has_estate_privilege = artifice_invention_spirit_munition
+				}
+				remove_estate_privilege = artifice_invention_spirit_munition
+			}
+		}
+		else = {
+			tooltip = {
+				set_estate_privilege = artifice_invention_spirit_munition
+			}
+		}
+	}
+}
+custom_button = {
+	name = insyaa_invention_gene_tier4_mech
+	tooltip = artifice_invention_bio_processor
+	
+	frame = {
+		number = 5
+		trigger = {
+			has_estate_privilege = artifice_invention_bio_processor
+		}
+	}
+	frame = {
+		number = 4
+		trigger = {
+			has_country_flag = unlocked_artifice_invention_bio_processor
+		}
+	}
+	frame = {
+		number = 3
+		trigger = {
+			calc_true_if = {
+				amount = 2
+				has_country_flag = aPUI_gene_pillar_explored_level_3_in_3415
+				has_country_flag = aPUI_gene_pillar_explored_level_3_in_3329
+				has_country_flag = aPUI_gene_pillar_explored_level_3_in_3153
+			}
+		}
+	}
+	frame = {
+		number = 2
+		trigger = {
+			OR = {
+				has_country_flag = aPUI_gene_pillar_explored_level_3_in_3415
+				has_country_flag = aPUI_gene_pillar_explored_level_3_in_3329
+				has_country_flag = aPUI_gene_pillar_explored_level_3_in_3153
+			}
+		}
+	}
+	frame = { number = 1 }
+
+	trigger = {
+		hidden_trigger = {
+			OR = {
+				has_country_flag = aPUI_gene_pillar_explored_level_3_in_3415
+				has_country_flag = aPUI_gene_pillar_explored_level_3_in_3329
+				has_country_flag = aPUI_gene_pillar_explored_level_3_in_3153
+			}
+		}
+	}
+	effect = {
+		custom_tooltip = you_need_to_find_bio_processor
+		if = {
+			limit = {
+				has_country_flag = unlocked_artifice_invention_bio_processor
+			}
+			if = {
+				limit = {
+					artifice_can_select_invention_10 = yes
+					NOT = {
+						has_estate_privilege = artifice_invention_bio_processor
+					}
+				}
+				set_estate_privilege = artifice_invention_bio_processor
+			}
+			else_if = {
+				limit = {
+					artifice_can_select_invention_10 = no
+					NOT = {
+						has_estate_privilege = artifice_invention_bio_processor
+					}
+				}
+				custom_tooltip = artifice_cannot_afford_invention
+				tooltip = {
+					set_estate_privilege = artifice_invention_bio_processor
+				}
+			}
+			else_if = {
+				limit = {
+					has_estate_privilege = artifice_invention_bio_processor
+				}
+				remove_estate_privilege = artifice_invention_bio_processor
+			}
+		}
+		else = {
+			tooltip = {
+				set_estate_privilege = artifice_invention_bio_processor
+			}
+		}
+	}
+}
+custom_button = {
+	name = insyaa_invention_mechanim_tier4_mech
+	tooltip = artifice_invention_kraken_galleons
+	frame = {
+		number = 5
+		trigger = {
+			has_estate_privilege = artifice_invention_kraken_galleons
+		}
+	}
+	frame = {
+		number = 4
+		trigger = {
+			has_country_flag = unlocked_artifice_invention_kraken_galleons
+		}
+	}
+	frame = {
+		number = 3
+		trigger = {
+			calc_true_if = {
+				amount = 2
+				has_country_flag = aPUI_gene_pillar_explored_level_3_in_6962
+				has_country_flag = aPUI_gene_pillar_explored_level_3_in_3173
+				has_country_flag = aPUI_gene_pillar_explored_level_3_in_3551
+			}
+		}
+	}
+	frame = {
+		number = 2
+		trigger = {
+			OR = {
+				has_country_flag = aPUI_gene_pillar_explored_level_3_in_6962
+				has_country_flag = aPUI_gene_pillar_explored_level_3_in_3173
+				has_country_flag = aPUI_gene_pillar_explored_level_3_in_3551
+			}
+		}
+	}
+	frame = { number = 1 }
+
+	trigger = {
+		hidden_trigger = {
+			OR = {
+				has_country_flag = aPUI_gene_pillar_explored_level_3_in_6962
+				has_country_flag = aPUI_gene_pillar_explored_level_3_in_3173
+				has_country_flag = aPUI_gene_pillar_explored_level_3_in_3551
+			}
+		}
+	}
+	effect = {
+		custom_tooltip = you_need_to_find_kraken_galleons
+		if = {
+			limit = {
+				has_country_flag = unlocked_artifice_invention_kraken_galleons
+			}
+			if = {
+				limit = {
+					artifice_can_select_invention_10 = yes
+					NOT = {
+						has_estate_privilege = artifice_invention_kraken_galleons
+					}
+				}
+				set_estate_privilege = artifice_invention_kraken_galleons
+			}
+			else_if = {
+				limit = {
+					artifice_can_select_invention_10 = no
+					NOT = {
+						has_estate_privilege = artifice_invention_kraken_galleons
+					}
+				}
+				custom_tooltip = artifice_cannot_afford_invention
+				tooltip = {
+					set_estate_privilege = artifice_invention_kraken_galleons
+				}
+			}
+			else_if = {
+				limit = {
+					has_estate_privilege = artifice_invention_kraken_galleons
+				}
+				remove_estate_privilege = artifice_invention_kraken_galleons
+		}
+		}
+		else = {
+			tooltip = {
+				set_estate_privilege = artifice_invention_kraken_galleons
+			}
+		}
+		
 	}
 }
 custom_window = {
